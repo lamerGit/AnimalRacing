@@ -18,7 +18,7 @@ public class AnimalAI : MonoBehaviour
     Rigidbody rigid;
 
     
-    public float wayDistanse = 250.0f; // 목적지에 변수 수치만큼 가까워지면 목적지를 변경
+    float wayDistanse = 250.0f; // 목적지에 변수 수치만큼 가까워지면 목적지를 변경
 
 
 
@@ -333,7 +333,7 @@ public class AnimalAI : MonoBehaviour
                 }
 
                 //왼쪽사이드+왼쪽 ray와 오른쪽사이드+오른쪽 ray를 비교하여 이동할곳을 정한다.
-                if (leftDistance + leftSideDistance > rightDistance + rightSideDistance)
+                if (leftDistance + leftSideDistance >= rightDistance + rightSideDistance)
                 {
                     flag++;
                     avoidSenstivity -= 2.5f;
