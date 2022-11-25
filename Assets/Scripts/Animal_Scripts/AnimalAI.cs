@@ -7,7 +7,7 @@ public class AnimalAI : MonoBehaviour
     public bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
     float aiSpeed = 10.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
-    float resetAISpeed = 40.0f; 
+    float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;
     public GameObject waypointController; // 웨이포인트 그룹을 읽는 게임오브젝트 waypoints에 정보줘야함
     List<Transform> waypoints; //waypointController한테 waypoint정보를 받는다
@@ -15,7 +15,7 @@ public class AnimalAI : MonoBehaviour
     float currentSpeed; // 현재 속도
     Vector3 currentWaypointPosition; // 따라가야할 Vector3의 포지션
 
-    Rigidbody rigid;
+    protected Rigidbody rigid;
 
     
     float wayDistanse = 250.0f; // 목적지에 변수 수치만큼 가까워지면 목적지를 변경
@@ -45,13 +45,19 @@ public class AnimalAI : MonoBehaviour
     Vector3 lastEmit; // 마지막 발바닥 파티클이 생긴 위치
 
 
+    protected Animator animator;
+    protected GameObject dustTail;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
+        dustTail = transform.Find("DustTail").gameObject;
+
         lastEmit = transform.position; // 발바닥 파티클의 첫위치
         GetWayPoints(); // 웨이포인트 갱신
         aiSpeed = resetAISpeed; // 스피드 갱신
@@ -62,9 +68,9 @@ public class AnimalAI : MonoBehaviour
 
 
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        aiSpeed = Random.Range(resetAISpeed, maxSpeed); // 스피드는 계속 최소~최대사이로 갱신됨
+        //aiSpeed = Random.Range(resetAISpeed, maxSpeed); // 스피드는 계속 최소~최대사이로 갱신됨
         if (raceStarted)
         {
             //레이스 시작시 사용되는 함수들
@@ -78,7 +84,7 @@ public class AnimalAI : MonoBehaviour
     /// <summary>
     /// 발자국을 찍어주는 함수
     /// </summary>
-    void FootPrint()
+    protected virtual void FootPrint()
     {
         //delta거리 만큼 이동했을때 발자국을 찍고 위치를 갱신해준다.
         if (Vector3.Distance(lastEmit, transform.position) > delta)
@@ -375,7 +381,7 @@ public class AnimalAI : MonoBehaviour
         rigid.AddTorque(transform.up * senstivity * avoidSpeed);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Animal"))
         {
