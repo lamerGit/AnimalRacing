@@ -189,7 +189,7 @@ public class AnimalAI : MonoBehaviour
         pos += transform.forward + transform.up;
         if (Physics.Raycast(pos, transform.forward, out hit, sensorLength))
         {
-            if (hit.transform.tag == "Animal")
+            if (hit.transform.CompareTag("Animal"))
             {
 
                 frontTarget = hit.transform; //앞에 타겟이 있으면 갱신한다.
@@ -204,7 +204,7 @@ public class AnimalAI : MonoBehaviour
 
         if (Physics.Raycast(pos, transform.forward, out hit, sensorLength))
         {
-            if (hit.transform.tag == "Wall")
+            if (hit.transform.CompareTag("Wall"))
             {
                 flag++;
                 avoidSenstivity -= 600.5f; //벽이 감지되면 회피상태로 만든다.
@@ -221,7 +221,7 @@ public class AnimalAI : MonoBehaviour
 
         if (Physics.Raycast(pos, transform.forward, out hit, sensorLength))
         {
-            if (hit.transform.tag == "Wall")
+            if (hit.transform.CompareTag("Wall"))
             {
                 flag++;
                 avoidSenstivity += 600.5f; //벽이 감지되면 회피상태로 만든다.
@@ -238,7 +238,7 @@ public class AnimalAI : MonoBehaviour
         pos = transform.position + transform.up;
         if (Physics.Raycast(pos, transform.right, out hit, sidewaySensorLength))
         {
-            if (hit.transform.tag == "Wall")
+            if (hit.transform.CompareTag("Wall"))
             {
                 if (hit.distance < 2.5f)
                 {
@@ -251,7 +251,7 @@ public class AnimalAI : MonoBehaviour
 
         if (Physics.Raycast(pos, -transform.right, out hit, sidewaySensorLength))
         {
-            if (hit.transform.tag == "Wall")
+            if (hit.transform.CompareTag("Wall"))
             {
                 if (hit.distance < 2.5f)
                 {
@@ -264,7 +264,7 @@ public class AnimalAI : MonoBehaviour
         //앞 사이드
         if (Physics.Raycast(pos, rightAngle * transform.forward, out hit, sidewaySensorLength))
         {
-            if (hit.transform.tag == "Animal")
+            if (hit.transform.CompareTag("Animal"))
             {
 
                 frontTarget = hit.transform; //타겟이 있으면 갱신한다.
@@ -275,7 +275,7 @@ public class AnimalAI : MonoBehaviour
 
         if (Physics.Raycast(pos, leftAngle * transform.forward, out hit, sidewaySensorLength))
         {
-            if (hit.transform.tag == "Animal")
+            if (hit.transform.CompareTag("Animal"))
             {
 
                 frontTarget = hit.transform; //타겟이 있으면 갱신한다.
@@ -377,7 +377,7 @@ public class AnimalAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Animal")
+        if (collision.gameObject.CompareTag("Animal"))
         {
             //Debug.Log("부딪힘");
             //동물끼리 부딪혔을때 조금 밀려나게함
