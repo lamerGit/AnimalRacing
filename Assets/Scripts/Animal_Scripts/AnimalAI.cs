@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalAI : MonoBehaviour
+public class AnimalAI : MonoBehaviour ,IHit
 {
     public bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
-    float aiSpeed = 10.0f; // 속도
+    protected float aiSpeed = 10.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
     float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;
@@ -47,6 +47,16 @@ public class AnimalAI : MonoBehaviour
 
     protected Animator animator;
     protected GameObject dustTail;
+
+    WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f);
+
+    bool stateAttack = false;
+
+    protected virtual bool StateAttack
+    {
+        get { return stateAttack; }
+        set { stateAttack = value; }
+    }
 
     private void Awake()
     {
@@ -176,7 +186,7 @@ public class AnimalAI : MonoBehaviour
     /// <summary>
     /// 벽충돌 방지 및 서로간에 충돌방지
     /// </summary>
-    void Sensor()
+    protected virtual void Sensor()
     {
         flag = 0; // 0이면 회피할 필요없음
         float avoidSenstivity = 0; // 이 변수의 값에 따라 큰게 회피할지 작게 회피할지 경정
@@ -393,5 +403,24 @@ public class AnimalAI : MonoBehaviour
         }
 
 
+    }
+
+    public void TakeHit(float stateDamage,HitType hitType = HitType.None)
+    {
+        if(hitType==HitType.Spin && !StateAttack)
+        {
+            StateAttack = true;
+            aiSpeed -= stateDamage;
+            animator.SetBool("stateSpin", StateAttack);
+            StartCoroutine(stateSpin(stateDamage));
+        }
+    }
+
+    IEnumerator stateSpin(float stateDamage)
+    {
+        yield return stateSpinSecond;
+        StateAttack = false;
+        aiSpeed += stateDamage;
+        animator.SetBool("stateSpin", StateAttack);
     }
 }

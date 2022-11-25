@@ -10,6 +10,19 @@ public class ArcticFox : AnimalAI
     float skillCoolTime = 10.0f;
     float skillCoolTimeReset = 10.0f;
 
+    protected override bool StateAttack { get => base.StateAttack;
+        set
+        {
+            base.StateAttack = value;
+            if (base.StateAttack)
+            {
+                
+                RollingJumpReset();
+            }
+
+
+        }
+    }
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -18,7 +31,7 @@ public class ArcticFox : AnimalAI
         {
             skillCoolTime -= Time.fixedDeltaTime;
         }
-        if(skillCoolTime<0)
+        if(skillCoolTime<0 && !StateAttack)
         {
             skillCoolTime = skillCoolTimeReset;
             RollingJump();
@@ -29,6 +42,13 @@ public class ArcticFox : AnimalAI
     {
         rigid.AddForce(transform.up * jumpPower, ForceMode.VelocityChange);
         rolling = true;
+        dustTail.SetActive(!rolling);
+        animator.SetBool("Rolling", rolling);
+    }
+
+    private void RollingJumpReset()
+    {
+        rolling = false;
         dustTail.SetActive(!rolling);
         animator.SetBool("Rolling", rolling);
     }
@@ -55,14 +75,13 @@ public class ArcticFox : AnimalAI
 
             if (collision.gameObject.CompareTag("Ground"))
             {
-
-                rolling = false;
-                dustTail.SetActive(!rolling);
-                animator.SetBool("Rolling", rolling);
+                RollingJumpReset();
 
             }
 
         }
 
     }
+
+    
 }
