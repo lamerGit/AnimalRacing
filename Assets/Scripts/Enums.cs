@@ -5,5 +5,6 @@ using UnityEngine;
 public enum HitType
 {
     None=0,
-    Spin
+    Spin,
+    airborne
 }

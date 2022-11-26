@@ -18,11 +18,22 @@ public class ArcticFox : AnimalAI
             {
                 
                 RollingJumpReset();
+                dustTail.SetActive(false);
+            }else
+            {
+                dustTail.SetActive(true);
             }
-
+            
 
         }
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        aiSpeed = 58.0f;
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -35,6 +46,11 @@ public class ArcticFox : AnimalAI
         {
             skillCoolTime = skillCoolTimeReset;
             RollingJump();
+        }
+
+        if(StateAttack && transform.position.y>0.15f)
+        {
+            rigid.AddForce(-transform.up*jumpPower);
         }
 
     }

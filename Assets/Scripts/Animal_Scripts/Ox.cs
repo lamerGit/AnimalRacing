@@ -13,7 +13,7 @@ public class Ox : AnimalAI
     float madSpinTime = 5.0f;
     float madSpinTimeReset = 5.0f;
 
-    float madPower = 5.0f;
+    float madPower = 20.0f;
 
     protected override bool StateAttack { get => base.StateAttack;
         set
@@ -26,6 +26,12 @@ public class Ox : AnimalAI
 
 
         }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        aiSpeed = 59.0f;
     }
 
     protected override void FixedUpdate()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimalAI : MonoBehaviour ,IHit
 {
     public bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
-    protected float aiSpeed = 10.0f; // 속도
+    protected float aiSpeed = 60.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
     float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;
@@ -33,7 +33,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     float maxSpeed = 70.7f; // 최고 스피드
 
-    private Transform frontTarget = null; // 앞에 동물이 있는 지 확인할 변수
+    protected Transform frontTarget = null; // 앞에 동물이 있는 지 확인할 변수
 
     float outSightAngle = 100.0f; // 앞에 있던 동물이 어느정도 각도를 지나가면 타겟을 해제할지 확인하는 변수
     float outFrontDistance = 50.0f; // 타겟하고 변수만큼 떨어지면 타겟을 해제한다.
@@ -49,13 +49,19 @@ public class AnimalAI : MonoBehaviour ,IHit
     protected GameObject dustTail;
 
     WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f);
+    WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f);
 
     bool stateAttack = false;
 
     protected virtual bool StateAttack
     {
         get { return stateAttack; }
-        set { stateAttack = value; }
+        set
+        {
+            stateAttack = value;
+            
+
+        }
     }
 
     private void Awake()
@@ -64,14 +70,14 @@ public class AnimalAI : MonoBehaviour ,IHit
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         dustTail = transform.Find("DustTail").gameObject;
 
         lastEmit = transform.position; // 발바닥 파티클의 첫위치
         GetWayPoints(); // 웨이포인트 갱신
-        aiSpeed = resetAISpeed; // 스피드 갱신
-        aiTurnSpeed = resetAITurnSpeed; // 스피드 갱신
+        //aiSpeed = resetAISpeed; // 스피드 갱신
+        aiTurnSpeed = resetAITurnSpeed; // 회전 스피드 갱신
         
     }
 
@@ -88,7 +94,10 @@ public class AnimalAI : MonoBehaviour ,IHit
             Sensor(); // 주변 장애물확인 함수
         }
 
-        FootPrint(); //발자국 함수
+        if (transform.position.y < 0.5f)
+        {
+            FootPrint(); //발자국 함수
+        }
     }
 
     /// <summary>
@@ -414,6 +423,22 @@ public class AnimalAI : MonoBehaviour ,IHit
             animator.SetBool("stateSpin", StateAttack);
             StartCoroutine(stateSpin(stateDamage));
         }
+
+        if(hitType==HitType.airborne && !StateAttack)
+        {
+            StateAttack = true;
+            aiSpeed -= stateDamage;
+            rigid.AddForce(transform.up * 15.0f,ForceMode.VelocityChange);
+            StartCoroutine(stateAirborne(stateDamage));
+        }
+    }
+
+
+    IEnumerator stateAirborne(float stateDamage)
+    {
+        yield return stateAirborneSecond;
+        StateAttack = false;
+        aiSpeed += stateDamage;
     }
 
     IEnumerator stateSpin(float stateDamage)
