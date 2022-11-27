@@ -46,14 +46,17 @@ public class AnimalAI : MonoBehaviour ,IHit
 
 
     protected Animator animator;
-    protected GameObject dustTail;
+    protected GameObject dustTail; // 동물이 달릴때 생기는 먼지 파티클
 
-    WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f);
-    WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f);
-    WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f);
+    WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f); // 상태이상 스핀이 끝나는 시간
+    WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f); // 상태이상 에어본이 끝나는 시간
+    WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f); // 상태이상 침묵이 끝나는 시간
 
-    bool stateAttack = false;
+    bool stateAttack = false; // 상태이상 체크
 
+    /// <summary>
+    /// 상태이상 프로퍼티 AnimalAI를 상속받는 클래스들이 사용하기위해 virtual로 함
+    /// </summary>
     protected virtual bool StateAttack
     {
         get { return stateAttack; }
@@ -415,8 +418,14 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     }
 
+    /// <summary>
+    /// 상태이상을 받을 때 행동
+    /// </summary>
+    /// <param name="stateDamage">이 값에 따라 이동속도가 감소</param>
+    /// <param name="hitType">이 값에 따라 상태이상 타입이 결정</param>
     public void TakeHit(float stateDamage,HitType hitType = HitType.None)
     {
+        //스핀 상태이상
         if(hitType==HitType.Spin && !StateAttack)
         {
             StateAttack = true;
@@ -425,6 +434,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             StartCoroutine(stateSpin(stateDamage));
         }
 
+        //에어본 상태이상
         if(hitType==HitType.airborne && !StateAttack)
         {
             StateAttack = true;
@@ -433,6 +443,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             StartCoroutine(stateAirborne(stateDamage));
         }
 
+        //침묵 상태이상
         if(hitType==HitType.silence && !StateAttack)
         {
             StateAttack = true;
@@ -442,6 +453,11 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     }
 
+    /// <summary>
+    /// 침묵 상태이상이 끝났을 때 행동
+    /// </summary>
+    /// <param name="stateDamage">다시 회복해야하는 속도값</param>
+    /// <returns>stateSilenceSecond에 설정된 시간 뒤에 실행한다.</returns>
     IEnumerator stateSilence(float stateDamage)
     {
         yield return stateSilenceSecond;
@@ -449,7 +465,11 @@ public class AnimalAI : MonoBehaviour ,IHit
         aiSpeed += stateDamage;
     }
 
-
+    /// <summary>
+    /// 에어본 상태이상이 끝났을 때 행동
+    /// </summary>
+    /// <param name="stateDamage">다시 회복해야하는 속도값</param>
+    /// <returns>stateAirborneSecond에 설정된 시간 뒤에 실행</returns>
     IEnumerator stateAirborne(float stateDamage)
     {
         yield return stateAirborneSecond;
@@ -457,6 +477,11 @@ public class AnimalAI : MonoBehaviour ,IHit
         aiSpeed += stateDamage;
     }
 
+    /// <summary>
+    /// 스핀 상태이상이 끝났을 때 행동
+    /// </summary>
+    /// <param name="stateDamage">다시 회복해야하는 속도값</param>
+    /// <returns>stateSpinSecond에 설정된 시간 뒤에 실행</returns>
     IEnumerator stateSpin(float stateDamage)
     {
         yield return stateSpinSecond;
