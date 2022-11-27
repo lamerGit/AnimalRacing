@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 6135235369559298012}
   - component: {fileID: 6135235369559298013}
   - component: {fileID: 6135235369559298014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camel
   m_TagString: Animal
   m_Icon: {fileID: 0}

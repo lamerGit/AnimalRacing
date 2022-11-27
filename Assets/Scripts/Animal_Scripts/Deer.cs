@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Deer : AnimalAI
 {
-    float skillCoolTime = 10.0f;
-    float skillCoolTimeReset = 10.0f;
+    float skillCoolTime = 5.0f;
+    float skillCoolTimeReset = 5.0f;
 
     float attackSpeed = 10.0f;
     float attackTime = 5.0f;
@@ -33,7 +33,7 @@ public class Deer : AnimalAI
     protected override void Start()
     {
         base.Start();
-        aiSpeed = 58.0f;
+        aiSpeed = 59.0f;
     }
 
     protected override void FixedUpdate()
@@ -85,8 +85,13 @@ public class Deer : AnimalAI
 
     void UpAttackReset()
     {
-        attackTime= attackTimeReset;
-        attackCheck=false;
-        aiSpeed -= attackSpeed;
+        attackTime = attackTimeReset;
+        if(attackCheck)
+        {
+            aiSpeed -= attackSpeed;
+        }
+
+        attackCheck = false;
+        
     }
 }

@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 8755623677522021546}
   - component: {fileID: 8755623677522021547}
   - component: {fileID: 8755623677522021548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bighorn
   m_TagString: Animal
   m_Icon: {fileID: 0}

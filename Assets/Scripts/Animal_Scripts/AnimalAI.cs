@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimalAI : MonoBehaviour ,IHit
 {
     public bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
-    protected float aiSpeed = 60.0f; // 속도
+    public float aiSpeed = 60.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
     float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;

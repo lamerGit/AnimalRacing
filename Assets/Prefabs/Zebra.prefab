@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 7912035350309233875}
   - component: {fileID: 8763115436441237821}
   - component: {fileID: 8763115436441237794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zebra
   m_TagString: Animal
   m_Icon: {fileID: 0}

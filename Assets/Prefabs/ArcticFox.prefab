@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3981550689271744950}
   - component: {fileID: 2611426344335613077}
   - component: {fileID: 6657272148562005670}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArcticFox
   m_TagString: Animal
   m_Icon: {fileID: 0}

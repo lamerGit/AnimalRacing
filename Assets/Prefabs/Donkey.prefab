@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 8171639182538607418}
   - component: {fileID: 7393432410533027307}
   - component: {fileID: 2398485499253771382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Donkey
   m_TagString: Animal
   m_Icon: {fileID: 0}

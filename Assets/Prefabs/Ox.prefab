@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1532153218408953491}
   - component: {fileID: 8027598162335007589}
   - component: {fileID: 5740216904940855521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ox
   m_TagString: Animal
   m_Icon: {fileID: 0}

@@ -70,8 +70,13 @@ public class Ox : AnimalAI
     private void MadnessSpinReset()
     {
         madSpinTime = madSpinTimeReset;
+        if(madSpin)
+        {
+            aiSpeed -= madSpinSpeed;
+        }
+
         madSpin = false;
-        aiSpeed -= madSpinSpeed;
+        
         animator.SetBool("MadnessSpin", madSpin);
     }
 
