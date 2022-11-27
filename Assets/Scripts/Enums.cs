@@ -6,5 +6,6 @@ public enum HitType
 {
     None=0,
     Spin,
-    airborne
+    airborne,
+    silence
 }

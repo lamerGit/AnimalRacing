@@ -50,6 +50,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f);
     WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f);
+    WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f);
 
     bool stateAttack = false;
 
@@ -431,6 +432,21 @@ public class AnimalAI : MonoBehaviour ,IHit
             rigid.AddForce(transform.up * 15.0f,ForceMode.VelocityChange);
             StartCoroutine(stateAirborne(stateDamage));
         }
+
+        if(hitType==HitType.silence && !StateAttack)
+        {
+            StateAttack = true;
+            aiSpeed -= stateDamage;
+            StartCoroutine(stateSilence(stateDamage));
+        }
+
+    }
+
+    IEnumerator stateSilence(float stateDamage)
+    {
+        yield return stateSilenceSecond;
+        StateAttack = false;
+        aiSpeed += stateDamage;
     }
 
 
