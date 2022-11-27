@@ -1,25 +1,25 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Deer : AnimalAI
 {
-    //»ç½¿ÀÇ ½ºÅ©¸³Æ®
+    //ì‚¬ìŠ´ì˜ ìŠ¤í¬ë¦½íŠ¸ 
 
-    float skillCoolTime = 5.0f; //ÄğÅ¸ÀÓ ÃÊ±â ½Ã°£
-    float skillCoolTimeReset = 5.0f; // ½ºÅ³ÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    float skillCoolTime = 5.0f; //ì¿¨íƒ€ì„ ì´ˆê¸° ì‹œê°„
+    float skillCoolTimeReset = 5.0f; // ìŠ¤í‚¬ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    float attackSpeed = 10.0f; // »Ô¿Ã·ÁÄ¡±â ½ÃÀüÁß¿¡ Ãß°¡½ºÇÇµå
-    float attackTime = 5.0f;  // »Ô¿Ã·ÁÄ¡±â ½ÃÀü ½Ã°£
-    float attackTimeReset = 5.0f; // »Ô¿Ã·ÁÄ¡±â°¡ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    float attackSpeed = 10.0f; // ë¿”ì˜¬ë ¤ì¹˜ê¸° ì‹œì „ì¤‘ì— ì¶”ê°€ìŠ¤í”¼ë“œ
+    float attackTime = 5.0f;  // ë¿”ì˜¬ë ¤ì¹˜ê¸° ì‹œì „ ì‹œê°„
+    float attackTimeReset = 5.0f; // ë¿”ì˜¬ë ¤ì¹˜ê¸°ê°€ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    bool attackCheck=false; // »Ô¿Ã·ÁÄ¡±âÁßÀÎÁö È®ÀÎÇÒ º¯¼ö
+    bool attackCheck=false; // ë¿”ì˜¬ë ¤ì¹˜ê¸°ì¤‘ì¸ì§€ í™•ì¸í•  ë³€ìˆ˜
 
-    float attackDistance = 8.5f; // ¾î´ÀÁ¤µµ °Å¸®¿¡ ÀÖ¾î¾ß »Ô¿Ã·ÁÄ¡±â¸¦ ÇÒÁö Á¤ÇÏ´Â º¯¼ö
-    float attackPower = 25.0f; // ¿¡¾îº»»óÅÂÀÇ µ¿¹°ÀÇ ½ºÇÇµå°¡ ¾ó¸¶³ª ¶³¾îÁúÁö Á¤ÇÏ´Â º¯¼ö
+    float attackDistance = 8.5f; // ì–´ëŠì •ë„ ê±°ë¦¬ì— ìˆì–´ì•¼ ë¿”ì˜¬ë ¤ì¹˜ê¸°ë¥¼ í• ì§€ ì •í•˜ëŠ” ë³€ìˆ˜
+    float attackPower = 25.0f; // ì—ì–´ë³¸ìƒíƒœì˜ ë™ë¬¼ì˜ ìŠ¤í”¼ë“œê°€ ì–¼ë§ˆë‚˜ ë–¨ì–´ì§ˆì§€ ì •í•˜ëŠ” ë³€ìˆ˜
 
     /// <summary>
-    /// »óÅÂÀÌ»ó Ã¼Å©¿ë ÇÁ·ÎÆÛÆ¼ »óÅÂÀÌ»óÀÌ °É¸®¸é »Ô¿Ã·ÁÄ¡±â°¡ Ãë¼ÒµÈ´Ù.
+    /// ìƒíƒœì´ìƒ ì²´í¬ìš© í”„ë¡œí¼í‹° ìƒíƒœì´ìƒì´ ê±¸ë¦¬ë©´ ë¿”ì˜¬ë ¤ì¹˜ê¸°ê°€ ì·¨ì†Œëœë‹¤.
     /// </summary>
     protected override bool StateAttack
     {
@@ -47,11 +47,11 @@ public class Deer : AnimalAI
 
         if (!attackCheck)
         {
-            //»Ô¿Ã·ÁÄ¡±â »óÅÂ°¡ ¾Æ´Ò¶§´Â ÄğÅ¸ÀÓ°¨¼Ò
+            //ë¿”ì˜¬ë ¤ì¹˜ê¸° ìƒíƒœê°€ ì•„ë‹ë•ŒëŠ” ì¿¨íƒ€ì„ê°ì†Œ
             skillCoolTime -= Time.fixedDeltaTime;
         }else
         {
-            //»Ô¿Ã·ÁÄ¡±â »óÅÂÀÏ¶§ ¾Õ¿¡ Å¸°ÙÀÌ ÀÖÀ» °æ¿ì °Å¸®¸¦ Àç´Ù°¡ ¿Ã·ÁÄ£´Ù.
+            //ë¿”ì˜¬ë ¤ì¹˜ê¸° ìƒíƒœì¼ë•Œ ì•ì— íƒ€ê²Ÿì´ ìˆì„ ê²½ìš° ê±°ë¦¬ë¥¼ ì¬ë‹¤ê°€ ì˜¬ë ¤ì¹œë‹¤.
             attackTime -= Time.fixedDeltaTime;
             if (frontTarget != null)
             {
@@ -62,18 +62,18 @@ public class Deer : AnimalAI
                     
                     animator.SetTrigger("UpAttack");
                     frontTarget.gameObject.GetComponent<AnimalAI>().TakeHit(attackPower, HitType.airborne);
-                    UpAttackReset(); // ¿Ã·ÁÄ£ ÀÌÈÄ »óÅÂ ¸®¼Â
+                    UpAttackReset(); // ì˜¬ë ¤ì¹œ ì´í›„ ìƒíƒœ ë¦¬ì…‹
                 }
             }
         }
 
         if (attackTime < 0)
         {
-            //»Ô¿Ã·ÁÄ¡±â »óÅÂ°¡ ³¡³ª¸é »óÅÂ ¸®¼Â
+            //ë¿”ì˜¬ë ¤ì¹˜ê¸° ìƒíƒœê°€ ëë‚˜ë©´ ìƒíƒœ ë¦¬ì…‹
             UpAttackReset();
         }
 
-        // ÄğÅ¸ÀÓÀÌ µÇ°í »óÅÂÀÌ»óÀÌ ¾Æ´Ï¸ç ¾Õ¿¡ µ¿¹°ÀÌ ÀÖÀ¸¸é ¹ßµ¿
+        // ì¿¨íƒ€ì„ì´ ë˜ê³  ìƒíƒœì´ìƒì´ ì•„ë‹ˆë©° ì•ì— ë™ë¬¼ì´ ìˆìœ¼ë©´ ë°œë™
         if (skillCoolTime < 0 && !StateAttack && frontTarget!=null)
         {
             
@@ -85,7 +85,7 @@ public class Deer : AnimalAI
     }
 
     /// <summary>
-    /// »Ô¿Ã·ÁÄ¡±â »óÅÂ¿Í ¼Óµµ¸¸ Á¶ÀıÇÏ´Â ÇÔ¼ö
+    /// ë¿”ì˜¬ë ¤ì¹˜ê¸° ìƒíƒœì™€ ì†ë„ë§Œ ì¡°ì ˆí•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     void UpAttack()
     {
@@ -95,13 +95,13 @@ public class Deer : AnimalAI
     }
 
     /// <summary>
-    /// »Ô¿Ã·ÁÄ¡±âÈÄ »óÅÂ ¸®¼Â
+    /// ë¿”ì˜¬ë ¤ì¹˜ê¸°í›„ ìƒíƒœ ë¦¬ì…‹
     /// </summary>
     void UpAttackReset()
     {
         attackTime = attackTimeReset;
-        if(attackCheck) // ¿Ã·ÁÄ¡±â°¡ trueÀÏ¶§¸¸ ¼Óµµ¸¦ °¨¼Ò½ÃÄÑ¾ßÇÑ´Ù.
-        {               // ÀÌ·¸°Ô ÇÏÁö¾ÊÀ¸¸é »óÅÂÀÌ»ó°É·ÈÀ»¶§ ¼Óµµ°¡ °¨¼ÒÇÑ´Ù.
+        if(attackCheck) // ì˜¬ë ¤ì¹˜ê¸°ê°€ trueì¼ë•Œë§Œ ì†ë„ë¥¼ ê°ì†Œì‹œì¼œì•¼í•œë‹¤.
+        {               // ì´ë ‡ê²Œ í•˜ì§€ì•Šìœ¼ë©´ ìƒíƒœì´ìƒê±¸ë ¸ì„ë•Œ ì†ë„ê°€ ê°ì†Œí•œë‹¤.
             aiSpeed -= attackSpeed;
         }
 

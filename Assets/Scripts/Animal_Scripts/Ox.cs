@@ -1,23 +1,23 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Ox : AnimalAI
 {
-    //È²¼ÒÀÇ ½ºÅ©¸³Æ®
+    //í™©ì†Œì˜ ìŠ¤í¬ë¦½íŠ¸
     
-    bool madSpin=false; //¹ÌÄ£È¸ÀüÀÌ ¹ßµ¿ÁßÀÎÁö È®ÀÎÇÏ´Â º¯¼ö
-    float skillCoolTime = 8.0f; //ÄğÅ¸ÀÓ ÃÊ±â ½Ã°£
-    float skillCoolTimeReset = 10.0f; // ½ºÅ³ÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    bool madSpin=false; //ë¯¸ì¹œíšŒì „ì´ ë°œë™ì¤‘ì¸ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    float skillCoolTime = 8.0f; //ì¿¨íƒ€ì„ ì´ˆê¸° ì‹œê°„
+    float skillCoolTimeReset = 10.0f; // ìŠ¤í‚¬ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    float madSpinSpeed = 5.0f; //¹ÌÄ£È¸Àü »óÅÂÀÏ¶§ »ó½ÂÇÏ´Â ½ºÇÇµå
-    float madSpinTime = 5.0f; // ¹ÌÄ£È¸Àü ½ÃÀüµÇ´Â ½Ã°£
-    float madSpinTimeReset = 5.0f; // ¹ÌÄ£È¸ÀüÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    float madSpinSpeed = 5.0f; //ë¯¸ì¹œíšŒì „ ìƒíƒœì¼ë•Œ ìƒìŠ¹í•˜ëŠ” ìŠ¤í”¼ë“œ
+    float madSpinTime = 5.0f; // ë¯¸ì¹œíšŒì „ ì‹œì „ë˜ëŠ” ì‹œê°„
+    float madSpinTimeReset = 5.0f; // ë¯¸ì¹œíšŒì „ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    float madPower = 20.0f; // ¹ÌÄ£È¸Àü¿¡ ´çÇÑ µ¿¹°µéÀÌ °¨¼ÒµÉ ½ºÇÇµå
+    float madPower = 20.0f; // ë¯¸ì¹œíšŒì „ì— ë‹¹í•œ ë™ë¬¼ë“¤ì´ ê°ì†Œë  ìŠ¤í”¼ë“œ
 
     /// <summary>
-    /// »óÅÂÀÌ»ó Ã¼Å©¿ë ÇÁ·ÎÆÛÆ¼ »óÅÂÀÌ»óÀÌ °É¸®¸é ¹ÌÄ£È¸ÀüÀÌ Ãë¼ÒµÈ´Ù.
+    /// ìƒíƒœì´ìƒ ì²´í¬ìš© í”„ë¡œí¼í‹° ìƒíƒœì´ìƒì´ ê±¸ë¦¬ë©´ ë¯¸ì¹œíšŒì „ì´ ì·¨ì†Œëœë‹¤.
     /// </summary>
     protected override bool StateAttack { get => base.StateAttack;
         set
@@ -31,7 +31,7 @@ public class Ox : AnimalAI
 
         }
     }
-
+     
     protected override void Start()
     {
         base.Start();
@@ -42,31 +42,31 @@ public class Ox : AnimalAI
     {
         base.FixedUpdate();
 
-        //¹ÌÄ£È¸Àü »óÅÂ°¡ ¾Æ´Ò¶§¸¸ ÄğÅ¸ÀÓ°¨¼ö
+        //ë¯¸ì¹œíšŒì „ ìƒíƒœê°€ ì•„ë‹ë•Œë§Œ ì¿¨íƒ€ì„ê°ìˆ˜
         if (!madSpin)
         {
             skillCoolTime -= Time.fixedDeltaTime;
         }else
         {
-            //¹ÌÄ£È¸Àü »óÅÂÀÏ¶§´Â ½ÃÀü½Ã°£ °¨¼Ò
+            //ë¯¸ì¹œíšŒì „ ìƒíƒœì¼ë•ŒëŠ” ì‹œì „ì‹œê°„ ê°ì†Œ
             madSpinTime -= Time.fixedDeltaTime;
         }
 
         if(madSpinTime<0)
         {
-            //½ÃÀü ½Ã°£ÀÌ ÀüºÎ °¨¼ÒÇÏ¸é »óÅÂ¸®¼Â
+            //ì‹œì „ ì‹œê°„ì´ ì „ë¶€ ê°ì†Œí•˜ë©´ ìƒíƒœë¦¬ì…‹
             MadnessSpinReset();
         }
 
         if (skillCoolTime < 0 && !StateAttack)
         {
-           //»óÅÂÀÌ»óÀÌ ¾Æ´Ï°í ½ºÅ³ ÄğÅ¸ÀÓÀÌ 0º¸´Ù ÀÛ¾ÆÁö¸é ¹ßµ¿
+           //ìƒíƒœì´ìƒì´ ì•„ë‹ˆê³  ìŠ¤í‚¬ ì¿¨íƒ€ì„ì´ 0ë³´ë‹¤ ì‘ì•„ì§€ë©´ ë°œë™
             MadnessSpin();
         }
     }
 
     /// <summary>
-    /// ¹ÌÄ£È¸Àü»óÅÂÀÏ¶§´Â È¸ÇÇÇÏÁö ¾Ê°í Âß´Ş·Á°¡±âÀ§ÇØ SensorÀ» ºñÈ°¼ºÈ­ ÇÑ´Ù.
+    /// ë¯¸ì¹œíšŒì „ìƒíƒœì¼ë•ŒëŠ” íšŒí”¼í•˜ì§€ ì•Šê³  ì­‰ë‹¬ë ¤ê°€ê¸°ìœ„í•´ Sensorì„ ë¹„í™œì„±í™” í•œë‹¤.
     /// </summary>
     protected override void Sensor()
     {
@@ -77,7 +77,7 @@ public class Ox : AnimalAI
     }
 
     /// <summary>
-    /// ¹ÌÄ£È¸ÀüÀÌ ³¡³ª°í »óÅÂ¸¦ ¸®¼ÂÇÏ´Â ÇÔ¼ö
+    /// ë¯¸ì¹œíšŒì „ì´ ëë‚˜ê³  ìƒíƒœë¥¼ ë¦¬ì…‹í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     private void MadnessSpinReset()
     {
@@ -93,7 +93,7 @@ public class Ox : AnimalAI
     }
 
     /// <summary>
-    /// ¹ÌÄ£È¸ÀüÀ» ½ÃÀüÇÏ´Â ÇÔ¼ö
+    /// ë¯¸ì¹œíšŒì „ì„ ì‹œì „í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     void MadnessSpin()
     {
@@ -104,7 +104,7 @@ public class Ox : AnimalAI
     }
 
     /// <summary>
-    /// ¹ÌÄ£È¸Àü»óÅÂÀÏ¶§ ´Ù¸¥ µ¿¹°µé°ú Á¢ÃËÇÏ¸é »óÅÂÀÌ»ó ½ºÇÉÀ» °É°ÔµÈ´Ù.
+    /// ë¯¸ì¹œíšŒì „ìƒíƒœì¼ë•Œ ë‹¤ë¥¸ ë™ë¬¼ë“¤ê³¼ ì ‘ì´‰í•˜ë©´ ìƒíƒœì´ìƒ ìŠ¤í•€ì„ ê±¸ê²Œëœë‹¤.
     /// </summary>
     /// <param name="collision"></param>
     protected override void OnCollisionEnter(Collision collision)

@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Æ¯Á¤´ë»óÀ» µû¶ó°¡´Â ½ºÅ©¸³Æ®
+/// íŠ¹ì •ëŒ€ìƒì„ ë”°ë¼ê°€ëŠ” ìŠ¤í¬ë¦½íŠ¸
 /// </summary>
 public class FollowCamera : MonoBehaviour
-{
+{ 
 
-    public Transform target; //µû¶ó´Ù´Ò Å¸°Ù
+    public Transform target; //ë”°ë¼ë‹¤ë‹ íƒ€ê²Ÿ
 
-    public Vector3 offset; // ´ë»ó°úÀÇ °Å¸®
+    public Vector3 offset; // ëŒ€ìƒê³¼ì˜ ê±°ë¦¬
 
     
     private void FixedUpdate()

@@ -1,19 +1,19 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ArcticFox : AnimalAI
 {
-    //ºÏ±Ø¿©¿ìÀÇ ½ºÅ©¸³Æ®
-
-    float jumpPower = 20.0f; // ¾ó¸¶³ª ³ôÀÌ Á¡ÇÁÇÒÁö º¯¼ö
-    bool rolling = false; // Á¡ÇÁ»óÅÂÀÎÁö È®ÀÎÇÏ´Â º¯¼ö
-    float skillCoolTime = 10.0f; // ÄğÅ¸ÀÓ ÃÊ±â ½Ã°£
-    float skillCoolTimeReset = 10.0f; // ½ºÅ³ÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    //ë¶ê·¹ì—¬ìš°ì˜ ìŠ¤í¬ë¦½íŠ¸
+     
+    float jumpPower = 20.0f; // ì–¼ë§ˆë‚˜ ë†’ì´ ì í”„í• ì§€ ë³€ìˆ˜
+    bool rolling = false; // ì í”„ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    float skillCoolTime = 10.0f; // ì¿¨íƒ€ì„ ì´ˆê¸° ì‹œê°„
+    float skillCoolTimeReset = 10.0f; // ìŠ¤í‚¬ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
     /// <summary>
-    /// »óÅÂÀÌ»ó Ã¼Å©¿ë ÇÁ·ÎÆÛÆ¼ »óÅÂÀÌ»óÀÌ °É¸®¸é Á¡ÇÁ»óÅÂ°¡ ÇØÁ¦µÈ´Ù.
+    /// ìƒíƒœì´ìƒ ì²´í¬ìš© í”„ë¡œí¼í‹° ìƒíƒœì´ìƒì´ ê±¸ë¦¬ë©´ ì í”„ìƒíƒœê°€ í•´ì œëœë‹¤.
     /// </summary>
     protected override bool StateAttack { get => base.StateAttack;
         set
@@ -21,8 +21,8 @@ public class ArcticFox : AnimalAI
             base.StateAttack = value;
             if (base.StateAttack)
             {
-                //»óÅÂÀÌ»óÀÌ trueÀÌ¸é Á¡ÇÁ»óÅÂ¸¦ ¸®¼Â½ÃÅ°°í
-                //»óÅÂÀÌ»ó »óÅÂÀÏ¶§ ¸ÕÁö°¡ ¾È³ª¿À°Ô ÇÑ´Ù.
+                //ìƒíƒœì´ìƒì´ trueì´ë©´ ì í”„ìƒíƒœë¥¼ ë¦¬ì…‹ì‹œí‚¤ê³ 
+                //ìƒíƒœì´ìƒ ìƒíƒœì¼ë•Œ ë¨¼ì§€ê°€ ì•ˆë‚˜ì˜¤ê²Œ í•œë‹¤.
                 RollingJumpReset();
                 dustTail.SetActive(false);
             }else
@@ -44,20 +44,20 @@ public class ArcticFox : AnimalAI
     {
         base.FixedUpdate();
 
-        //Á¡ÇÁ»óÅÂ°¡ ¾Æ´Ò¶§¸¸ ÄğÅ¸ÀÓ °¨¼Ò
+        //ì í”„ìƒíƒœê°€ ì•„ë‹ë•Œë§Œ ì¿¨íƒ€ì„ ê°ì†Œ
         if (!rolling)
         {
             skillCoolTime -= Time.fixedDeltaTime;
         }
 
-        //ÄğÅ¸ÀÓ½Ã°£ÀÌ 0º¸´Ù ÀÛ¾ÆÁö°í »óÅÂÀÌ»ó »óÅÂ°¡ ¾Æ´Ï¶ó¸é Á¡ÇÁ ¹ßµ¿
+        //ì¿¨íƒ€ì„ì‹œê°„ì´ 0ë³´ë‹¤ ì‘ì•„ì§€ê³  ìƒíƒœì´ìƒ ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ì í”„ ë°œë™
         if(skillCoolTime<0 && !StateAttack)
         {
             skillCoolTime = skillCoolTimeReset;
             RollingJump();
         }
 
-        //»óÅÂÀÌ»ó½Ã °øÁß¿¡¼­ ºü¸£°Ô ³»·Á¿À°ÔÇÏ±â À§ÇÑ Á¶Ä¡
+        //ìƒíƒœì´ìƒì‹œ ê³µì¤‘ì—ì„œ ë¹ ë¥´ê²Œ ë‚´ë ¤ì˜¤ê²Œí•˜ê¸° ìœ„í•œ ì¡°ì¹˜
         if(StateAttack && transform.position.y>0.15f)
         {
             rigid.AddForce(-transform.up*jumpPower);
@@ -65,7 +65,7 @@ public class ArcticFox : AnimalAI
 
     }
     /// <summary>
-    /// ºù±Ûºù±Û µ¹¸é¼­ Á¡ÇÁÇÏ´Â ÇÔ¼ö
+    /// ë¹™ê¸€ë¹™ê¸€ ëŒë©´ì„œ ì í”„í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     void RollingJump()
     {
@@ -76,7 +76,7 @@ public class ArcticFox : AnimalAI
     }
 
     /// <summary>
-    /// Á¡ÇÁ°¡ ³¡³µÀ»¶§ Ã³¸®ÇØ¾ßÇÒ ÀÏµéÀ» ÇÏ´Â ÇÔ¼ö
+    /// ì í”„ê°€ ëë‚¬ì„ë•Œ ì²˜ë¦¬í•´ì•¼í•  ì¼ë“¤ì„ í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     private void RollingJumpReset()
     {
@@ -86,7 +86,7 @@ public class ArcticFox : AnimalAI
     }
 
     /// <summary>
-    /// Á¡ÇÁ»óÅÂÀÏ¶§ ¹ßÀÚ±¹ÀÌ ³ª¿ÀÁö ¾Êµµ·Ï Á¶Ä¡
+    /// ì í”„ìƒíƒœì¼ë•Œ ë°œìêµ­ì´ ë‚˜ì˜¤ì§€ ì•Šë„ë¡ ì¡°ì¹˜
     /// </summary>
     protected override void FootPrint()
     {
@@ -97,7 +97,7 @@ public class ArcticFox : AnimalAI
     }
 
     /// <summary>
-    /// Á¡ÇÁ»óÅÂÀÏ¶§ µ¿¹°À» “PÀ¸¸é ´Ù½ÃÇÑ¹ø½ÃÀü ¶¥À» “PÀ¸¸é ³¡³»±âÀ§ÇØ overrideÇÔ
+    /// ì í”„ìƒíƒœì¼ë•Œ ë™ë¬¼ì„ ë°£ìœ¼ë©´ ë‹¤ì‹œí•œë²ˆì‹œì „ ë•…ì„ ë°£ìœ¼ë©´ ëë‚´ê¸°ìœ„í•´ overrideí•¨
     /// </summary>
     /// <param name="collision"></param>
     protected override void OnCollisionEnter(Collision collision)
@@ -106,13 +106,13 @@ public class ArcticFox : AnimalAI
 
         if (rolling)
         {
-            if(collision.gameObject.CompareTag("Animal")) // µ¿¹°ÀÏ¶§ ´Ù½Ã Á¡ÇÁ½ÃÀü
+            if(collision.gameObject.CompareTag("Animal")) // ë™ë¬¼ì¼ë•Œ ë‹¤ì‹œ ì í”„ì‹œì „
             {
                 RollingJump();
             }
 
 
-            if (collision.gameObject.CompareTag("Ground")) // ¶¥ÀÏ¶§´Â ³¡
+            if (collision.gameObject.CompareTag("Ground")) // ë•…ì¼ë•ŒëŠ” ë
             {
                 RollingJumpReset();
 

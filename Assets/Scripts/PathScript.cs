@@ -1,21 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 /// <summary>
-/// SceneÃ¢¿¡ ÀÌµ¿°æ·Î¸¦ º¸¿©ÁÙ ½ºÅ©¸³Æ®
+/// Sceneì°½ì— ì´ë™ê²½ë¡œë¥¼ ë³´ì—¬ì¤„ ìŠ¤í¬ë¦½íŠ¸
 /// </summary>
 public class PathScript : MonoBehaviour
 {
-    public GameObject waypointController; //°æ·Î°¡ ÀüºÎ µé¾îÀÖ´Â GameObject
-    List<Transform> path; //waypointController¿¡¼­ ¹Ş¾Æ¿Â °æ·Î¸¦ ÀúÀåÇÒ ¸®½ºÆ®
-    Color rayColor = Color.white; // °æ·Î¸¦ Ç¥½ÃÇØÁÙ »ö
+    public GameObject waypointController; //ê²½ë¡œê°€ ì „ë¶€ ë“¤ì–´ìˆëŠ” GameObject
+    List<Transform> path; //waypointControllerì—ì„œ ë°›ì•„ì˜¨ ê²½ë¡œë¥¼ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
+    Color rayColor = Color.white; // ê²½ë¡œë¥¼ í‘œì‹œí•´ì¤„ ìƒ‰
 
     private void OnDrawGizmos()
     {
         Gizmos.color = rayColor;
 
-        //waypointControllerÀÇ ¸ğµç ÀÚ½ÄÀÇ TransformÀ» ¹Ş¾Æ¿Â´Ù
+        //waypointControllerì˜ ëª¨ë“  ìì‹ì˜ Transformì„ ë°›ì•„ì˜¨ë‹¤
         Transform[] potentialWaypoints = waypointController.GetComponentsInChildren<Transform>();
 
         path = new List<Transform>();
@@ -37,10 +37,10 @@ public class PathScript : MonoBehaviour
             if (i > 0)
             {
                 Vector3 prev = path[i - 1].position;
-                Gizmos.DrawLine(prev, pos); //prev ¿¡¼­ pos±îÁö ¼±À» ±×¾îÁØ´Ù
+                Gizmos.DrawLine(prev, pos); //prev ì—ì„œ posê¹Œì§€ ì„ ì„ ê·¸ì–´ì¤€ë‹¤
             }
 
-            Gizmos.DrawWireSphere(pos, 3); // ¿øÀ» ±×·Á¼­ WayPointÀÇ À§Ä¡¸¦ Á»´õ Àßº¸ÀÌ°Ô ÇÑ´Ù.
+            Gizmos.DrawWireSphere(pos, 3); // ì›ì„ ê·¸ë ¤ì„œ WayPointì˜ ìœ„ì¹˜ë¥¼ ì¢€ë” ì˜ë³´ì´ê²Œ í•œë‹¤.
         }
 
     }

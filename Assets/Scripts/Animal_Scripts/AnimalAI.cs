@@ -1,61 +1,61 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimalAI : MonoBehaviour ,IHit
 {
-    public bool raceStarted = false; // °æÁÖ°¡ ½ÃÀÛ‰ç´ÂÁö È®ÀÎÇÏ´Â º¯¼ö
-    public float aiSpeed = 60.0f; // ¼Óµµ
-    float aiTurnSpeed = 2.0f; // ¹æÇâÀ» ¹Ù²Ü¶§ÀÇ ¼Óµµ ¾ó¸¶³ª ºü¸£°Ô ÄÚ³Ê¸¦ µ¹ ¼ö ÀÖ´ÂÁö Ç¥Çö
+    public bool raceStarted = false; // ê²½ì£¼ê°€ ì‹œì‘ë¬ëŠ”ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    public float aiSpeed = 60.0f; // ì†ë„
+    float aiTurnSpeed = 2.0f; // ë°©í–¥ì„ ë°”ê¿€ë•Œì˜ ì†ë„ ì–¼ë§ˆë‚˜ ë¹ ë¥´ê²Œ ì½”ë„ˆë¥¼ ëŒ ìˆ˜ ìˆëŠ”ì§€ í‘œí˜„
     float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;
-    public GameObject waypointController; // ¿şÀÌÆ÷ÀÎÆ® ±×·ìÀ» ÀĞ´Â °ÔÀÓ¿ÀºêÁ§Æ® waypoints¿¡ Á¤º¸Áà¾ßÇÔ
-    List<Transform> waypoints; //waypointControllerÇÑÅ× waypointÁ¤º¸¸¦ ¹Ş´Â´Ù
-    int currentWaypoint = 0; //ÇöÀç µû¶ó°¥ ÁöÁ¡
-    float currentSpeed; // ÇöÀç ¼Óµµ
-    Vector3 currentWaypointPosition; // µû¶ó°¡¾ßÇÒ Vector3ÀÇ Æ÷Áö¼Ç
+    public GameObject waypointController; // ì›¨ì´í¬ì¸íŠ¸ ê·¸ë£¹ì„ ì½ëŠ” ê²Œì„ì˜¤ë¸Œì íŠ¸ waypointsì— ì •ë³´ì¤˜ì•¼í•¨
+    List<Transform> waypoints; //waypointControllerí•œí…Œ waypointì •ë³´ë¥¼ ë°›ëŠ”ë‹¤
+    int currentWaypoint = 0; //í˜„ì¬ ë”°ë¼ê°ˆ ì§€ì 
+    float currentSpeed; // í˜„ì¬ ì†ë„
+    Vector3 currentWaypointPosition; // ë”°ë¼ê°€ì•¼í•  Vector3ì˜ í¬ì§€ì…˜
 
     protected Rigidbody rigid;
 
     
-    float wayDistanse = 250.0f; // ¸ñÀûÁö¿¡ º¯¼ö ¼öÄ¡¸¸Å­ °¡±î¿öÁö¸é ¸ñÀûÁö¸¦ º¯°æ
+    float wayDistanse = 250.0f; // ëª©ì ì§€ì— ë³€ìˆ˜ ìˆ˜ì¹˜ë§Œí¼ ê°€ê¹Œì›Œì§€ë©´ ëª©ì ì§€ë¥¼ ë³€ê²½
 
 
 
-    float sensorLength = 8.0f; //transform.forward ¹æÇâ ¿ŞÂÊ °¡¿îµ¥ ¿À¸¥ÂÊ rayÀÇ ±æÀÌ
-    float frontSensorSideDist = 3.0f; // ¼³Á¤¿¡ µû¶ó transform.forward ¹æÇâ ¿ŞÂÊ ¿À¸¥ÂÊ ray°¡ °¡¿îµ¥¿¡ °¡±î¿öÁö°Å³ª ¸Ö¾îÁü
-    float frontSensorAngle = 50.0f; // ¼³Á¤¿¡ µû¶ó ¾ç»çÀÌµå ·¹ÀÌ °¢µµ°¡ º¯ÇÔ
-    float sidewaySensorLength = 9.0f; // »çÀÌµåray ±æÀÌ
+    float sensorLength = 8.0f; //transform.forward ë°©í–¥ ì™¼ìª½ ê°€ìš´ë° ì˜¤ë¥¸ìª½ rayì˜ ê¸¸ì´
+    float frontSensorSideDist = 3.0f; // ì„¤ì •ì— ë”°ë¼ transform.forward ë°©í–¥ ì™¼ìª½ ì˜¤ë¥¸ìª½ rayê°€ ê°€ìš´ë°ì— ê°€ê¹Œì›Œì§€ê±°ë‚˜ ë©€ì–´ì§
+    float frontSensorAngle = 50.0f; // ì„¤ì •ì— ë”°ë¼ ì–‘ì‚¬ì´ë“œ ë ˆì´ ê°ë„ê°€ ë³€í•¨
+    float sidewaySensorLength = 9.0f; // ì‚¬ì´ë“œray ê¸¸ì´
 
 
-    private int flag = 0; //È¸ÇÇÇÒÁö ¾ÈÇÒÁö °áÁ¤ÇÏ´Â º¯¼ö
-    float avoidSpeed = 200000.0f; // ¹æÇØ¹° ÇÇÇÏ´Â ½ºÇÇµå
+    private int flag = 0; //íšŒí”¼í• ì§€ ì•ˆí• ì§€ ê²°ì •í•˜ëŠ” ë³€ìˆ˜
+    float avoidSpeed = 200000.0f; // ë°©í•´ë¬¼ í”¼í•˜ëŠ” ìŠ¤í”¼ë“œ
 
-    float maxSpeed = 70.7f; // ÃÖ°í ½ºÇÇµå
+    float maxSpeed = 70.7f; // ìµœê³  ìŠ¤í”¼ë“œ
 
-    protected Transform frontTarget = null; // ¾Õ¿¡ µ¿¹°ÀÌ ÀÖ´Â Áö È®ÀÎÇÒ º¯¼ö
+    protected Transform frontTarget = null; // ì•ì— ë™ë¬¼ì´ ìˆëŠ” ì§€ í™•ì¸í•  ë³€ìˆ˜
 
-    float outSightAngle = 100.0f; // ¾Õ¿¡ ÀÖ´ø µ¿¹°ÀÌ ¾î´ÀÁ¤µµ °¢µµ¸¦ Áö³ª°¡¸é Å¸°ÙÀ» ÇØÁ¦ÇÒÁö È®ÀÎÇÏ´Â º¯¼ö
-    float outFrontDistance = 50.0f; // Å¸°ÙÇÏ°í º¯¼ö¸¸Å­ ¶³¾îÁö¸é Å¸°ÙÀ» ÇØÁ¦ÇÑ´Ù.
+    float outSightAngle = 100.0f; // ì•ì— ìˆë˜ ë™ë¬¼ì´ ì–´ëŠì •ë„ ê°ë„ë¥¼ ì§€ë‚˜ê°€ë©´ íƒ€ê²Ÿì„ í•´ì œí• ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    float outFrontDistance = 50.0f; // íƒ€ê²Ÿí•˜ê³  ë³€ìˆ˜ë§Œí¼ ë–¨ì–´ì§€ë©´ íƒ€ê²Ÿì„ í•´ì œí•œë‹¤.
 
-    public ParticleSystem footParticle; // ¹ß¹Ù´Ú ÆÄÆ¼Å¬
-    float delta = 1; // ¹ß¹Ù´Ú ÆÄÆ¼Å¬ »ı¼º°£°İ
-    float gap = 0.5f; // ¹ß¹Ù´Ú ÆÄÆ¼Å¬°£ÀÇ °£°İ
-    int dir = 1; // ¹ß¹Ù´Ú ÆÄÆ¼Å¬ ¹æÇâ
-    Vector3 lastEmit; // ¸¶Áö¸· ¹ß¹Ù´Ú ÆÄÆ¼Å¬ÀÌ »ı±ä À§Ä¡
+    public ParticleSystem footParticle; // ë°œë°”ë‹¥ íŒŒí‹°í´
+    float delta = 1; // ë°œë°”ë‹¥ íŒŒí‹°í´ ìƒì„±ê°„ê²©
+    float gap = 0.5f; // ë°œë°”ë‹¥ íŒŒí‹°í´ê°„ì˜ ê°„ê²©
+    int dir = 1; // ë°œë°”ë‹¥ íŒŒí‹°í´ ë°©í–¥
+    Vector3 lastEmit; // ë§ˆì§€ë§‰ ë°œë°”ë‹¥ íŒŒí‹°í´ì´ ìƒê¸´ ìœ„ì¹˜
 
 
     protected Animator animator;
-    protected GameObject dustTail; // µ¿¹°ÀÌ ´Ş¸±¶§ »ı±â´Â ¸ÕÁö ÆÄÆ¼Å¬
+    protected GameObject dustTail; // ë™ë¬¼ì´ ë‹¬ë¦´ë•Œ ìƒê¸°ëŠ” ë¨¼ì§€ íŒŒí‹°í´
 
-    WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f); // »óÅÂÀÌ»ó ½ºÇÉÀÌ ³¡³ª´Â ½Ã°£
-    WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f); // »óÅÂÀÌ»ó ¿¡¾îº»ÀÌ ³¡³ª´Â ½Ã°£
-    WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f); // »óÅÂÀÌ»ó Ä§¹¬ÀÌ ³¡³ª´Â ½Ã°£
+    WaitForSeconds stateSpinSecond = new WaitForSeconds(2.0f); // ìƒíƒœì´ìƒ ìŠ¤í•€ì´ ëë‚˜ëŠ” ì‹œê°„
+    WaitForSeconds stateAirborneSecond = new WaitForSeconds(2.0f); // ìƒíƒœì´ìƒ ì—ì–´ë³¸ì´ ëë‚˜ëŠ” ì‹œê°„
+    WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f); // ìƒíƒœì´ìƒ ì¹¨ë¬µì´ ëë‚˜ëŠ” ì‹œê°„
 
-    bool stateAttack = false; // »óÅÂÀÌ»ó Ã¼Å©
+    bool stateAttack = false; // ìƒíƒœì´ìƒ ì²´í¬
 
     /// <summary>
-    /// »óÅÂÀÌ»ó ÇÁ·ÎÆÛÆ¼ AnimalAI¸¦ »ó¼Ó¹Ş´Â Å¬·¡½ºµéÀÌ »ç¿ëÇÏ±âÀ§ÇØ virtual·Î ÇÔ
+    /// ìƒíƒœì´ìƒ í”„ë¡œí¼í‹° AnimalAIë¥¼ ìƒì†ë°›ëŠ” í´ë˜ìŠ¤ë“¤ì´ ì‚¬ìš©í•˜ê¸°ìœ„í•´ virtualë¡œ í•¨
     /// </summary>
     protected virtual bool StateAttack
     {
@@ -78,10 +78,10 @@ public class AnimalAI : MonoBehaviour ,IHit
     {
         dustTail = transform.Find("DustTail").gameObject;
 
-        lastEmit = transform.position; // ¹ß¹Ù´Ú ÆÄÆ¼Å¬ÀÇ Ã¹À§Ä¡
-        GetWayPoints(); // ¿şÀÌÆ÷ÀÎÆ® °»½Å
-        //aiSpeed = resetAISpeed; // ½ºÇÇµå °»½Å
-        aiTurnSpeed = resetAITurnSpeed; // È¸Àü ½ºÇÇµå °»½Å
+        lastEmit = transform.position; // ë°œë°”ë‹¥ íŒŒí‹°í´ì˜ ì²«ìœ„ì¹˜
+        GetWayPoints(); // ì›¨ì´í¬ì¸íŠ¸ ê°±ì‹ 
+        //aiSpeed = resetAISpeed; // ìŠ¤í”¼ë“œ ê°±ì‹ 
+        aiTurnSpeed = resetAITurnSpeed; // íšŒì „ ìŠ¤í”¼ë“œ ê°±ì‹ 
         
     }
 
@@ -90,26 +90,26 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     protected virtual void FixedUpdate()
     {
-        //aiSpeed = Random.Range(resetAISpeed, maxSpeed); // ½ºÇÇµå´Â °è¼Ó ÃÖ¼Ò~ÃÖ´ë»çÀÌ·Î °»½ÅµÊ
+        //aiSpeed = Random.Range(resetAISpeed, maxSpeed); // ìŠ¤í”¼ë“œëŠ” ê³„ì† ìµœì†Œ~ìµœëŒ€ì‚¬ì´ë¡œ ê°±ì‹ ë¨
         if (raceStarted)
         {
-            //·¹ÀÌ½º ½ÃÀÛ½Ã »ç¿ëµÇ´Â ÇÔ¼öµé
-            MoveTowardWayPoints(); // ¿òÁ÷ÀÓ ÇÔ¼ö
-            Sensor(); // ÁÖº¯ Àå¾Ö¹°È®ÀÎ ÇÔ¼ö
+            //ë ˆì´ìŠ¤ ì‹œì‘ì‹œ ì‚¬ìš©ë˜ëŠ” í•¨ìˆ˜ë“¤
+            MoveTowardWayPoints(); // ì›€ì§ì„ í•¨ìˆ˜
+            Sensor(); // ì£¼ë³€ ì¥ì• ë¬¼í™•ì¸ í•¨ìˆ˜
         }
 
         if (transform.position.y < 0.5f)
         {
-            FootPrint(); //¹ßÀÚ±¹ ÇÔ¼ö
+            FootPrint(); //ë°œìêµ­ í•¨ìˆ˜
         }
     }
 
     /// <summary>
-    /// ¹ßÀÚ±¹À» Âï¾îÁÖ´Â ÇÔ¼ö
+    /// ë°œìêµ­ì„ ì°ì–´ì£¼ëŠ” í•¨ìˆ˜
     /// </summary>
     protected virtual void FootPrint()
     {
-        //delta°Å¸® ¸¸Å­ ÀÌµ¿ÇßÀ»¶§ ¹ßÀÚ±¹À» Âï°í À§Ä¡¸¦ °»½ÅÇØÁØ´Ù.
+        //deltaê±°ë¦¬ ë§Œí¼ ì´ë™í–ˆì„ë•Œ ë°œìêµ­ì„ ì°ê³  ìœ„ì¹˜ë¥¼ ê°±ì‹ í•´ì¤€ë‹¤.
         if (Vector3.Distance(lastEmit, transform.position) > delta)
         {
             Vector3 pos = transform.position + (transform.right * gap * dir);
@@ -127,7 +127,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     
     /// <summary>
-    /// waypointController ±×·ì¾È¿¡ ÀÖ´Â °¢ ÁöÁ¡ÀÇ À§Ä¡ Á¤º¸¸¦ ºÒ·¯¿Â´Ù
+    /// waypointController ê·¸ë£¹ì•ˆì— ìˆëŠ” ê° ì§€ì ì˜ ìœ„ì¹˜ ì •ë³´ë¥¼ ë¶ˆëŸ¬ì˜¨ë‹¤
     /// </summary>
     private void GetWayPoints()
     {
@@ -144,31 +144,31 @@ public class AnimalAI : MonoBehaviour ,IHit
     }
 
     /// <summary>
-    /// ´ÙÀ½ ÁöÁ¡À¸·Î ÀÌµ¿ÇÏ´Â ·ÎÁ÷
+    /// ë‹¤ìŒ ì§€ì ìœ¼ë¡œ ì´ë™í•˜ëŠ” ë¡œì§
     /// </summary>
     private void MoveTowardWayPoints()
     {
-        //ÇöÀç ¿şÀÌÆ÷ÀÎÆ®ÀÇ Vector3Å¸ÀÔ À§Ä¡ Á¤º¸¸¦ ÀĞ´Â´Ù.
+        //í˜„ì¬ ì›¨ì´í¬ì¸íŠ¸ì˜ Vector3íƒ€ì… ìœ„ì¹˜ ì •ë³´ë¥¼ ì½ëŠ”ë‹¤.
         float currentWayPointX = waypoints[currentWaypoint].position.x;
         float currentWayPointY = transform.position.y;
         float currentWayPointZ = waypoints[currentWaypoint].position.z;
 
         //InverseTransformPoint
-        //ÀÎÀÚ position(¿ùµå±âÁØ)À» È£ÃâÀÚÀÇ Áö¿ªÁÂÇ¥°è ±âÁØÀ¸·Î ¹Ù²ÛÈÄ zÃà(ÇÃ·¹ÀÌ¾îÀÇ ¾Õ ¹æÇâ)°ú ÀÌ·ç´Â °¢µµ¸¦ ¾ò´Â´Ù
-        //Å¬¸¯ÇÑ ÀÌµ¿ÁöÁ¡À¸·Î ÀÌµ¿ÇÏ´Â µ¿½Ã¿¡ ¹Ù¶óº¸´Â ¹æÇâ ¶ÇÇÑ ÀÌµ¿ ÁöÁ¡ÂÊÀ¸·Î ¹Ù²Ù´Âµ¥ Ã³¸®
-        //¿şÀÌÆ÷ÀÎÆ®¿Í ÇöÀç À§Ä¡ »çÀÌÀÇ °Å¸®¸¦ °è»ê + Àü¿ª ÁÂÇ¥¿¡¼­ »ó´ë ÁÂÇ¥·Î ÀüÈ¯
+        //ì¸ì position(ì›”ë“œê¸°ì¤€)ì„ í˜¸ì¶œìì˜ ì§€ì—­ì¢Œí‘œê³„ ê¸°ì¤€ìœ¼ë¡œ ë°”ê¾¼í›„ zì¶•(í”Œë ˆì´ì–´ì˜ ì• ë°©í–¥)ê³¼ ì´ë£¨ëŠ” ê°ë„ë¥¼ ì–»ëŠ”ë‹¤
+        //í´ë¦­í•œ ì´ë™ì§€ì ìœ¼ë¡œ ì´ë™í•˜ëŠ” ë™ì‹œì— ë°”ë¼ë³´ëŠ” ë°©í–¥ ë˜í•œ ì´ë™ ì§€ì ìª½ìœ¼ë¡œ ë°”ê¾¸ëŠ”ë° ì²˜ë¦¬
+        //ì›¨ì´í¬ì¸íŠ¸ì™€ í˜„ì¬ ìœ„ì¹˜ ì‚¬ì´ì˜ ê±°ë¦¬ë¥¼ ê³„ì‚° + ì „ì—­ ì¢Œí‘œì—ì„œ ìƒëŒ€ ì¢Œí‘œë¡œ ì „í™˜
         Vector3 relativeWaypointPosition = transform.InverseTransformPoint(new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ));
 
         currentWaypointPosition = new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ);
 
-        //¿Ï¸¸ÇÑ °î¼±À» ±×¸®±â(¾øÀ¸¸é °¢Á®¼­ ÀÌµ¿ÇÔ)¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ
+        //ì™„ë§Œí•œ ê³¡ì„ ì„ ê·¸ë¦¬ê¸°(ì—†ìœ¼ë©´ ê°ì ¸ì„œ ì´ë™í•¨)ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡
         Quaternion toRotation = Quaternion.LookRotation(currentWaypointPosition - transform.position);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, aiTurnSpeed);
-        //¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ
-        //·ÎÄÃ ÁÂÇ¥ ±âÁØÀ¸·Î ÈûÀ» °¡ÇÑ´Ù.
+        //ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡
+        //ë¡œì»¬ ì¢Œí‘œ ê¸°ì¤€ìœ¼ë¡œ í˜ì„ ê°€í•œë‹¤.
         rigid.AddRelativeForce(0, 0, aiSpeed);
 
-        //°¡±î¿öÁö¸é ¿şÀÌÆ÷ÀÎÆ® º¯°æ ¹Ø ¸ğµç ¿şÀÌÆ÷ÀÎÆ®¸¦ Áö³ª¸é Ã³À½Æ÷ÀÎÆ®·Î º¯°æ 
+        //ê°€ê¹Œì›Œì§€ë©´ ì›¨ì´í¬ì¸íŠ¸ ë³€ê²½ ë°‘ ëª¨ë“  ì›¨ì´í¬ì¸íŠ¸ë¥¼ ì§€ë‚˜ë©´ ì²˜ìŒí¬ì¸íŠ¸ë¡œ ë³€ê²½ 
         if (relativeWaypointPosition.sqrMagnitude < wayDistanse)
         {
             currentWaypoint++;
@@ -178,7 +178,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             }
         }
 
-        //´ëÃæ ÀÚµ¿Â÷ ¿òÁ÷ÀÓÀ» ±¸ÇöÇÑ ÄÚµå¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ
+        //ëŒ€ì¶© ìë™ì°¨ ì›€ì§ì„ì„ êµ¬í˜„í•œ ì½”ë“œã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡
         currentSpeed = Mathf.Abs(transform.InverseTransformDirection(rigid.velocity).z);
 
         float maxAgularDrag = 20.5f;
@@ -192,28 +192,28 @@ public class AnimalAI : MonoBehaviour ,IHit
         float myDrag = Mathf.Lerp(currentDrag, maxDrag, dragLerpTime);
         rigid.angularDrag = myAngularDrag;
         rigid.drag = myDrag;
-        //¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ¤Ñ
+        //ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡
 
     }
 
     /// <summary>
-    /// º®Ãæµ¹ ¹æÁö ¹× ¼­·Î°£¿¡ Ãæµ¹¹æÁö
+    /// ë²½ì¶©ëŒ ë°©ì§€ ë° ì„œë¡œê°„ì— ì¶©ëŒë°©ì§€
     /// </summary>
     protected virtual void Sensor()
     {
-        flag = 0; // 0ÀÌ¸é È¸ÇÇÇÒ ÇÊ¿ä¾øÀ½
-        float avoidSenstivity = 0; // ÀÌ º¯¼öÀÇ °ª¿¡ µû¶ó Å«°Ô È¸ÇÇÇÒÁö ÀÛ°Ô È¸ÇÇÇÒÁö °æÁ¤
+        flag = 0; // 0ì´ë©´ íšŒí”¼í•  í•„ìš”ì—†ìŒ
+        float avoidSenstivity = 0; // ì´ ë³€ìˆ˜ì˜ ê°’ì— ë”°ë¼ í°ê²Œ íšŒí”¼í• ì§€ ì‘ê²Œ íšŒí”¼í• ì§€ ê²½ì •
 
 
-        Vector3 pos; // ÀÚ½ÅÀ§Ä¡ ¹Ş¾Æ¿Ã º¯¼ö
-        RaycastHit hit; // È÷Æ®µÈ ·¹ÀÌ¹Ş¾Æ¿Ã º¯¼ö
-        Quaternion rightAngle = Quaternion.Euler(0.5f * frontSensorAngle * transform.up); // ¿À¸¥ÂÊ ·¹ÀÌ °¢µµ
-        Quaternion leftAngle = Quaternion.Euler(0.5f * -frontSensorAngle * transform.up); // ¿ŞÂÊ ·¹ÀÌ °¢µµ
+        Vector3 pos; // ìì‹ ìœ„ì¹˜ ë°›ì•„ì˜¬ ë³€ìˆ˜
+        RaycastHit hit; // íˆíŠ¸ëœ ë ˆì´ë°›ì•„ì˜¬ ë³€ìˆ˜
+        Quaternion rightAngle = Quaternion.Euler(0.5f * frontSensorAngle * transform.up); // ì˜¤ë¥¸ìª½ ë ˆì´ ê°ë„
+        Quaternion leftAngle = Quaternion.Euler(0.5f * -frontSensorAngle * transform.up); // ì™¼ìª½ ë ˆì´ ê°ë„
 
 
         pos = transform.position;
 
-        // °¡¿îµ¥ ray
+        // ê°€ìš´ë° ray
 
         pos += transform.forward + transform.up;
         if (Physics.Raycast(pos, transform.forward, out hit, sensorLength))
@@ -221,13 +221,13 @@ public class AnimalAI : MonoBehaviour ,IHit
             if (hit.transform.CompareTag("Animal"))
             {
 
-                frontTarget = hit.transform; //¾Õ¿¡ Å¸°ÙÀÌ ÀÖÀ¸¸é °»½ÅÇÑ´Ù.
+                frontTarget = hit.transform; //ì•ì— íƒ€ê²Ÿì´ ìˆìœ¼ë©´ ê°±ì‹ í•œë‹¤.
 
             }
             Debug.DrawLine(pos, hit.point, Color.red);
         }
 
-        // °¡¿îµ¥ ¿À¸¥ÂÊ Á÷Áø ray
+        // ê°€ìš´ë° ì˜¤ë¥¸ìª½ ì§ì§„ ray
         pos = transform.position;
         pos += transform.forward + transform.right * frontSensorSideDist + transform.up;
 
@@ -236,7 +236,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             if (hit.transform.CompareTag("Wall"))
             {
                 flag++;
-                avoidSenstivity -= 600.5f; //º®ÀÌ °¨ÁöµÇ¸é È¸ÇÇ»óÅÂ·Î ¸¸µç´Ù.
+                avoidSenstivity -= 600.5f; //ë²½ì´ ê°ì§€ë˜ë©´ íšŒí”¼ìƒíƒœë¡œ ë§Œë“ ë‹¤.
 
             }
 
@@ -244,7 +244,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
         }
 
-        //°¡¿îµ¥ ¿ŞÂÊ Á÷Áø ray
+        //ê°€ìš´ë° ì™¼ìª½ ì§ì§„ ray
         pos = transform.position;
         pos += transform.forward + -transform.right * frontSensorSideDist + transform.up;
 
@@ -253,7 +253,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             if (hit.transform.CompareTag("Wall"))
             {
                 flag++;
-                avoidSenstivity += 600.5f; //º®ÀÌ °¨ÁöµÇ¸é È¸ÇÇ»óÅÂ·Î ¸¸µç´Ù.
+                avoidSenstivity += 600.5f; //ë²½ì´ ê°ì§€ë˜ë©´ íšŒí”¼ìƒíƒœë¡œ ë§Œë“ ë‹¤.
 
             }
 
@@ -263,7 +263,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
 
 
-        // ¾ç¿·
+        // ì–‘ì˜†
         pos = transform.position + transform.up;
         if (Physics.Raycast(pos, transform.right, out hit, sidewaySensorLength))
         {
@@ -272,7 +272,7 @@ public class AnimalAI : MonoBehaviour ,IHit
                 if (hit.distance < 2.5f)
                 {
                     flag++;
-                    avoidSenstivity -= 600.5f; //º®ÀÌ ÀÏÁ¤ °Å¸®·Î ¿À¸é È¸ÇÇ»óÅÂ·Î ¸¸µç´Ù.
+                    avoidSenstivity -= 600.5f; //ë²½ì´ ì¼ì • ê±°ë¦¬ë¡œ ì˜¤ë©´ íšŒí”¼ìƒíƒœë¡œ ë§Œë“ ë‹¤.
                 }
             }
 
@@ -285,18 +285,18 @@ public class AnimalAI : MonoBehaviour ,IHit
                 if (hit.distance < 2.5f)
                 {
                     flag++;
-                    avoidSenstivity += 600.5f; //º®ÀÌ ÀÏÁ¤ °Å¸®·Î ¿À¸é È¸ÇÇ»óÅÂ·Î ¸¸µç´Ù.
+                    avoidSenstivity += 600.5f; //ë²½ì´ ì¼ì • ê±°ë¦¬ë¡œ ì˜¤ë©´ íšŒí”¼ìƒíƒœë¡œ ë§Œë“ ë‹¤.
                 }
             }
         }
 
-        //¾Õ »çÀÌµå
+        //ì• ì‚¬ì´ë“œ
         if (Physics.Raycast(pos, rightAngle * transform.forward, out hit, sidewaySensorLength))
         {
             if (hit.transform.CompareTag("Animal"))
             {
 
-                frontTarget = hit.transform; //Å¸°ÙÀÌ ÀÖÀ¸¸é °»½ÅÇÑ´Ù.
+                frontTarget = hit.transform; //íƒ€ê²Ÿì´ ìˆìœ¼ë©´ ê°±ì‹ í•œë‹¤.
 
             }
             Debug.DrawLine(pos, hit.point, Color.red);
@@ -307,72 +307,72 @@ public class AnimalAI : MonoBehaviour ,IHit
             if (hit.transform.CompareTag("Animal"))
             {
 
-                frontTarget = hit.transform; //Å¸°ÙÀÌ ÀÖÀ¸¸é °»½ÅÇÑ´Ù.
+                frontTarget = hit.transform; //íƒ€ê²Ÿì´ ìˆìœ¼ë©´ ê°±ì‹ í•œë‹¤.
 
             }
             Debug.DrawLine(pos, hit.point, Color.red);
         }
 
 
-        //¾Õ¿¡ Å¸°ÙÀÌ ÀÖÀ»¶§ ÇØ¾ßÇÒ Çàµ¿
+        //ì•ì— íƒ€ê²Ÿì´ ìˆì„ë•Œ í•´ì•¼í•  í–‰ë™
         if (frontTarget != null)
         {
-            //Å¸°Ù°ú ³ªÀÇ °¢µµ°è»ê
+            //íƒ€ê²Ÿê³¼ ë‚˜ì˜ ê°ë„ê³„ì‚°
             float angle = Vector3.Angle(transform.forward, frontTarget.position - transform.position);
-            //Å¸°Ù°ú ³ªÀÇ °Å¸®°è»ê
+            //íƒ€ê²Ÿê³¼ ë‚˜ì˜ ê±°ë¦¬ê³„ì‚°
             float distance = Vector3.SqrMagnitude(transform.position - frontTarget.position);
             float leftDistance = 999.0f;
             float rightDistance = 999.0f;
             float leftSideDistance = 999.0f;
             float rightSideDistance = 999.0f;
 
-            //Æ¯Á¤¹üÀ§¸¦ Áö³ª°¡¸é Å¸°Ùnull·Î º¯°æ
+            //íŠ¹ì •ë²”ìœ„ë¥¼ ì§€ë‚˜ê°€ë©´ íƒ€ê²Ÿnullë¡œ ë³€ê²½
             if (angle > outSightAngle || distance > outFrontDistance)
             {
                 frontTarget = null;
-                //Debug.Log("Å¸°ÙÀ» ³õÃÆ½À´Ï´Ù.");
+                //Debug.Log("íƒ€ê²Ÿì„ ë†“ì³¤ìŠµë‹ˆë‹¤.");
             }
-            else // ¾Æ´Ò°æ¿ì
+            else // ì•„ë‹ê²½ìš°
             {
-                //¿À¸¥ÂÊray
+                //ì˜¤ë¥¸ìª½ray
                 if (Physics.Raycast(pos, transform.right, out hit, sidewaySensorLength))
                 {
-                    rightDistance = hit.distance; //°Å¸® °»½Å
+                    rightDistance = hit.distance; //ê±°ë¦¬ ê°±ì‹ 
                     Debug.DrawLine(pos, hit.point, Color.red);
                 }
 
-                //¿ŞÂÊray
+                //ì™¼ìª½ray
                 if (Physics.Raycast(pos, -transform.right, out hit, sidewaySensorLength))
                 {
-                    leftDistance = hit.distance; //°Å¸® °»½Å
+                    leftDistance = hit.distance; //ê±°ë¦¬ ê°±ì‹ 
                     Debug.DrawLine(pos, hit.point, Color.red);
                 }
 
-                //¾Õ ¿À¸¥ÂÊ »çÀÌµå ray
+                //ì• ì˜¤ë¥¸ìª½ ì‚¬ì´ë“œ ray
                 if (Physics.Raycast(pos, rightAngle * transform.forward, out hit, sidewaySensorLength))
                 {
-                    rightSideDistance = hit.distance; //°Å¸® °»½Å
+                    rightSideDistance = hit.distance; //ê±°ë¦¬ ê°±ì‹ 
                     Debug.DrawLine(pos, hit.point, Color.red);
                 }
-                //¾Õ ¿ŞÂÊ »çÀÌµå ray
+                //ì• ì™¼ìª½ ì‚¬ì´ë“œ ray
                 if (Physics.Raycast(pos, leftAngle * transform.forward, out hit, sidewaySensorLength))
                 {
-                    leftSideDistance = hit.distance; //°Å¸® °»½Å
+                    leftSideDistance = hit.distance; //ê±°ë¦¬ ê°±ì‹ 
                     Debug.DrawLine(pos, hit.point, Color.red);
                 }
 
-                //¿ŞÂÊ»çÀÌµå+¿ŞÂÊ ray¿Í ¿À¸¥ÂÊ»çÀÌµå+¿À¸¥ÂÊ ray¸¦ ºñ±³ÇÏ¿© ÀÌµ¿ÇÒ°÷À» Á¤ÇÑ´Ù.
+                //ì™¼ìª½ì‚¬ì´ë“œ+ì™¼ìª½ rayì™€ ì˜¤ë¥¸ìª½ì‚¬ì´ë“œ+ì˜¤ë¥¸ìª½ rayë¥¼ ë¹„êµí•˜ì—¬ ì´ë™í• ê³³ì„ ì •í•œë‹¤.
                 if (leftDistance + leftSideDistance >= rightDistance + rightSideDistance)
                 {
                     flag++;
                     avoidSenstivity -= 2.5f;
-                    //Debug.Log("¿À¸¥ÂÊº®ÀÌ °¡±î¿ò");
+                    //Debug.Log("ì˜¤ë¥¸ìª½ë²½ì´ ê°€ê¹Œì›€");
                 }
                 else if (leftDistance + leftSideDistance < rightDistance + rightSideDistance)
                 {
                     flag++;
                     avoidSenstivity += 2.5f;
-                    //Debug.Log("¿ŞÂÊº®ÀÌ °¡±î¿ò");
+                    //Debug.Log("ì™¼ìª½ë²½ì´ ê°€ê¹Œì›€");
                 }
 
 
@@ -381,7 +381,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
         }
 
-        //flog°¡ 0ÀÌ ¾Æ´Ï¸é AvoidSteerÇÔ¼ö¸¦ ½ÇÇàÇØ¼­ Àå¾Ö¹°À» È¸ÇÇÇÑ´Ù.
+        //flogê°€ 0ì´ ì•„ë‹ˆë©´ AvoidSteerí•¨ìˆ˜ë¥¼ ì‹¤í–‰í•´ì„œ ì¥ì• ë¬¼ì„ íšŒí”¼í•œë‹¤.
         if (flag != 0)
         {
 
@@ -395,9 +395,9 @@ public class AnimalAI : MonoBehaviour ,IHit
     }
 
     /// <summary>
-    /// Àå¾Ö¹°À» È¸ÇÇÇÏ´Â ÇÔ¼ö
+    /// ì¥ì• ë¬¼ì„ íšŒí”¼í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
-    /// <param name="senstivity">°ª¿¡ µû¶ó ¿ŞÂÊÀÎÁö ¿À¸¥ÂÊÀÎÁö Á¤ÇØÁø´Ù.</param>
+    /// <param name="senstivity">ê°’ì— ë”°ë¼ ì™¼ìª½ì¸ì§€ ì˜¤ë¥¸ìª½ì¸ì§€ ì •í•´ì§„ë‹¤.</param>
     private void AvoidSteer(float senstivity)
     {
         //wheelFL.steerAngle = avoidSpeed* senstivity; 
@@ -408,8 +408,8 @@ public class AnimalAI : MonoBehaviour ,IHit
     {
         if (collision.gameObject.CompareTag("Animal"))
         {
-            //Debug.Log("ºÎµúÈû");
-            //µ¿¹°³¢¸® ºÎµúÇûÀ»¶§ Á¶±İ ¹Ğ·Á³ª°ÔÇÔ
+            //Debug.Log("ë¶€ë”ªí˜");
+            //ë™ë¬¼ë¼ë¦¬ ë¶€ë”ªí˜”ì„ë•Œ ì¡°ê¸ˆ ë°€ë ¤ë‚˜ê²Œí•¨
             Vector3 dir = transform.position - collision.transform.position;
             rigid.AddForce(dir.normalized * 150.0f);
 
@@ -419,13 +419,13 @@ public class AnimalAI : MonoBehaviour ,IHit
     }
 
     /// <summary>
-    /// »óÅÂÀÌ»óÀ» ¹ŞÀ» ¶§ Çàµ¿
+    /// ìƒíƒœì´ìƒì„ ë°›ì„ ë•Œ í–‰ë™
     /// </summary>
-    /// <param name="stateDamage">ÀÌ °ª¿¡ µû¶ó ÀÌµ¿¼Óµµ°¡ °¨¼Ò</param>
-    /// <param name="hitType">ÀÌ °ª¿¡ µû¶ó »óÅÂÀÌ»ó Å¸ÀÔÀÌ °áÁ¤</param>
+    /// <param name="stateDamage">ì´ ê°’ì— ë”°ë¼ ì´ë™ì†ë„ê°€ ê°ì†Œ</param>
+    /// <param name="hitType">ì´ ê°’ì— ë”°ë¼ ìƒíƒœì´ìƒ íƒ€ì…ì´ ê²°ì •</param>
     public void TakeHit(float stateDamage,HitType hitType = HitType.None)
     {
-        //½ºÇÉ »óÅÂÀÌ»ó
+        //ìŠ¤í•€ ìƒíƒœì´ìƒ
         if(hitType==HitType.Spin && !StateAttack)
         {
             StateAttack = true;
@@ -434,7 +434,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             StartCoroutine(stateSpin(stateDamage));
         }
 
-        //¿¡¾îº» »óÅÂÀÌ»ó
+        //ì—ì–´ë³¸ ìƒíƒœì´ìƒ
         if(hitType==HitType.airborne && !StateAttack)
         {
             StateAttack = true;
@@ -443,7 +443,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             StartCoroutine(stateAirborne(stateDamage));
         }
 
-        //Ä§¹¬ »óÅÂÀÌ»ó
+        //ì¹¨ë¬µ ìƒíƒœì´ìƒ
         if(hitType==HitType.silence && !StateAttack)
         {
             StateAttack = true;
@@ -454,22 +454,22 @@ public class AnimalAI : MonoBehaviour ,IHit
     }
 
     /// <summary>
-    /// Ä§¹¬ »óÅÂÀÌ»óÀÌ ³¡³µÀ» ¶§ Çàµ¿
+    /// ì¹¨ë¬µ ìƒíƒœì´ìƒì´ ëë‚¬ì„ ë•Œ í–‰ë™
     /// </summary>
-    /// <param name="stateDamage">´Ù½Ã È¸º¹ÇØ¾ßÇÏ´Â ¼Óµµ°ª</param>
-    /// <returns>stateSilenceSecond¿¡ ¼³Á¤µÈ ½Ã°£ µÚ¿¡ ½ÇÇàÇÑ´Ù.</returns>
+    /// <param name="stateDamage">ë‹¤ì‹œ íšŒë³µí•´ì•¼í•˜ëŠ” ì†ë„ê°’</param>
+    /// <returns>stateSilenceSecondì— ì„¤ì •ëœ ì‹œê°„ ë’¤ì— ì‹¤í–‰í•œë‹¤.</returns>
     IEnumerator stateSilence(float stateDamage)
     {
         yield return stateSilenceSecond;
         StateAttack = false;
         aiSpeed += stateDamage;
     }
-
+      
     /// <summary>
-    /// ¿¡¾îº» »óÅÂÀÌ»óÀÌ ³¡³µÀ» ¶§ Çàµ¿
+    /// ì—ì–´ë³¸ ìƒíƒœì´ìƒì´ ëë‚¬ì„ ë•Œ í–‰ë™
     /// </summary>
-    /// <param name="stateDamage">´Ù½Ã È¸º¹ÇØ¾ßÇÏ´Â ¼Óµµ°ª</param>
-    /// <returns>stateAirborneSecond¿¡ ¼³Á¤µÈ ½Ã°£ µÚ¿¡ ½ÇÇà</returns>
+    /// <param name="stateDamage">ë‹¤ì‹œ íšŒë³µí•´ì•¼í•˜ëŠ” ì†ë„ê°’</param>
+    /// <returns>stateAirborneSecondì— ì„¤ì •ëœ ì‹œê°„ ë’¤ì— ì‹¤í–‰</returns>
     IEnumerator stateAirborne(float stateDamage)
     {
         yield return stateAirborneSecond;
@@ -478,10 +478,10 @@ public class AnimalAI : MonoBehaviour ,IHit
     }
 
     /// <summary>
-    /// ½ºÇÉ »óÅÂÀÌ»óÀÌ ³¡³µÀ» ¶§ Çàµ¿
+    /// ìŠ¤í•€ ìƒíƒœì´ìƒì´ ëë‚¬ì„ ë•Œ í–‰ë™
     /// </summary>
-    /// <param name="stateDamage">´Ù½Ã È¸º¹ÇØ¾ßÇÏ´Â ¼Óµµ°ª</param>
-    /// <returns>stateSpinSecond¿¡ ¼³Á¤µÈ ½Ã°£ µÚ¿¡ ½ÇÇà</returns>
+    /// <param name="stateDamage">ë‹¤ì‹œ íšŒë³µí•´ì•¼í•˜ëŠ” ì†ë„ê°’</param>
+    /// <returns>stateSpinSecondì— ì„¤ì •ëœ ì‹œê°„ ë’¤ì— ì‹¤í–‰</returns>
     IEnumerator stateSpin(float stateDamage)
     {
         yield return stateSpinSecond;

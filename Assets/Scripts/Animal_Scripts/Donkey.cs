@@ -1,20 +1,20 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Donkey : AnimalAI
 {
-    //´ç³ª±Í ½ºÅ©¸³Æ®
+    //ë‹¹ë‚˜ê·€ ìŠ¤í¬ë¦½íŠ¸
 
 
-    bool noiseCheck = false; //½Ã²ô·¯¿î ¼Ò¸® ½ÃÀüÁßÀÎÁö È®ÀÎÇÏ´Â º¯¼ö
-    float skillCoolTime = 16.0f; // ÄğÅ¸ÀÓ ÃÊ±â ½Ã°£
-    float skillCoolTimeReset = 16.0f; // ½ºÅ³ÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
+    bool noiseCheck = false; //ì‹œë„ëŸ¬ìš´ ì†Œë¦¬ ì‹œì „ì¤‘ì¸ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    float skillCoolTime = 16.0f; // ì¿¨íƒ€ì„ ì´ˆê¸° ì‹œê°„
+    float skillCoolTimeReset = 16.0f; // ìŠ¤í‚¬ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    float noisePower = 3.0f; // ½ºÅ³¿¡ °ø°İ´çÇÑ µ¿¹°µéÀÇ °¨¼ÓÀ» °áÁ¤ÇÏ´À º¯¼ö
+    float noisePower = 3.0f; // ìŠ¤í‚¬ì— ê³µê²©ë‹¹í•œ ë™ë¬¼ë“¤ì˜ ê°ì†ì„ ê²°ì •í•˜ëŠ ë³€ìˆ˜
     
-    float sightRange = 10.0f; // ½ºÅ³ÀÇ ¹üÀ§
+    float sightRange = 10.0f; // ìŠ¤í‚¬ì˜ ë²”ìœ„
 
     protected override void FixedUpdate()
     {
@@ -22,7 +22,7 @@ public class Donkey : AnimalAI
 
         if (!noiseCheck)
         {
-            //½Ã²ô·¯¿î ¼Ò¸®°¡ ½ÃÀüÁßÀÌÁö ¾Æ´Ò¶§ ÄğÅ¸ÀÓ °¨¼Ò
+            //ì‹œë„ëŸ¬ìš´ ì†Œë¦¬ê°€ ì‹œì „ì¤‘ì´ì§€ ì•„ë‹ë•Œ ì¿¨íƒ€ì„ ê°ì†Œ
             skillCoolTime -= Time.fixedDeltaTime;
         }
         
@@ -30,7 +30,7 @@ public class Donkey : AnimalAI
 
         if (skillCoolTime < 0 && !StateAttack)
         {
-            //ÄğÅ¸ÀÓÀÌ 0º¸´ÙÀÛ°í »óÅÂÀÌ»óÀÌ ¾Æ´Ò¶§ ¹ßµ¿
+            //ì¿¨íƒ€ì„ì´ 0ë³´ë‹¤ì‘ê³  ìƒíƒœì´ìƒì´ ì•„ë‹ë•Œ ë°œë™
             Noise();
         }
     }
@@ -41,20 +41,20 @@ public class Donkey : AnimalAI
     }
 
     /// <summary>
-    /// ½Ã²ô·¯¿î¼Ò¸® ÁÖº¯¿¡ ÀÖ´Â µ¿¹°µéÀ» Ä§¹¬½ÃÅ°°í ¼Óµµ¸¦ °¨¼Ò½ÃÅ²´Ù.
+    /// ì‹œë„ëŸ¬ìš´ì†Œë¦¬ ì£¼ë³€ì— ìˆëŠ” ë™ë¬¼ë“¤ì„ ì¹¨ë¬µì‹œí‚¤ê³  ì†ë„ë¥¼ ê°ì†Œì‹œí‚¨ë‹¤.
     /// </summary>
     private void Noise()
     {
         skillCoolTime = skillCoolTimeReset;
 
 
-        //³ª¸¦ Æ÷ÇÔ¿¡ ¹üÀ§¾È¿¡ ¸ğµç µ¿¹°À» Ã£´Â´Ù.
+        //ë‚˜ë¥¼ í¬í•¨ì— ë²”ìœ„ì•ˆì— ëª¨ë“  ë™ë¬¼ì„ ì°¾ëŠ”ë‹¤.
         Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));
         if (colliders.Length > 0)
         {
             for (int i = 0; i < colliders.Length; i++)
             {
-                //³ª¸¦ Á¦¿ÜÇÑ µ¿¹°µéÀ» ÀüºÎ Ä§¹¬½ÃÅ°°í °¨¼Ó½ÃÅ²´Ù.
+                //ë‚˜ë¥¼ ì œì™¸í•œ ë™ë¬¼ë“¤ì„ ì „ë¶€ ì¹¨ë¬µì‹œí‚¤ê³  ê°ì†ì‹œí‚¨ë‹¤.
                 if (colliders[i].gameObject != transform.gameObject)
                 {
 
@@ -66,3 +66,4 @@ public class Donkey : AnimalAI
     }
 
 }
+ 

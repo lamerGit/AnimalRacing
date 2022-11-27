@@ -1,27 +1,27 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Buffalo : AnimalAI
 {
-    //¹öÆÈ·Î ½ºÅ©¸³Æ®
+    //ë²„íŒ”ë¡œ ìŠ¤í¬ë¦½íŠ¸
+      
+    bool angerRunCheck = false; // ë¶„ë…¸ì§ˆì£¼ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    float skillCoolTime = 8.0f;  // ì¿¨íƒ€ì„ ì´ˆê¸° ì‹œê°„
+    float skillCoolTimeReset = 8.0f; // ìŠ¤í‚¬ì´ ë°œë™ë˜ê³  ì‹œê°„ì„ ì´ˆê¸°í™”í•´ì¤„ ë³€ìˆ˜
 
-    bool angerRunCheck = false; // ºĞ³ëÁúÁÖ»óÅÂÀÎÁö È®ÀÎÇÏ´Â º¯¼ö
-    float skillCoolTime = 8.0f;  // ÄğÅ¸ÀÓ ÃÊ±â ½Ã°£
-    float skillCoolTimeReset = 8.0f; // ½ºÅ³ÀÌ ¹ßµ¿µÇ°í ½Ã°£À» ÃÊ±âÈ­ÇØÁÙ º¯¼ö
-
-    float tempAngerSpeed = 0.0f; // ºĞ³ëÁúÁÖ»óÅÂÀÏ¶§ Ãß°¡ ½ºÇÇµå¸¦ ÀÓ½Ã·Î ÀúÀåÇÒ º¯¼ö
-    float angerSpeed = 3.0f; // ºĞ³ëÁúÁÖ»óÅÂ ½ºÇÇµå °è¼ö angerSpeed*µ¿¹°¼ö
-    float angerTime = 5.0f; // ºĞ³ëÁúÁÖ ½ÃÀü½Ã°£
-    float angerTimeReset = 5.0f; // ºĞ³ëÁúÁÖ ½ÃÀü½Ã°£ ÃÊ±âÈ­ º¯¼ö
+    float tempAngerSpeed = 0.0f; // ë¶„ë…¸ì§ˆì£¼ìƒíƒœì¼ë•Œ ì¶”ê°€ ìŠ¤í”¼ë“œë¥¼ ì„ì‹œë¡œ ì €ì¥í•  ë³€ìˆ˜
+    float angerSpeed = 3.0f; // ë¶„ë…¸ì§ˆì£¼ìƒíƒœ ìŠ¤í”¼ë“œ ê³„ìˆ˜ angerSpeed*ë™ë¬¼ìˆ˜
+    float angerTime = 5.0f; // ë¶„ë…¸ì§ˆì£¼ ì‹œì „ì‹œê°„
+    float angerTimeReset = 5.0f; // ë¶„ë…¸ì§ˆì£¼ ì‹œì „ì‹œê°„ ì´ˆê¸°í™” ë³€ìˆ˜
 
     
-    float sightRange = 15.0f; // µ¿¹°ÀÌ ¾î´ÀÁ¤µµ °Å¸®¿¡ ÀÖ´ÂÁö È®ÀÎÇÒ º¯¼ö
-    float sightAngle = 90.0f; // ¾î´ÀÁ¤µµ °¢µµ¿¡ ÀÖ´ÂÁö È®ÀÎÇÒ º¯¼ö
+    float sightRange = 15.0f; // ë™ë¬¼ì´ ì–´ëŠì •ë„ ê±°ë¦¬ì— ìˆëŠ”ì§€ í™•ì¸í•  ë³€ìˆ˜
+    float sightAngle = 90.0f; // ì–´ëŠì •ë„ ê°ë„ì— ìˆëŠ”ì§€ í™•ì¸í•  ë³€ìˆ˜
 
     /// <summary>
-    /// »óÅÂÀÌ»ó Ã¼Å©º¯¼ö »óÅÂÀÌ»ó¿¡ °É¸®¸é ºĞ³ëÁúÁÖ°¡ Ãë¼ÒµÈ´Ù.
+    /// ìƒíƒœì´ìƒ ì²´í¬ë³€ìˆ˜ ìƒíƒœì´ìƒì— ê±¸ë¦¬ë©´ ë¶„ë…¸ì§ˆì£¼ê°€ ì·¨ì†Œëœë‹¤.
     /// </summary>
     protected override bool StateAttack
     {
@@ -48,31 +48,31 @@ public class Buffalo : AnimalAI
     {
         base.FixedUpdate();
 
-        if (!angerRunCheck) //ºĞ³ëÁúÁÖ »óÅÂ°¡ ¾Æ´Ï¶ó¸é ÄğÅ¸ÀÓ°¨¼Ò
+        if (!angerRunCheck) //ë¶„ë…¸ì§ˆì£¼ ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ì¿¨íƒ€ì„ê°ì†Œ
         {
             skillCoolTime -= Time.fixedDeltaTime;
         }
         else
         {
-            //ºĞ³ëÁúÁÖ »óÅÂÀÌ¸é ºĞ³ëÁúÁÖ ½Ã°£°¨¼Ò
+            //ë¶„ë…¸ì§ˆì£¼ ìƒíƒœì´ë©´ ë¶„ë…¸ì§ˆì£¼ ì‹œê°„ê°ì†Œ
             angerTime -= Time.fixedDeltaTime;
         }
 
         if (angerTime < 0)
         {
-            //ºĞ³ëÁúÁÖ ½Ã°£ÀÌ ³¡³ª¸é »óÅÂ¸®¼Â
+            //ë¶„ë…¸ì§ˆì£¼ ì‹œê°„ì´ ëë‚˜ë©´ ìƒíƒœë¦¬ì…‹
             AngerRunReset();
         }
 
         if (skillCoolTime < 0 && !StateAttack)
         {
-            //ÄğÅ¸ÀÓÀÌ ´ÙµÇ°í »óÅÂÀÌ»ó »óÅÂ°¡ ¾Æ´Ï¶ó¸é ºĞ³ëÁúÁÖ ¹ßµ¿
+            //ì¿¨íƒ€ì„ì´ ë‹¤ë˜ê³  ìƒíƒœì´ìƒ ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ë¶„ë…¸ì§ˆì£¼ ë°œë™
             AngerRun();
         }
     }
 
     /// <summary>
-    /// ºĞ³ëÁúÁÖ SearchAnimalÀ» ÅëÇØ¼­ ¾Õ¿¡ÀÖ´Â µ¿¹°ÀÌ ¸î¸¶¸®ÀÎÁö È®ÀÎÇÏ°í ±× ¼ö¸¸Å­ ¼Óµµ¸¦ ¿Ã¸°´Ù.
+    /// ë¶„ë…¸ì§ˆì£¼ SearchAnimalì„ í†µí•´ì„œ ì•ì—ìˆëŠ” ë™ë¬¼ì´ ëª‡ë§ˆë¦¬ì¸ì§€ í™•ì¸í•˜ê³  ê·¸ ìˆ˜ë§Œí¼ ì†ë„ë¥¼ ì˜¬ë¦°ë‹¤.
     /// </summary>
     private void AngerRun()
     {
@@ -83,12 +83,12 @@ public class Buffalo : AnimalAI
     }
 
     /// <summary>
-    /// ºĞ³ëÁúÁÖ »óÅÂ ÃÊ±âÈ­
+    /// ë¶„ë…¸ì§ˆì£¼ ìƒíƒœ ì´ˆê¸°í™”
     /// </summary>
     private void AngerRunReset()
     {
         angerTime = angerTimeReset;
-        if(angerRunCheck) // »óÅÂÀÌ»ó °É·ÈÀ» ¶§¸¦ ´ëºñÇÏ¿© angerRunCheck°¡ trueÀÏ¶§¸¸ ¼Óµµ¸¦ °¨¼Ò
+        if(angerRunCheck) // ìƒíƒœì´ìƒ ê±¸ë ¸ì„ ë•Œë¥¼ ëŒ€ë¹„í•˜ì—¬ angerRunCheckê°€ trueì¼ë•Œë§Œ ì†ë„ë¥¼ ê°ì†Œ
         {
             aiSpeed -= tempAngerSpeed;
         }
@@ -97,19 +97,19 @@ public class Buffalo : AnimalAI
         
     }
     /// <summary>
-    /// ¹öÆÈ·Î¾Õ¿¡ ¸î¸¶¸®ÀÇ µ¿¹°ÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ°í ±× ¼ö¸¦ ¸®ÅÏÇÏ´Â ÇÔ¼ö
+    /// ë²„íŒ”ë¡œì•ì— ëª‡ë§ˆë¦¬ì˜ ë™ë¬¼ì´ ìˆëŠ”ì§€ í™•ì¸í•˜ê³  ê·¸ ìˆ˜ë¥¼ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
-    /// <returns>¾Õ¿¡ ÀÖ´Â µ¿¹°ÀÇ ¼ö</returns>
+    /// <returns>ì•ì— ìˆëŠ” ë™ë¬¼ì˜ ìˆ˜</returns>
     int SearchAnimal()
     {
-        //ÀÚ±â ÀÚ½Å Æ÷ÇÔÇØ¼­ ÀüºÎÃ£´Â´Ù.
+        //ìê¸° ìì‹  í¬í•¨í•´ì„œ ì „ë¶€ì°¾ëŠ”ë‹¤.
         Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));
         int count = 0;
         if (colliders.Length > 0)
         {
             for (int i = 0; i < colliders.Length; i++)
             {
-                //Æ¯Á¤°¢µµ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
+                //íŠ¹ì •ê°ë„ ì•ˆì— ìˆëŠ”ì§€ í™•ì¸í•œë‹¤.
                 if (InSightAngle(colliders[i].transform.position))
                 {
 
@@ -122,16 +122,16 @@ public class Buffalo : AnimalAI
     }
 
     /// <summary>
-    /// Å¸°Ù°ú ³ªÀÇ °¢µµ¸¦ Ã¼Å©ÇÏ´Â ÇÔ¼ö
+    /// íƒ€ê²Ÿê³¼ ë‚˜ì˜ ê°ë„ë¥¼ ì²´í¬í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
-    /// <param name="targetPosition">Å¸°ÙÀÇ À§Ä¡</param>
-    /// <returns>°¢µµ¾È¿¡ ÀÖÀ¸¸é true ¾Æ´Ï¸é false</returns>
+    /// <param name="targetPosition">íƒ€ê²Ÿì˜ ìœ„ì¹˜</param>
+    /// <returns>ê°ë„ì•ˆì— ìˆìœ¼ë©´ true ì•„ë‹ˆë©´ false</returns>
     bool InSightAngle(Vector3 targetPosition)
     {
-        //Vector3.AngleÀ» ÅëÇØ Å¸°Ù°ú ³ªÀÇ °¢µµ¸¦ È®ÀÎ
+        //Vector3.Angleì„ í†µí•´ íƒ€ê²Ÿê³¼ ë‚˜ì˜ ê°ë„ë¥¼ í™•ì¸
         float angle = Vector3.Angle(transform.forward, targetPosition - transform.position);
 
-        //sightAngleÀº 90.0fÀÌ¸é *0.5f¸¦ °öÇÏ¸é 45.0fÀÌ´Ù 45.0fº¸´Ù ÀÛÀ¸¸é 45µµ ¾È¿¡ ÀÖ´Â °ÍÀÌ´Ù.
+        //sightAngleì€ 90.0fì´ë©´ *0.5fë¥¼ ê³±í•˜ë©´ 45.0fì´ë‹¤ 45.0fë³´ë‹¤ ì‘ìœ¼ë©´ 45ë„ ì•ˆì— ìˆëŠ” ê²ƒì´ë‹¤.
         return (sightAngle * 0.5f) > angle;
     }
 }
