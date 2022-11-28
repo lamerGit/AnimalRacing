@@ -37,7 +37,7 @@ public class Donkey : AnimalAI
     protected override void Start()
     {
         base.Start();
-        aiSpeed = 59.0f;
+        aiSpeed = 60.0f;
     }
 
     /// <summary>
