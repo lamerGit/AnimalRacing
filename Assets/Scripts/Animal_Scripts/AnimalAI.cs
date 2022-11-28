@@ -29,7 +29,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
 
     private int flag = 0; //회피할지 안할지 결정하는 변수
-    float avoidSpeed = 200000.0f; // 방해물 피하는 스피드
+    protected float avoidSpeed = 200000.0f; // 방해물 피하는 스피드
 
     float maxSpeed = 70.7f; // 최고 스피드
 

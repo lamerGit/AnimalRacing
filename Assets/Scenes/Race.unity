@@ -823,6 +823,11 @@ Transform:
   m_Father: {fileID: 6672381796606981660}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &47018050 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2398485499254001749, guid: 5d3463991a0dd644ba1cc082b65b7fe7, type: 3}
+  m_PrefabInstance: {fileID: 5202022286008130500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &54018140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4467,11 +4472,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1864819148249808416, guid: 311b6c8336aaec94bb716dc2c6804e58, type: 3}
   m_PrefabInstance: {fileID: 231877273}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &232750401 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1836791398655962657, guid: 8d3def9fc93dbeb46b6018f311835919, type: 3}
-  m_PrefabInstance: {fileID: 715311978606885159}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &246009021
 GameObject:
@@ -19847,7 +19847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dc49f0defcd7545b962b7218d4c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 232750401}
+  target: {fileID: 47018050}
   offset: {x: 0, y: 20, z: -20}
 --- !u!1 &980784782
 GameObject:
