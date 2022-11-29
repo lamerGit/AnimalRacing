@@ -18,6 +18,8 @@ public class Deer : AnimalAI
     float attackDistance = 8.5f; // 어느정도 거리에 있어야 뿔올려치기를 할지 정하는 변수
     float attackPower = 25.0f; // 에어본상태의 동물의 스피드가 얼마나 떨어질지 정하는 변수
 
+    GameObject cfx_Hit;
+
     /// <summary>
     /// 상태이상 체크용 프로퍼티 상태이상이 걸리면 뿔올려치기가 취소된다.
     /// </summary>
@@ -38,6 +40,8 @@ public class Deer : AnimalAI
     protected override void Start()
     {
         base.Start();
+        cfx_Hit = transform.Find("CFX_Hit").gameObject;
+        cfx_Hit.SetActive(false);
         aiSpeed = 59.0f;
     }
 
@@ -61,6 +65,7 @@ public class Deer : AnimalAI
                 {
                     
                     animator.SetTrigger("UpAttack");
+                    cfx_Hit.SetActive(true);
                     frontTarget.gameObject.GetComponent<AnimalAI>().TakeHit(attackPower, HitType.airborne);
                     UpAttackReset(); // 올려친 이후 상태 리셋
                 }

@@ -16,6 +16,8 @@ public class Ox : AnimalAI
 
     float madPower = 20.0f; // 미친회전에 당한 동물들이 감소될 스피드
 
+    GameObject cfx_Tornado;
+
     /// <summary>
     /// 상태이상 체크용 프로퍼티 상태이상이 걸리면 미친회전이 취소된다.
     /// </summary>
@@ -35,6 +37,8 @@ public class Ox : AnimalAI
     protected override void Start()
     {
         base.Start();
+        cfx_Tornado = transform.Find("CFX_Tornado").gameObject;
+        cfx_Tornado.SetActive(false);
         aiSpeed = 59.0f;
     }
 
@@ -88,7 +92,7 @@ public class Ox : AnimalAI
         }
 
         madSpin = false;
-        
+        cfx_Tornado.SetActive(madSpin);
         animator.SetBool("MadnessSpin", madSpin);
     }
 
@@ -100,6 +104,7 @@ public class Ox : AnimalAI
         skillCoolTime = skillCoolTimeReset;
         madSpin =true;
         aiSpeed += madSpinSpeed;
+        cfx_Tornado.SetActive(madSpin);
         animator.SetBool("MadnessSpin", madSpin);
     }
 

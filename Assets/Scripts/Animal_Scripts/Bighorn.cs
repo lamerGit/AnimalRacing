@@ -48,7 +48,10 @@ public class Bighorn : AnimalAI
     protected override void Start()
     {
         base.Start();
+        
         cfx_Explosion = transform.Find("CFX_Explosion").gameObject;
         cfx_Explosion.SetActive(false);
+
+        aiSpeed = 61.0f;
     }
 }

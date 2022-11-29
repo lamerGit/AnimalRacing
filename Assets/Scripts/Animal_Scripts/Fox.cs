@@ -11,6 +11,8 @@ public class Fox : AnimalAI
     float skillCoolTime = 7.0f; // 쿨타임 초기 시간
     float skillCoolTimeReset = 7.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
+    GameObject cfx_Ground_Hit; // 점프 파티클
+
     /// <summary>
     /// 상태이상 체크용 프로퍼티 상태이상이 걸리면 점프상태가 해제된다.
     /// </summary>
@@ -39,6 +41,8 @@ public class Fox : AnimalAI
     protected override void Start()
     {
         base.Start();
+        cfx_Ground_Hit = transform.Find("CFX_Ground_Hit").gameObject;
+        cfx_Ground_Hit.SetActive(false);
         aiSpeed = 59.0f;
     }
 
@@ -73,6 +77,7 @@ public class Fox : AnimalAI
     {
         rigid.AddForce(transform.up * jumpPower, ForceMode.VelocityChange);
         jumpCheck = true;
+        cfx_Ground_Hit.SetActive(true);
         dustTail.SetActive(!jumpCheck);
         animator.SetBool("Rolling", jumpCheck);
     }
