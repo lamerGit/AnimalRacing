@@ -39,7 +39,7 @@ public class Fox : AnimalAI
     protected override void Start()
     {
         base.Start();
-        aiSpeed = 60.0f;
+        aiSpeed = 59.0f;
     }
 
     protected override void FixedUpdate()

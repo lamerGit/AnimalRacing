@@ -15,7 +15,7 @@ public class Sheep : AnimalAI
 
     bool panicCheck = false; // 패닉달리기중인지 확인할 변수
 
-    float sightRange = 10.0f;
+    float sightRange = 10.0f; // 주변 탐색범위 변수
     protected override bool StateAttack
     {
         get => base.StateAttack;
