@@ -362,13 +362,13 @@ public class AnimalAI : MonoBehaviour ,IHit
                 }
 
                 //왼쪽사이드+왼쪽 ray와 오른쪽사이드+오른쪽 ray를 비교하여 이동할곳을 정한다.
-                if (leftDistance + leftSideDistance >= rightDistance + rightSideDistance)
+                if (leftDistance + leftSideDistance > rightDistance + rightSideDistance)
                 {
                     flag++;
                     avoidSenstivity -= 2.5f;
                     //Debug.Log("오른쪽벽이 가까움");
                 }
-                else if (leftDistance + leftSideDistance < rightDistance + rightSideDistance)
+                else 
                 {
                     flag++;
                     avoidSenstivity += 2.5f;

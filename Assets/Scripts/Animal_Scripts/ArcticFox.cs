@@ -37,7 +37,7 @@ public class ArcticFox : AnimalAI
     protected override void Start()
     {
         base.Start();
-        aiSpeed = 57.5f;
+        aiSpeed = 59.5f;
     }
 
     protected override void FixedUpdate()
