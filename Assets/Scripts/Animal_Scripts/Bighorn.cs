@@ -6,11 +6,9 @@ public class Bighorn : AnimalAI
 {
     //큰뿔양의 스크립트
 
-    //bool explosionCheck = false; //양폭탄 시전중인지 확인하는 변수
-    //float skillCoolTime = 16.0f; // 쿨타임 초기 시간
-    //float skillCoolTimeReset = 16.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
+   
 
-    float explosionPower = 20.0f; // 스킬에 공격당한 동물들의 감속을 결정하느 변수
+    float explosionPower = 30.0f; // 스킬에 공격당한 동물들의 감속을 결정하느 변수
 
     float sightRange = 10.0f; // 스킬의 범위
 

@@ -12,7 +12,7 @@ public class Buffalo : AnimalAI
     float skillCoolTimeReset = 8.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     float tempAngerSpeed = 0.0f; // 분노질주상태일때 추가 스피드를 임시로 저장할 변수
-    float angerSpeed = 2.0f; // 분노질주상태 스피드 계수 angerSpeed*동물수
+    float angerSpeed = 3.0f; // 분노질주상태 스피드 계수 angerSpeed*동물수
     float angerTime = 5.0f; // 분노질주 시전시간
     float angerTimeReset = 5.0f; // 분노질주 시전시간 초기화 변수
 

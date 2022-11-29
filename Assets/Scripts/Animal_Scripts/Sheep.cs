@@ -9,7 +9,7 @@ public class Sheep : AnimalAI
     float skillCoolTime = 15.0f; //쿨타임 초기 시간
     float skillCoolTimeReset = 15.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
-    float panicSpeed = 3.0f; // 패닉달리기 시전중에 추가스피드
+    float panicSpeed = 6.0f; // 패닉달리기 시전중에 추가스피드
     float panicTime = 5.0f;  // 패닉달리기 시전 시간
     float panicTimeReset = 5.0f; // 패닉달리기가 발동되고 시간을 초기화해줄 변수
 
