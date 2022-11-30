@@ -16,6 +16,8 @@ public class Sheep : AnimalAI
     bool panicCheck = false; // 패닉달리기중인지 확인할 변수
 
     float sightRange = 10.0f; // 주변 탐색범위 변수
+
+    GameObject cfx_Panic;
     protected override bool StateAttack
     {
         get => base.StateAttack;
@@ -30,6 +32,14 @@ public class Sheep : AnimalAI
 
         }
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        cfx_Panic = transform.Find("CFXR3_Panic").gameObject;
+        cfx_Panic.SetActive(false);
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -82,6 +92,7 @@ public class Sheep : AnimalAI
         if (AnimalCheck())
         {
             panicCheck = true;
+            cfx_Panic.SetActive(panicCheck);
             rigid.AddForce(transform.up * 10.0f, ForceMode.VelocityChange);
             aiSpeed += panicSpeed;
         }
@@ -99,6 +110,7 @@ public class Sheep : AnimalAI
         }
 
         panicCheck = false;
+        cfx_Panic.SetActive(panicCheck);
     }
 
     /// <summary>

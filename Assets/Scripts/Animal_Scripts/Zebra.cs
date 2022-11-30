@@ -10,10 +10,12 @@ public class Zebra : AnimalAI
     float skillCoolTimeReset = 18.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     float runSpeed = 20.0f; // 전력질주 시전중에 추가스피드
-    float runTime = 10.0f;  // 전력질주 시전 시간
-    float runTimeReset = 10.0f; // 패닉전력질주가 발동되고 시간을 초기화해줄 변수
+    float runTime = 4.0f;  // 전력질주 시전 시간
+    float runTimeReset = 4.0f; // 전력질주가 발동되고 시간을 초기화해줄 변수
 
     bool runCheck = false; // 전력질주중인지 확인할 변수
+
+    GameObject cfx_Run;
 
     protected override bool StateAttack
     {
@@ -32,6 +34,10 @@ public class Zebra : AnimalAI
     protected override void Start()
     {
         base.Start();
+        cfx_Run = transform.Find("CFXR3_Run").gameObject;
+        cfx_Run.SetActive(false);
+
+
         aiSpeed = 58.0f;
     }
 
@@ -77,6 +83,7 @@ public class Zebra : AnimalAI
     {
         skillCoolTime = skillCoolTimeReset;
         runCheck = true;
+        cfx_Run.SetActive(runCheck);
         aiSpeed += runSpeed;
 
 
@@ -94,6 +101,7 @@ public class Zebra : AnimalAI
         }
 
         runCheck = false;
+        cfx_Run.SetActive(runCheck);
     }
 
     

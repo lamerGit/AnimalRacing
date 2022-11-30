@@ -53,6 +53,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     WaitForSeconds stateSilenceSecond = new WaitForSeconds(4.0f); // 상태이상 침묵이 끝나는 시간
 
     bool stateAttack = false; // 상태이상 체크
+    GameObject stateEffect; // 상태이상 이펙트
 
     /// <summary>
     /// 상태이상 프로퍼티 AnimalAI를 상속받는 클래스들이 사용하기위해 virtual로 함
@@ -77,6 +78,8 @@ public class AnimalAI : MonoBehaviour ,IHit
     protected virtual void Start()
     {
         dustTail = transform.Find("DustTail").gameObject;
+        stateEffect = transform.Find("CFX_BadEffect").gameObject;
+        stateEffect.SetActive(false);
 
         lastEmit = transform.position; // 발바닥 파티클의 첫위치
         GetWayPoints(); // 웨이포인트 갱신
@@ -447,6 +450,7 @@ public class AnimalAI : MonoBehaviour ,IHit
         if(hitType==HitType.silence && !StateAttack)
         {
             StateAttack = true;
+            stateEffect.SetActive(StateAttack);
             aiSpeed -= stateDamage;
             StartCoroutine(stateSilence(stateDamage));
         }
@@ -462,6 +466,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     {
         yield return stateSilenceSecond;
         StateAttack = false;
+        stateEffect.SetActive(StateAttack);
         aiSpeed += stateDamage;
     }
       

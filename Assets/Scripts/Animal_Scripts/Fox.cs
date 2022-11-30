@@ -8,8 +8,8 @@ public class Fox : AnimalAI
 
     float jumpPower = 20.0f; // 얼마나 높이 점프할지 변수
     bool jumpCheck = false; // 점프상태인지 확인하는 변수
-    float skillCoolTime = 7.0f; // 쿨타임 초기 시간
-    float skillCoolTimeReset = 7.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
+    float skillCoolTime = 4.0f; // 쿨타임 초기 시간
+    float skillCoolTimeReset = 4.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     GameObject cfx_Ground_Hit; // 점프 파티클
 

@@ -16,6 +16,9 @@ public class Donkey : AnimalAI
     
     float sightRange = 10.0f; // 스킬의 범위
 
+    GameObject cfx_Heehaw;
+    Transform[] cfx_Heehaw_child;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -37,7 +40,12 @@ public class Donkey : AnimalAI
     protected override void Start()
     {
         base.Start();
-        aiSpeed = 60.0f;
+        cfx_Heehaw = transform.Find("CFXR2 _HeeHaw_").gameObject;
+        cfx_Heehaw_child = cfx_Heehaw.transform.GetComponentsInChildren<Transform>();
+        cfx_Heehaw.SetActive(false);
+
+
+        aiSpeed = 61.0f;
     }
 
     /// <summary>
@@ -46,7 +54,11 @@ public class Donkey : AnimalAI
     private void Noise()
     {
         skillCoolTime = skillCoolTimeReset;
-
+        cfx_Heehaw.SetActive(true);
+        for(int i=0; i<cfx_Heehaw_child.Length; i++)
+        {
+            cfx_Heehaw_child[i].gameObject.SetActive(true);
+        }
 
         //나를 포함에 범위안에 모든 동물을 찾는다.
         Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));

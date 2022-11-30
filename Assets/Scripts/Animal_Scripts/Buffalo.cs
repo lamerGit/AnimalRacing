@@ -20,6 +20,8 @@ public class Buffalo : AnimalAI
     float sightRange = 15.0f; // 동물이 어느정도 거리에 있는지 확인할 변수
     float sightAngle = 90.0f; // 어느정도 각도에 있는지 확인할 변수
 
+    GameObject cfx_WaterFire;
+
     /// <summary>
     /// 상태이상 체크변수 상태이상에 걸리면 분노질주가 취소된다.
     /// </summary>
@@ -41,6 +43,9 @@ public class Buffalo : AnimalAI
     protected override void Start()
     {
         base.Start();
+        cfx_WaterFire = transform.Find("CFX4_WaterFire").gameObject;
+        cfx_WaterFire.SetActive(false);
+
         aiSpeed = 59.0f;
     }
 
@@ -78,6 +83,7 @@ public class Buffalo : AnimalAI
     {
         skillCoolTime = skillCoolTimeReset;
         angerRunCheck = true;
+        cfx_WaterFire.SetActive(angerRunCheck);
         tempAngerSpeed = angerSpeed * SearchAnimal();
         aiSpeed += tempAngerSpeed;
     }
@@ -92,9 +98,10 @@ public class Buffalo : AnimalAI
         {
             aiSpeed -= tempAngerSpeed;
         }
-
-        angerRunCheck = false;
         
+        angerRunCheck = false;
+        cfx_WaterFire.SetActive(angerRunCheck);
+
     }
     /// <summary>
     /// 버팔로앞에 몇마리의 동물이 있는지 확인하고 그 수를 리턴하는 함수
