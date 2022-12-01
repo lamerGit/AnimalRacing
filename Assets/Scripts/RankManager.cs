@@ -5,46 +5,59 @@ using UnityEngine.InputSystem;
 
 public class RankManager : MonoBehaviour
 {
-    AnimalAI[] animalRank;
+    //현재 동물들의 순위확인용 스크립트
+
+    public AnimalAI[] animalRank; // 동물들의 정보를 저장할 변수
+
+    
+    public Transform[] animalCameras;
+
+    public FollowCamera test;
 
     private void Start()
     {
-        animalRank=FindObjectsOfType<AnimalAI>();
+        animalRank=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
+
         
-  
+        CamraSwap();
+        StartCoroutine(sortTime());
         
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            Time.timeScale = 1.0f;
-            
+    
 
+    void CamraSwap()
+    {
+        for(int i=0; i<animalCameras.Length; i++)
+        {
+            animalCameras[i].gameObject.SetActive(false);
         }
-
+        animalCameras[animalRank[0].animalNumber-1].gameObject.SetActive(true);
+        test.target = animalRank[0].transform;
+       
     }
 
-    private void FixedUpdate()
+    IEnumerator sortTime()
     {
-        if(Keyboard.current.digit1Key.wasPressedThisFrame)
+        while (true)
         {
-            Time.timeScale = 0.0f;
-
             MergeSort(animalRank, 0, animalRank.Length - 1);
-            for (int i = 0; i < animalRank.Length; i++)
-            {
-                Debug.Log($"현재 {i+1}등 : {animalRank[i].name} {animalRank[i].CurrentWayPoint} {animalRank[i].CurrentWaypointDistance} {animalRank[i].animalNumber}");
-            }
+            CamraSwap();
+            yield return new WaitForSeconds(0.1f);
             
-
         }
-
     }
 
+    /// <summary>
+    /// 병합정렬 구현
+    /// </summary>
+    /// <param name="array">동물들이 담긴변수</param>
+    /// <param name="beginIndex">시작인덱스</param>
+    /// <param name="midIndex">중간인덱스</param>
+    /// <param name="endIndex">마지막인덴스</param>
     void Merge(AnimalAI[] array, int beginIndex, int midIndex,int endIndex)
     {
+        //array배열을 반반 나눈다.
         AnimalAI[] lowHalf = new AnimalAI[midIndex + 1];
         AnimalAI[] highHalf = new AnimalAI[endIndex-midIndex];
 
@@ -52,6 +65,7 @@ public class RankManager : MonoBehaviour
         int index_L = 0;
         int index_H = 0;
         
+        //반반나눈 배열에 array에 있는 정보 할당
         for(int i=0; k<=midIndex; i++,k++)
         {
             lowHalf[i] = array[k];
@@ -62,26 +76,30 @@ public class RankManager : MonoBehaviour
         }
         k= beginIndex;
 
+        //어느 한쪽의 인덱스가 끝까지 가면 끝
         while(index_L<lowHalf.Length && index_H<highHalf.Length)
         {
+            //이동할 지점이 큰수록 앞에있는 동물이다
             if (lowHalf[index_L].CurrentWayPoint > highHalf[index_H].CurrentWayPoint)
             {
+
                 array[k] = lowHalf[index_L];
                 index_L++;
+
+
+            }
+            else if (lowHalf[index_L].CurrentWayPoint < highHalf[index_H].CurrentWayPoint)
+            {
+
+                array[k] = highHalf[index_H];
+                index_H++;
+
             }else
             {
-                if (lowHalf[index_L].CurrentWayPoint == highHalf[index_H].CurrentWayPoint)
+                if ((lowHalf[index_L].CurrentWaypointDistance < highHalf[index_H].CurrentWaypointDistance) && (lowHalf[index_L].CurrentWayPoint == highHalf[index_H].CurrentWayPoint))
                 {
-                    if (lowHalf[index_L].CurrentWaypointDistance < highHalf[index_H].CurrentWaypointDistance)
-                    {
-                        array[k] = lowHalf[index_L];
-                        index_L++;
-                    }else
-                    {
-                        array[k] = highHalf[index_H];
-                        index_H++;
-                    }
-
+                    array[k] = lowHalf[index_L];
+                    index_L++;
                 }
                 else
                 {
@@ -92,7 +110,7 @@ public class RankManager : MonoBehaviour
 
             k++;
         }
-
+        //남은 짜투리 할당
         while(index_L<lowHalf.Length)
         {
             array[k] = lowHalf[index_L];
@@ -108,8 +126,15 @@ public class RankManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 분할정복해서 병합정렬을 사용하는 함수
+    /// </summary>
+    /// <param name="array">동물들이 담긴 배열</param>
+    /// <param name="beginIndex">시작인덱스</param>
+    /// <param name="endIndex">마지막인덱스</param>
     void MergeSort(AnimalAI[] array,int beginIndex,int endIndex)
     {
+        //시작지점이 끝나는 지점보다 작을때만
         if(beginIndex<endIndex)
         {
             int midindex = (beginIndex + endIndex) / 2;

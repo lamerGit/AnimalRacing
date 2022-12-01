@@ -15,6 +15,7 @@ public class FollowCamera : MonoBehaviour
     
     private void FixedUpdate()
     {
+        
         if (target != null)
         {
             transform.position = target.position + offset;

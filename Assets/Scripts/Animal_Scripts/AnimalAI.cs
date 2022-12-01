@@ -11,7 +11,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     float resetAITurnSpeed = 1000.0f;
     public GameObject waypointController; // 웨이포인트 그룹을 읽는 게임오브젝트 waypoints에 정보줘야함
     List<Transform> waypoints; //waypointController한테 waypoint정보를 받는다
-    int currentWaypoint = 0; //현재 따라갈 지점
+    public int currentWaypoint = 0; //현재 따라갈 지점
     float currentWaypointDistance = 0.0f; //현재 가야할곳까지의 거리
     float currentSpeed; // 현재 속도
     Vector3 currentWaypointPosition; // 따라가야할 Vector3의 포지션
@@ -19,7 +19,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     protected Rigidbody rigid;
 
     
-    float wayDistanse = 250.0f; // 목적지에 변수 수치만큼 가까워지면 목적지를 변경
+    float wayDistanse = 200.0f; // 목적지에 변수 수치만큼 가까워지면 목적지를 변경
 
 
 
@@ -66,6 +66,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     public int CurrentWayPoint
     {
         get { return currentWaypoint; }
+        private set { currentWaypoint = value; }
         
     }
 
@@ -175,7 +176,7 @@ public class AnimalAI : MonoBehaviour ,IHit
         //클릭한 이동지점으로 이동하는 동시에 바라보는 방향 또한 이동 지점쪽으로 바꾸는데 처리
         //웨이포인트와 현재 위치 사이의 거리를 계산 + 전역 좌표에서 상대 좌표로 전환
         Vector3 relativeWaypointPosition = transform.InverseTransformPoint(new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ));
-        CurrentWaypointDistance = relativeWaypointPosition.sqrMagnitude;
+        CurrentWaypointDistance = (waypoints[currentWaypoint].position-transform.position).sqrMagnitude;
 
         currentWaypointPosition = new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ);
        
@@ -190,11 +191,13 @@ public class AnimalAI : MonoBehaviour ,IHit
         //가까워지면 웨이포인트 변경 밑 모든 웨이포인트를 지나면 처음포인트로 변경 
         if (relativeWaypointPosition.sqrMagnitude < wayDistanse)
         {
-            currentWaypoint++;
+            CurrentWayPoint++;
+            
             if (currentWaypoint >= waypoints.Count)
             {
-                currentWaypoint = 0;
+                CurrentWayPoint = 0;
             }
+            CurrentWaypointDistance = (waypoints[currentWaypoint].position - transform.position).sqrMagnitude;
         }
 
         //대충 자동차 움직임을 구현한 코드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
