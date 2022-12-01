@@ -12,6 +12,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     public GameObject waypointController; // 웨이포인트 그룹을 읽는 게임오브젝트 waypoints에 정보줘야함
     List<Transform> waypoints; //waypointController한테 waypoint정보를 받는다
     int currentWaypoint = 0; //현재 따라갈 지점
+    float currentWaypointDistance = 0.0f; //현재 가야할곳까지의 거리
     float currentSpeed; // 현재 속도
     Vector3 currentWaypointPosition; // 따라가야할 Vector3의 포지션
 
@@ -54,6 +55,19 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     bool stateAttack = false; // 상태이상 체크
     GameObject stateEffect; // 상태이상 이펙트
+
+    public int animalNumber = 0;
+
+    public float CurrentWaypointDistance
+    {
+        get { return currentWaypointDistance; }
+        private set { currentWaypointDistance = value; }
+    }
+    public int CurrentWayPoint
+    {
+        get { return currentWaypoint; }
+        
+    }
 
     /// <summary>
     /// 상태이상 프로퍼티 AnimalAI를 상속받는 클래스들이 사용하기위해 virtual로 함
@@ -161,8 +175,10 @@ public class AnimalAI : MonoBehaviour ,IHit
         //클릭한 이동지점으로 이동하는 동시에 바라보는 방향 또한 이동 지점쪽으로 바꾸는데 처리
         //웨이포인트와 현재 위치 사이의 거리를 계산 + 전역 좌표에서 상대 좌표로 전환
         Vector3 relativeWaypointPosition = transform.InverseTransformPoint(new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ));
+        CurrentWaypointDistance = relativeWaypointPosition.sqrMagnitude;
 
         currentWaypointPosition = new Vector3(currentWayPointX, currentWayPointY, currentWayPointZ);
+       
 
         //완만한 곡선을 그리기(없으면 각져서 이동함)ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         Quaternion toRotation = Quaternion.LookRotation(currentWaypointPosition - transform.position);
