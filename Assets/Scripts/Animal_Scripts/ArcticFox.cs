@@ -41,7 +41,11 @@ public class ArcticFox : AnimalAI
         base.Start();
         cfx_Ground_Hit = transform.Find("CFX_Ground_Hit").gameObject;
         cfx_Ground_Hit.SetActive(false);
-        aiSpeed = 59.5f;
+        //aiSpeed = 59.5f;
+        skillCoolTimeReset = Random.Range(9.0f, 11.0f);
+        skillCoolTime=skillCoolTimeReset;
+
+        aiSpeed = Random.Range(56.5f, 58.5f);
     }
 
     protected override void FixedUpdate()

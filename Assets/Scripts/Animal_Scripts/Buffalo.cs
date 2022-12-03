@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +8,8 @@ public class Buffalo : AnimalAI
     //버팔로 스크립트
       
     bool angerRunCheck = false; // 분노질주상태인지 확인하는 변수
-    float skillCoolTime = 8.0f;  // 쿨타임 초기 시간
-    float skillCoolTimeReset = 8.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
+    float skillCoolTime = 12.0f;  // 쿨타임 초기 시간
+    float skillCoolTimeReset = 12.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     float tempAngerSpeed = 0.0f; // 분노질주상태일때 추가 스피드를 임시로 저장할 변수
     float angerSpeed = 3.0f; // 분노질주상태 스피드 계수 angerSpeed*동물수
@@ -46,7 +46,10 @@ public class Buffalo : AnimalAI
         cfx_WaterFire = transform.Find("CFX4_WaterFire").gameObject;
         cfx_WaterFire.SetActive(false);
 
-        aiSpeed = 59.0f;
+        //aiSpeed = 59.0f;
+        skillCoolTimeReset = Random.Range(11.0f, 13.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(58.0f, 60.0f);
     }
 
     protected override void FixedUpdate()

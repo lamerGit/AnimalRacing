@@ -11,7 +11,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     float resetAITurnSpeed = 1000.0f;
     public GameObject waypointController; // 웨이포인트 그룹을 읽는 게임오브젝트 waypoints에 정보줘야함
     List<Transform> waypoints; //waypointController한테 waypoint정보를 받는다
-    public int currentWaypoint = 0; //현재 따라갈 지점
+    int currentWaypoint = 0; //현재 따라갈 지점
     float currentWaypointDistance = 0.0f; //현재 가야할곳까지의 거리
     float currentSpeed; // 현재 속도
     Vector3 currentWaypointPosition; // 따라가야할 Vector3의 포지션
@@ -420,7 +420,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     /// 장애물을 회피하는 함수
     /// </summary>
     /// <param name="senstivity">값에 따라 왼쪽인지 오른쪽인지 정해진다.</param>
-    private void AvoidSteer(float senstivity)
+    protected virtual void AvoidSteer(float senstivity)
     {
         //wheelFL.steerAngle = avoidSpeed* senstivity; 
         rigid.AddTorque(transform.up * senstivity * avoidSpeed);

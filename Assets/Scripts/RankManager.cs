@@ -9,18 +9,17 @@ public class RankManager : MonoBehaviour
 
     public AnimalAI[] animalRank; // 동물들의 정보를 저장할 변수
 
-    
-    public Transform[] animalCameras;
+    public FollowCamera[] cameras;
 
-    public FollowCamera test;
+    FollowCamera mainCamera;
 
     private void Start()
     {
         animalRank=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
 
-        
+        mainCamera = cameras[0];
         CamraSwap();
-        StartCoroutine(sortTime());
+        //StartCoroutine(sortTime());
         
     }
 
@@ -28,13 +27,45 @@ public class RankManager : MonoBehaviour
 
     void CamraSwap()
     {
-        for(int i=0; i<animalCameras.Length; i++)
+        if (animalRank[0].CurrentWayPoint==6)
         {
-            animalCameras[i].gameObject.SetActive(false);
+            cameras[0].gameObject.SetActive(false);
+            cameras[1].gameObject.SetActive(false);
+            mainCamera = cameras[2];
         }
-        animalCameras[animalRank[0].animalNumber-1].gameObject.SetActive(true);
-        test.target = animalRank[0].transform;
+
+        if (animalRank[0].CurrentWayPoint == 10)
+        {
+            cameras[2].gameObject.SetActive(false);
+            mainCamera = cameras[3];
+        }
+
+        if (animalRank[0].CurrentWayPoint == 28)
+        {
+            cameras[3].gameObject.SetActive(false);
+            mainCamera = cameras[4];
+        }
+
+        if (animalRank[0].CurrentWayPoint == 58)
+        {
+            mainCamera.lookAtMode=true;
+        }
+
+        if (animalRank[0].CurrentWayPoint == 59)
+        {
+            mainCamera.finish = true;
+        }
+
+        mainCamera.target = animalRank[0].transform;
        
+
+       
+    }
+    private void FixedUpdate()
+    {
+        MergeSort(animalRank, 0, animalRank.Length - 1);
+        CamraSwap();
+        
     }
 
     IEnumerator sortTime()

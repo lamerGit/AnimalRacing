@@ -44,7 +44,11 @@ public class Deer : AnimalAI
         cfx_Hit = transform.Find("CFX_Hit").gameObject;
         cfx_Hit_Child = cfx_Hit.GetComponentsInChildren<Transform>();
         cfx_Hit.SetActive(false);
-        aiSpeed = 59.0f;
+
+        skillCoolTimeReset = Random.Range(4.0f, 6.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(58.5f, 60.5f);
+        //aiSpeed = 59.0f;
     }
 
     protected override void FixedUpdate()
@@ -93,6 +97,14 @@ public class Deer : AnimalAI
 
 
 
+    }
+
+    protected override void AvoidSteer(float senstivity)
+    {
+        if (!attackCheck)
+        {
+            base.AvoidSteer(senstivity);
+        }
     }
 
     /// <summary>

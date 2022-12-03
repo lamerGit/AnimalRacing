@@ -43,7 +43,10 @@ public class Fox : AnimalAI
         base.Start();
         cfx_Ground_Hit = transform.Find("CFX_Ground_Hit").gameObject;
         cfx_Ground_Hit.SetActive(false);
-        aiSpeed = 59.0f;
+        //aiSpeed = 59.0f;
+        skillCoolTimeReset = Random.Range(3.0f, 5.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(58.0f, 60.0f);
     }
 
     protected override void FixedUpdate()

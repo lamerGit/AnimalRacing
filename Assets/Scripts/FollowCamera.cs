@@ -11,16 +11,31 @@ public class FollowCamera : MonoBehaviour
     public Transform target; //따라다닐 타겟
 
     public Vector3 offset; // 대상과의 거리
+    public float cameraSpeed = 3.0f;
 
+    public bool lookAtMode = false; 
     
+    public bool finish=false;
+
     private void FixedUpdate()
     {
-        
-        if (target != null)
+        if (!finish)
         {
-            transform.position = target.position + offset;
-           
 
+            if (target != null && !lookAtMode)
+            {
+                //transform.position = target.position + offset;
+                transform.position = Vector3.Lerp(transform.position, target.position + offset, cameraSpeed * Time.fixedDeltaTime);
+
+            }
+
+            if (target != null && lookAtMode)
+            {
+                Vector3 lookDir = target.position - transform.position;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), cameraSpeed * Time.fixedDeltaTime);
+
+            }
         }
     }
 }

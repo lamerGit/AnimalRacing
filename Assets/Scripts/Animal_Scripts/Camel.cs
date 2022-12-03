@@ -12,6 +12,7 @@ public class Camel : AnimalAI
     WaitForSeconds furyRunSecond = new WaitForSeconds(4.0f); // 격노질주가 끝나는 시간
 
     GameObject cfx_FuryRun;
+    Transform[] cfx_FuryRun_Child;
     protected override bool StateAttack
     {
         get => base.StateAttack;
@@ -22,6 +23,11 @@ public class Camel : AnimalAI
             {
                 aiSpeed += furyRunSpeed;
                 cfx_FuryRun.SetActive(true);
+                for(int i=0; i<cfx_FuryRun_Child.Length; i++)
+                {
+                    cfx_FuryRun_Child[i].gameObject.SetActive(true);
+                }
+
                 StartCoroutine(furyRunReset());
             }
 
@@ -34,7 +40,9 @@ public class Camel : AnimalAI
     {
         base.Start();
         cfx_FuryRun = transform.Find("CFX_FuryRun").gameObject;
+        cfx_FuryRun_Child=cfx_FuryRun.GetComponentsInChildren<Transform>();
         cfx_FuryRun.SetActive(false);
+        aiSpeed = Random.Range(58.0f, 60.0f);
     }
 
     IEnumerator furyRunReset()

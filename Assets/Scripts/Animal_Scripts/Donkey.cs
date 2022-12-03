@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,7 +45,10 @@ public class Donkey : AnimalAI
         cfx_Heehaw.SetActive(false);
 
 
-        aiSpeed = 61.0f;
+        //aiSpeed = 61.0f;
+        skillCoolTimeReset = Random.Range(15.0f, 17.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(59.0f, 61.0f);
     }
 
     /// <summary>

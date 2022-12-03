@@ -38,6 +38,9 @@ public class Sheep : AnimalAI
         base.Start();
         cfx_Panic = transform.Find("CFXR3_Panic").gameObject;
         cfx_Panic.SetActive(false);
+        skillCoolTimeReset = Random.Range(14.0f, 16.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(58.5f, 60.5f);
     }
 
     protected override void FixedUpdate()

@@ -52,6 +52,7 @@ public class Bighorn : AnimalAI
         cfx_Explosion = transform.Find("CFX_Explosion").gameObject;
         cfx_Explosion.SetActive(false);
 
-        aiSpeed = 61.0f;
+        //aiSpeed = 61.0f;
+        aiSpeed = Random.Range(59.0f, 61.0f);
     }
 }

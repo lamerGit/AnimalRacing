@@ -8,7 +8,7 @@ public class Ox : AnimalAI
     
     bool madSpin=false; //미친회전이 발동중인지 확인하는 변수
     float skillCoolTime = 8.0f; //쿨타임 초기 시간
-    float skillCoolTimeReset = 10.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
+    float skillCoolTimeReset = 8.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     float madSpinSpeed = 5.0f; //미친회전 상태일때 상승하는 스피드
     float madSpinTime = 5.0f; // 미친회전 시전되는 시간
@@ -39,7 +39,11 @@ public class Ox : AnimalAI
         base.Start();
         cfx_Tornado = transform.Find("CFX_Tornado").gameObject;
         cfx_Tornado.SetActive(false);
-        aiSpeed = 59.0f;
+
+        skillCoolTimeReset = Random.Range(7.0f, 9.0f);
+        skillCoolTime = skillCoolTimeReset;
+        aiSpeed = Random.Range(57.5f, 59.5f);
+        //aiSpeed = 59.0f;
     }
 
     protected override void FixedUpdate()
