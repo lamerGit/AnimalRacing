@@ -46,15 +46,12 @@ public class RankManager : MonoBehaviour
             mainCamera = cameras[4];
         }
 
-        if (animalRank[0].CurrentWayPoint == 58)
+        if (animalRank[0].CurrentWayPoint == 59)
         {
             mainCamera.lookAtMode=true;
         }
 
-        if (animalRank[0].CurrentWayPoint == 59)
-        {
-            mainCamera.finish = true;
-        }
+        
 
         mainCamera.target = animalRank[0].transform;
        

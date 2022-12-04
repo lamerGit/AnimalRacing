@@ -42,7 +42,7 @@ public class Ox : AnimalAI
 
         skillCoolTimeReset = Random.Range(7.0f, 9.0f);
         skillCoolTime = skillCoolTimeReset;
-        aiSpeed = Random.Range(57.5f, 59.5f);
+        aiSpeed = Random.Range(58.5f, 60.5f);
         //aiSpeed = 59.0f;
     }
 
