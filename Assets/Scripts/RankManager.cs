@@ -13,6 +13,7 @@ public class RankManager : MonoBehaviour
 
     FollowCamera mainCamera;
 
+    int count = 49;
     private void Start()
     {
         animalRank=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
@@ -45,6 +46,17 @@ public class RankManager : MonoBehaviour
             cameras[3].gameObject.SetActive(false);
             mainCamera = cameras[4];
         }
+
+        if (animalRank[0].CurrentWayPoint == count)
+        {
+            mainCamera.offset.z += 1;
+            if (count < 59)
+            {
+                count++;
+            }
+        }
+
+
 
         if (animalRank[0].CurrentWayPoint == 59)
         {

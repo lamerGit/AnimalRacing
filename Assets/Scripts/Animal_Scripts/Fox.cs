@@ -46,7 +46,7 @@ public class Fox : AnimalAI
         //aiSpeed = 59.0f;
         skillCoolTimeReset = Random.Range(3.0f, 5.0f);
         skillCoolTime = skillCoolTimeReset;
-        aiSpeed = Random.Range(58.0f, 60.0f);
+        aiSpeed = Random.Range(58.0f, 59.0f);
     }
 
     protected override void FixedUpdate()

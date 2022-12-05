@@ -45,7 +45,7 @@ public class ArcticFox : AnimalAI
         skillCoolTimeReset = Random.Range(9.0f, 11.0f);
         skillCoolTime=skillCoolTimeReset;
 
-        aiSpeed = Random.Range(56.5f, 58.5f);
+        aiSpeed = Random.Range(57.5f, 58.5f);
     }
 
     protected override void FixedUpdate()
