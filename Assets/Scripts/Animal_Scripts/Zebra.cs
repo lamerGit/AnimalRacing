@@ -36,39 +36,41 @@ public class Zebra : AnimalAI
         base.Start();
         cfx_Run = transform.Find("CFXR3_Run").gameObject;
         cfx_Run.SetActive(false);
-        skillCoolTimeReset = Random.Range(17.0f, 19.0f);
+        skillCoolTimeReset = Random.Range(13.0f, 23.0f);
         skillCoolTime = skillCoolTimeReset;
-        aiSpeed = Random.Range(56.0f, 58.0f);
+        aiSpeed = Random.Range(57.0f, 58.0f);
         //aiSpeed = 58.0f;
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        if (!runCheck)
+        if (raceStarted)
         {
-            //전력질주 상태가 아닐때는 쿨타임감소
-            skillCoolTime -= Time.fixedDeltaTime;
-        }
-        else
-        {
-            //전력질주 상태일때 패닉시간감소
-            runTime -= Time.fixedDeltaTime;
+            if (!runCheck)
+            {
+                //전력질주 상태가 아닐때는 쿨타임감소
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                //전력질주 상태일때 패닉시간감소
+                runTime -= Time.fixedDeltaTime;
 
-        }
+            }
 
-        if (runTime < 0)
-        {
-            //전력질주 상태가 끝나면 상태 리셋
-            RunReset();
-        }
+            if (runTime < 0)
+            {
+                //전력질주 상태가 끝나면 상태 리셋
+                RunReset();
+            }
 
-        // 쿨타임이 되고 상태이상이 아니며 발동
-        if (skillCoolTime < 0 && !StateAttack)
-        {
+            // 쿨타임이 되고 상태이상이 아니며 발동
+            if (skillCoolTime < 0 && !StateAttack)
+            {
 
-            Run();
+                Run();
+            }
         }
 
 

@@ -45,7 +45,7 @@ public class Deer : AnimalAI
         cfx_Hit_Child = cfx_Hit.GetComponentsInChildren<Transform>();
         cfx_Hit.SetActive(false);
 
-        skillCoolTimeReset = Random.Range(4.0f, 6.0f);
+        skillCoolTimeReset = Random.Range(1.0f, 10.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(58.5f, 60.5f);
         //aiSpeed = 59.0f;
@@ -55,44 +55,49 @@ public class Deer : AnimalAI
     {
         base.FixedUpdate();
 
-        if (!attackCheck)
+        if (raceStarted)
         {
-            //뿔올려치기 상태가 아닐때는 쿨타임감소
-            skillCoolTime -= Time.fixedDeltaTime;
-        }else
-        {
-            //뿔올려치기 상태일때 앞에 타겟이 있을 경우 거리를 재다가 올려친다.
-            attackTime -= Time.fixedDeltaTime;
-            if (frontTarget != null)
+
+            if (!attackCheck)
             {
-                float distance = Vector3.SqrMagnitude(transform.position - frontTarget.position);
-    
-                if(distance<attackDistance)
+                //뿔올려치기 상태가 아닐때는 쿨타임감소
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                //뿔올려치기 상태일때 앞에 타겟이 있을 경우 거리를 재다가 올려친다.
+                attackTime -= Time.fixedDeltaTime;
+                if (frontTarget != null)
                 {
-                    
-                    animator.SetTrigger("UpAttack");
-                    cfx_Hit.SetActive(true);
-                    for(int i = 0; i < cfx_Hit_Child.Length; i++)
+                    float distance = Vector3.SqrMagnitude(transform.position - frontTarget.position);
+
+                    if (distance < attackDistance)
                     {
-                        cfx_Hit_Child[i].gameObject.SetActive(true);
+
+                        animator.SetTrigger("UpAttack");
+                        cfx_Hit.SetActive(true);
+                        for (int i = 0; i < cfx_Hit_Child.Length; i++)
+                        {
+                            cfx_Hit_Child[i].gameObject.SetActive(true);
+                        }
+                        frontTarget.gameObject.GetComponent<AnimalAI>().TakeHit(attackPower, HitType.airborne);
+                        UpAttackReset(); // 올려친 이후 상태 리셋
                     }
-                    frontTarget.gameObject.GetComponent<AnimalAI>().TakeHit(attackPower, HitType.airborne);
-                    UpAttackReset(); // 올려친 이후 상태 리셋
                 }
             }
-        }
 
-        if (attackTime < 0)
-        {
-            //뿔올려치기 상태가 끝나면 상태 리셋
-            UpAttackReset();
-        }
+            if (attackTime < 0)
+            {
+                //뿔올려치기 상태가 끝나면 상태 리셋
+                UpAttackReset();
+            }
 
-        // 쿨타임이 되고 상태이상이 아니며 앞에 동물이 있으면 발동
-        if (skillCoolTime < 0 && !StateAttack && frontTarget!=null)
-        {
-            
-            UpAttack();
+            // 쿨타임이 되고 상태이상이 아니며 앞에 동물이 있으면 발동
+            if (skillCoolTime < 0 && !StateAttack && frontTarget != null)
+            {
+
+                UpAttack();
+            }
         }
 
 

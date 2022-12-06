@@ -47,7 +47,7 @@ public class Buffalo : AnimalAI
         cfx_WaterFire.SetActive(false);
 
         //aiSpeed = 59.0f;
-        skillCoolTimeReset = Random.Range(11.0f, 13.0f);
+        skillCoolTimeReset = Random.Range(7.0f, 17.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(58.0f, 60.0f);
     }
@@ -55,27 +55,29 @@ public class Buffalo : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (raceStarted)
+        {
+            if (!angerRunCheck) //분노질주 상태가 아니라면 쿨타임감소
+            {
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                //분노질주 상태이면 분노질주 시간감소
+                angerTime -= Time.fixedDeltaTime;
+            }
 
-        if (!angerRunCheck) //분노질주 상태가 아니라면 쿨타임감소
-        {
-            skillCoolTime -= Time.fixedDeltaTime;
-        }
-        else
-        {
-            //분노질주 상태이면 분노질주 시간감소
-            angerTime -= Time.fixedDeltaTime;
-        }
+            if (angerTime < 0)
+            {
+                //분노질주 시간이 끝나면 상태리셋
+                AngerRunReset();
+            }
 
-        if (angerTime < 0)
-        {
-            //분노질주 시간이 끝나면 상태리셋
-            AngerRunReset();
-        }
-
-        if (skillCoolTime < 0 && !StateAttack)
-        {
-            //쿨타임이 다되고 상태이상 상태가 아니라면 분노질주 발동
-            AngerRun();
+            if (skillCoolTime < 0 && !StateAttack)
+            {
+                //쿨타임이 다되고 상태이상 상태가 아니라면 분노질주 발동
+                AngerRun();
+            }
         }
     }
 

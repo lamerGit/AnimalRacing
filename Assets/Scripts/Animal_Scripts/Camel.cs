@@ -8,8 +8,11 @@ public class Camel : AnimalAI
 
     
 
-    float furyRunSpeed = 15.0f; // 격노질주 스피드
-    WaitForSeconds furyRunSecond = new WaitForSeconds(4.0f); // 격노질주가 끝나는 시간
+    float furyRunSpeed = 17.0f; // 격노질주 스피드
+    bool furyRunCheck=false;
+    //WaitForSeconds furyRunSecond = new WaitForSeconds(4.0f); // 격노질주가 끝나는 시간
+    float furyTime = 4.0f; // 격노질주 시전시간
+    float furyTimeReset = 4.0f; // 격노질주 시전시간 초기화 변수
 
     GameObject cfx_FuryRun;
     Transform[] cfx_FuryRun_Child;
@@ -21,14 +24,22 @@ public class Camel : AnimalAI
             base.StateAttack = value;
             if (!base.StateAttack)
             {
-                aiSpeed += furyRunSpeed;
-                cfx_FuryRun.SetActive(true);
-                for(int i=0; i<cfx_FuryRun_Child.Length; i++)
+                if (raceStarted)
                 {
-                    cfx_FuryRun_Child[i].gameObject.SetActive(true);
+                    aiSpeed += furyRunSpeed;
+                    furyRunCheck = true;
+                    cfx_FuryRun.SetActive(furyRunCheck);
+                    for (int i = 0; i < cfx_FuryRun_Child.Length; i++)
+                    {
+                        cfx_FuryRun_Child[i].gameObject.SetActive(furyRunCheck);
+                    }
                 }
 
-                StartCoroutine(furyRunReset());
+          
+                //StartCoroutine(furyRunReset());
+            }else
+            {
+                FuryRunReset();
             }
 
 
@@ -45,12 +56,46 @@ public class Camel : AnimalAI
         aiSpeed = Random.Range(58.0f, 60.0f);
     }
 
-    IEnumerator furyRunReset()
+    protected override void FixedUpdate()
     {
-        yield return furyRunSecond;
-        cfx_FuryRun.SetActive(false);
-        aiSpeed -= furyRunSpeed;
+        base.FixedUpdate();
+
+        if (raceStarted)
+        {
+            if (furyRunCheck) //격노질주 상태이면 격노질주 시간감소
+            {
+                furyTime -= Time.fixedDeltaTime;
+
+            }
+
+            if (furyTime < 0)
+            {
+                //분노질주 시간이 끝나면 상태리셋
+                FuryRunReset();
+            }
+        }
+
     }
+
+
+    void FuryRunReset()
+    {
+        cfx_FuryRun.SetActive(false);
+        furyTime = furyTimeReset;
+        if (furyRunCheck)
+        {
+            aiSpeed -= furyRunSpeed;
+        }
+        furyRunCheck=false;
+
+    }
+
+    //IEnumerator furyRunReset()
+    //{
+    //    yield return furyRunSecond;
+    //    cfx_FuryRun.SetActive(false);
+    //    aiSpeed -= furyRunSpeed;
+    //}
 
     
 }

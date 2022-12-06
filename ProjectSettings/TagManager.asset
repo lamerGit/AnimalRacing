@@ -7,6 +7,8 @@ TagManager:
   - Animal
   - Wall
   - Ground
+  - FxTemporaire
+  - StartPoint
   layers:
   - Default
   - TransparentFX

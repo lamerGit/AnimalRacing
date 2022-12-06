@@ -458,6 +458,7 @@ MonoBehaviour:
   aiSpeed: 60
   waypointController: {fileID: 0}
   footParticle: {fileID: 9084719505514282519}
+  animalNumber: 1
 --- !u!1 &2611426344343039832
 GameObject:
   m_ObjectHideFlags: 0

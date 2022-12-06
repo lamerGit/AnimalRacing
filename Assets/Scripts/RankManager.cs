@@ -7,16 +7,20 @@ public class RankManager : MonoBehaviour
 {
     //현재 동물들의 순위확인용 스크립트
 
-    public AnimalAI[] animalRank; // 동물들의 정보를 저장할 변수
+    AnimalAI[] animalRank; // 동물들의 정보를 저장할 변수
 
     public FollowCamera[] cameras;
 
     FollowCamera mainCamera;
 
     int count = 49;
+
+    SecondCameraOut secondCamera;
+    bool secondOut = false;
     private void Start()
     {
         animalRank=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
+        secondCamera=FindObjectOfType<SecondCameraOut>();
 
         mainCamera = cameras[0];
         CamraSwap();
@@ -28,14 +32,27 @@ public class RankManager : MonoBehaviour
 
     void CamraSwap()
     {
-        if (animalRank[0].CurrentWayPoint==6)
+        if (animalRank[0].CurrentWayPoint == 5)
+        {
+            if (!secondOut)
+            {
+                secondOut = true;
+                StartCoroutine(secondCamera.CameraOut());
+            }
+        }
+
+
+        if (animalRank[0].CurrentWayPoint == 8)
         {
             cameras[0].gameObject.SetActive(false);
             cameras[1].gameObject.SetActive(false);
             mainCamera = cameras[2];
+
+            
         }
 
-        if (animalRank[0].CurrentWayPoint == 10)
+
+        if (animalRank[0].CurrentWayPoint == 18)
         {
             cameras[2].gameObject.SetActive(false);
             mainCamera = cameras[3];
@@ -66,7 +83,7 @@ public class RankManager : MonoBehaviour
         
 
         mainCamera.target = animalRank[0].transform;
-       
+        cameras[1].target = animalRank[0].transform;
 
        
     }

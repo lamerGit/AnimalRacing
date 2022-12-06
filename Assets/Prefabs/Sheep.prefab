@@ -549,6 +549,7 @@ MonoBehaviour:
   aiSpeed: 60
   waypointController: {fileID: 0}
   footParticle: {fileID: 7738182294412134203}
+  animalNumber: 6
 --- !u!1001 &7867265585299209084
 PrefabInstance:
   m_ObjectHideFlags: 0

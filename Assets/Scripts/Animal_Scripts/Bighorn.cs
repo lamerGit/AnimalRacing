@@ -23,19 +23,22 @@ public class Bighorn : AnimalAI
             base.StateAttack = value;
             if (!base.StateAttack)
             {
-                cfx_Explosion.SetActive(true);
-                Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));
-                if (colliders.Length > 0)
+                if (raceStarted)
                 {
-                    for (int i = 0; i < colliders.Length; i++)
+                    cfx_Explosion.SetActive(true);
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));
+                    if (colliders.Length > 0)
                     {
-                        //나를 제외한 동물들을 전부 에어본시키고 감속시킨다.
-                        if (colliders[i].gameObject != transform.gameObject)
+                        for (int i = 0; i < colliders.Length; i++)
                         {
+                            //나를 제외한 동물들을 전부 에어본시키고 감속시킨다.
+                            if (colliders[i].gameObject != transform.gameObject)
+                            {
 
-                            colliders[i].gameObject.GetComponent<IHit>().TakeHit(explosionPower, HitType.airborne);
+                                colliders[i].gameObject.GetComponent<IHit>().TakeHit(explosionPower, HitType.airborne);
+                            }
+
                         }
-
                     }
                 }
             }

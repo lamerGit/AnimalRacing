@@ -38,39 +38,42 @@ public class Sheep : AnimalAI
         base.Start();
         cfx_Panic = transform.Find("CFXR3_Panic").gameObject;
         cfx_Panic.SetActive(false);
-        skillCoolTimeReset = Random.Range(14.0f, 16.0f);
+        skillCoolTimeReset = Random.Range(10.0f, 20.0f);
         skillCoolTime = skillCoolTimeReset;
-        aiSpeed = Random.Range(58.5f, 60.5f);
+        aiSpeed = Random.Range(58.0f, 60.0f);
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        if (!panicCheck)
-        {
-            //패닉달리기 상태가 아닐때는 쿨타임감소
-            skillCoolTime -= Time.fixedDeltaTime;
-        }
-        else
-        {
-            //패닉달리기 상태일때 패닉시간감소
-            panicTime -= Time.fixedDeltaTime;
-            rigid.AddTorque(transform.up * Mathf.Cos(panicTime*4.0f)*avoidSpeed);
-
-        }
-
-        if (panicTime < 0)
-        {
-            //패닉달리기 상태가 끝나면 상태 리셋
-            PanicRunReset();
-        }
-
-        // 쿨타임이 되고 상태이상이 아니며 발동
-        if (skillCoolTime < 0 && !StateAttack)
+        if (raceStarted)
         {
 
-            PanicRun();
+            if (!panicCheck)
+            {
+                //패닉달리기 상태가 아닐때는 쿨타임감소
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                //패닉달리기 상태일때 패닉시간감소
+                panicTime -= Time.fixedDeltaTime;
+                rigid.AddTorque(transform.up * Mathf.Cos(panicTime * 4.0f) * avoidSpeed);
+
+            }
+
+            if (panicTime < 0)
+            {
+                //패닉달리기 상태가 끝나면 상태 리셋
+                PanicRunReset();
+            }
+
+            // 쿨타임이 되고 상태이상이 아니며 발동
+            if (skillCoolTime < 0 && !StateAttack)
+            {
+
+                PanicRun();
+            }
         }
 
 

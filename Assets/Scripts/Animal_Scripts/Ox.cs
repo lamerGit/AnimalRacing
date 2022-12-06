@@ -40,7 +40,7 @@ public class Ox : AnimalAI
         cfx_Tornado = transform.Find("CFX_Tornado").gameObject;
         cfx_Tornado.SetActive(false);
 
-        skillCoolTimeReset = Random.Range(7.0f, 9.0f);
+        skillCoolTimeReset = Random.Range(3.0f, 13.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(58.5f, 60.5f);
         //aiSpeed = 59.0f;
@@ -49,27 +49,30 @@ public class Ox : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (raceStarted)
+        {
+            //미친회전 상태가 아닐때만 쿨타임감수
+            if (!madSpin)
+            {
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                //미친회전 상태일때는 시전시간 감소
+                madSpinTime -= Time.fixedDeltaTime;
+            }
 
-        //미친회전 상태가 아닐때만 쿨타임감수
-        if (!madSpin)
-        {
-            skillCoolTime -= Time.fixedDeltaTime;
-        }else
-        {
-            //미친회전 상태일때는 시전시간 감소
-            madSpinTime -= Time.fixedDeltaTime;
-        }
+            if (madSpinTime < 0)
+            {
+                //시전 시간이 전부 감소하면 상태리셋
+                MadnessSpinReset();
+            }
 
-        if(madSpinTime<0)
-        {
-            //시전 시간이 전부 감소하면 상태리셋
-            MadnessSpinReset();
-        }
-
-        if (skillCoolTime < 0 && !StateAttack)
-        {
-           //상태이상이 아니고 스킬 쿨타임이 0보다 작아지면 발동
-            MadnessSpin();
+            if (skillCoolTime < 0 && !StateAttack)
+            {
+                //상태이상이 아니고 스킬 쿨타임이 0보다 작아지면 발동
+                MadnessSpin();
+            }
         }
     }
 

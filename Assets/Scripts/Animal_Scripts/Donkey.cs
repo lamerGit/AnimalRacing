@@ -22,19 +22,21 @@ public class Donkey : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        if (!noiseCheck)
+        if (raceStarted)
         {
-            //시끄러운 소리가 시전중이지 아닐때 쿨타임 감소
-            skillCoolTime -= Time.fixedDeltaTime;
-        }
-        
+            if (!noiseCheck)
+            {
+                //시끄러운 소리가 시전중이지 아닐때 쿨타임 감소
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
 
 
-        if (skillCoolTime < 0 && !StateAttack)
-        {
-            //쿨타임이 0보다작고 상태이상이 아닐때 발동
-            Noise();
+
+            if (skillCoolTime < 0 && !StateAttack)
+            {
+                //쿨타임이 0보다작고 상태이상이 아닐때 발동
+                Noise();
+            }
         }
     }
     protected override void Start()
@@ -46,7 +48,7 @@ public class Donkey : AnimalAI
 
 
         //aiSpeed = 61.0f;
-        skillCoolTimeReset = Random.Range(15.0f, 17.0f);
+        skillCoolTimeReset = Random.Range(11.0f, 21.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(59.0f, 61.0f);
     }

@@ -42,7 +42,7 @@ public class ArcticFox : AnimalAI
         cfx_Ground_Hit = transform.Find("CFX_Ground_Hit").gameObject;
         cfx_Ground_Hit.SetActive(false);
         //aiSpeed = 59.5f;
-        skillCoolTimeReset = Random.Range(9.0f, 11.0f);
+        skillCoolTimeReset = Random.Range(7.0f, 15.0f);
         skillCoolTime=skillCoolTimeReset;
 
         aiSpeed = Random.Range(57.5f, 58.5f);
@@ -51,24 +51,26 @@ public class ArcticFox : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        //점프상태가 아닐때만 쿨타임 감소
-        if (!rolling)
+        if (raceStarted)
         {
-            skillCoolTime -= Time.fixedDeltaTime;
-        }
+            //점프상태가 아닐때만 쿨타임 감소
+            if (!rolling)
+            {
+                skillCoolTime -= Time.fixedDeltaTime;
+            }
 
-        //쿨타임시간이 0보다 작아지고 상태이상 상태가 아니라면 점프 발동
-        if(skillCoolTime<0 && !StateAttack)
-        {
-            skillCoolTime = skillCoolTimeReset;
-            RollingJump();
-        }
+            //쿨타임시간이 0보다 작아지고 상태이상 상태가 아니라면 점프 발동
+            if (skillCoolTime < 0 && !StateAttack)
+            {
+                skillCoolTime = skillCoolTimeReset;
+                RollingJump();
+            }
 
-        //상태이상시 공중에서 빠르게 내려오게하기 위한 조치
-        if(StateAttack && transform.position.y>0.15f)
-        {
-            rigid.AddForce(-transform.up*jumpPower);
+            //상태이상시 공중에서 빠르게 내려오게하기 위한 조치
+            if (StateAttack && transform.position.y > 0.15f)
+            {
+                rigid.AddForce(-transform.up * jumpPower);
+            }
         }
 
     }
