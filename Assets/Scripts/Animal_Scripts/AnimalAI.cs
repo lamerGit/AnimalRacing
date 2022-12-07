@@ -108,6 +108,12 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     protected virtual void FixedUpdate()
     {
+        //테스트용 임시코드 (나중에꼭삭제)ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        
+        animator.SetBool("RacingStart", raceStarted);
+        
+        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
         //aiSpeed = Random.Range(resetAISpeed, maxSpeed); // 스피드는 계속 최소~최대사이로 갱신됨
         if (raceStarted)
         {

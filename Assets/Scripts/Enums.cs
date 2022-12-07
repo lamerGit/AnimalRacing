@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,4 +8,10 @@ public enum HitType
     Spin,
     airborne,
     silence
+}
+
+public enum StageEnum
+{
+    Lobby=0,
+    Race
 }

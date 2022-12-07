@@ -7,7 +7,7 @@ public class RankManager : MonoBehaviour
 {
     //현재 동물들의 순위확인용 스크립트
 
-    AnimalAI[] animalRank; // 동물들의 정보를 저장할 변수
+    AnimalAI[] animals; // 동물들의 정보를 저장할 변수
 
     public FollowCamera[] cameras;
 
@@ -17,9 +17,20 @@ public class RankManager : MonoBehaviour
 
     SecondCameraOut secondCamera;
     bool secondOut = false;
+
+    /// <summary>
+    /// 다른곳에서 동물변수를 사용할수있게 해주는 프로퍼티
+    /// </summary>
+    public AnimalAI[] Animals
+    {
+        get { return animals; }
+        set { animals = value; }
+    }
+
+
     private void Start()
     {
-        animalRank=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
+        animals=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
         secondCamera=FindObjectOfType<SecondCameraOut>();
 
         mainCamera = cameras[0];
@@ -32,7 +43,7 @@ public class RankManager : MonoBehaviour
 
     void CamraSwap()
     {
-        if (animalRank[0].CurrentWayPoint == 5)
+        if (animals[0].CurrentWayPoint == 5)
         {
             if (!secondOut)
             {
@@ -42,7 +53,7 @@ public class RankManager : MonoBehaviour
         }
 
 
-        if (animalRank[0].CurrentWayPoint == 8)
+        if (animals[0].CurrentWayPoint == 8)
         {
             cameras[0].gameObject.SetActive(false);
             cameras[1].gameObject.SetActive(false);
@@ -52,19 +63,19 @@ public class RankManager : MonoBehaviour
         }
 
 
-        if (animalRank[0].CurrentWayPoint == 18)
+        if (animals[0].CurrentWayPoint == 18)
         {
             cameras[2].gameObject.SetActive(false);
             mainCamera = cameras[3];
         }
 
-        if (animalRank[0].CurrentWayPoint == 28)
+        if (animals[0].CurrentWayPoint == 28)
         {
             cameras[3].gameObject.SetActive(false);
             mainCamera = cameras[4];
         }
 
-        if (animalRank[0].CurrentWayPoint == count)
+        if (animals[0].CurrentWayPoint == count)
         {
             mainCamera.offset.z += 1;
             if (count < 59)
@@ -75,21 +86,21 @@ public class RankManager : MonoBehaviour
 
 
 
-        if (animalRank[0].CurrentWayPoint == 59)
+        if (animals[0].CurrentWayPoint == 59)
         {
             mainCamera.lookAtMode=true;
         }
 
         
 
-        mainCamera.target = animalRank[0].transform;
-        cameras[1].target = animalRank[0].transform;
+        mainCamera.target = animals[0].transform;
+        cameras[1].target = animals[0].transform;
 
        
     }
     private void FixedUpdate()
     {
-        MergeSort(animalRank, 0, animalRank.Length - 1);
+        MergeSort(animals, 0, animals.Length - 1);
         CamraSwap();
         
     }
@@ -98,7 +109,7 @@ public class RankManager : MonoBehaviour
     {
         while (true)
         {
-            MergeSort(animalRank, 0, animalRank.Length - 1);
+            MergeSort(animals, 0, animals.Length - 1);
             CamraSwap();
             yield return new WaitForSeconds(0.1f);
             
