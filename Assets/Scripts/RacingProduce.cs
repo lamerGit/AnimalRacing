@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RacingProduce : MonoBehaviour
 {
-   
+   //생성버튼 스크립트
 
      
     ProduceSpliterUI produceSpliterUI;

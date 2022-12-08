@@ -7,12 +7,16 @@ using System.IO;
 
 public class ProduceSpliterUI : MonoBehaviour
 {
+    //생성버튼을 눌렀을때 열리는 스플리터창
+
     TMP_InputField inputField;
     int animalCount = 6;
-    //Transform[] startPosition;
-    //RankManager rankManager;
+    
 
     RectTransform rect;
+    /// <summary>
+    /// 동물의 수를 6~10마리로 제한하기위한 프로퍼티
+    /// </summary>
     int AnimalCount
     {
         get { return animalCount; }
@@ -24,19 +28,17 @@ public class ProduceSpliterUI : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
         inputField = GetComponentInChildren<TMP_InputField>();
-        //rankManager = FindObjectOfType<RankManager>();
-        //startPosition = GameObject.FindWithTag("StartPoint").GetComponentsInChildren<Transform>();
-        Button increase = transform.Find("IncreaseButton").GetComponent<Button>();
+        Button increase = transform.Find("IncreaseButton").GetComponent<Button>(); //왼쪽버튼
         increase.onClick.AddListener(OnIncrease);
 
-        Button decrease = transform.Find("DecreaseButton").GetComponent<Button>();
+        Button decrease = transform.Find("DecreaseButton").GetComponent<Button>(); // 오른쪽버튼
         decrease.onClick.AddListener(OnDecrease);
 
 
-        Button ok = transform.Find("OK_Button").GetComponent<Button>();
+        Button ok = transform.Find("OK_Button").GetComponent<Button>(); // ok버튼
         ok.onClick.AddListener(AnimalProduce);
 
-        Button cancel = transform.Find("Cancel_Button").GetComponent<Button>();
+        Button cancel = transform.Find("Cancel_Button").GetComponent<Button>(); // x버튼
         cancel.onClick.AddListener(Close);
     }
 
@@ -48,7 +50,9 @@ public class ProduceSpliterUI : MonoBehaviour
  
     }
    
-
+    /// <summary>
+    /// 오브젝트를 키면서 위치를 변경하고 인풋필드 갱신
+    /// </summary>
     public void Open()
     {
         gameObject.SetActive(true);
@@ -56,11 +60,17 @@ public class ProduceSpliterUI : MonoBehaviour
         inputField.text = AnimalCount.ToString();
     }
 
+    /// <summary>
+    /// AnimalCount증가 및 인풋필드갱신
+    /// </summary>
     void OnIncrease()
     {
         AnimalCount++;
         inputField.text = AnimalCount.ToString();
     }
+    /// <summary>
+    /// AnimalCount감소 및 인풋필드갱신
+    /// </summary>
     void OnDecrease()
     {
         AnimalCount--;
@@ -73,6 +83,11 @@ public class ProduceSpliterUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// ok를 했을때 GameManger에 AnimalNumbers를 피셔에이츠알고리즘으로 섞고
+    /// 레이스생성여부 true
+    /// 레이스에 사용될 동물의 수를 갱싱하는 함수
+    /// </summary>
     void AnimalProduce()
     {
 
@@ -83,22 +98,13 @@ public class ProduceSpliterUI : MonoBehaviour
             (GameManager.Instance.AnimalNumbers[randIndex], GameManager.Instance.AnimalNumbers[i]) = (GameManager.Instance.AnimalNumbers[i], GameManager.Instance.AnimalNumbers[randIndex]);
 
         }
+
         GameManager.Instance.ProduceCheck = true;
         GameManager.Instance.AnimalCount = AnimalCount;
 
         gameObject.SetActive(false);
 
-        //for (int i = 0; i < rankManager.Animals.Length; i++)
-        //{
-        //    rankManager.Animals[i].gameObject.SetActive(false);
-        //}
-
-        //for (int i = 0; i < AnimalCount; i++)
-        //{
-        //    rankManager.Animals[animalNumber[i]].gameObject.SetActive(true);
-        //    rankManager.Animals[animalNumber[i]].transform.position = startPosition[i + 1].position;
-        //}
-
+        
 
     }
 }

@@ -49,7 +49,7 @@ public class Ox : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (raceStarted)
+        if (RaceStarted)
         {
             //미친회전 상태가 아닐때만 쿨타임감수
             if (!madSpin)

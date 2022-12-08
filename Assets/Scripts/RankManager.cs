@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class RankManager : MonoBehaviour
 {
-    //현재 동물들의 순위확인용 스크립트
+    //현재 동물들의 순위확인및 배치
+    //RaceManger로 변경해야할듯
 
     AnimalAI[] animals; // 동물들의 정보를 저장할 변수
 
@@ -18,6 +19,12 @@ public class RankManager : MonoBehaviour
     SecondCameraOut secondCamera;
     bool secondOut = false;
 
+    Transform[] startPosition;
+
+    Door gateDoor;
+
+    GameObject animalGroup;
+
     /// <summary>
     /// 다른곳에서 동물변수를 사용할수있게 해주는 프로퍼티
     /// </summary>
@@ -27,20 +34,73 @@ public class RankManager : MonoBehaviour
         set { animals = value; }
     }
 
+    private void Awake()
+    {
+        animalGroup = GameObject.FindGameObjectWithTag("AnimalGroup");//부모오브젝트를 찾고
+        animals = animalGroup.GetComponentsInChildren<AnimalAI>(); // 부모오브젝트에 GetComponents를 해야 순서대로 가져온다
+
+        secondCamera = FindObjectOfType<SecondCameraOut>();
+        startPosition = GameObject.FindWithTag("StartPoint").GetComponentsInChildren<Transform>();
+        gateDoor=FindObjectOfType<Door>();
+    }
 
     private void Start()
     {
-        animals=FindObjectsOfType<AnimalAI>(); // AnimalAI타입을 전부 찾는다.
-        secondCamera=FindObjectOfType<SecondCameraOut>();
+        
 
         mainCamera = cameras[0];
         CamraSwap();
         //StartCoroutine(sortTime());
+        Initialize();
         
     }
 
-    
+    /// <summary>
+    /// 초기화 함수 모든 동물을 비활성화하고 GameManager의 데이터에 따라 동물을 활성화하고 레이스를 시작한다.  
+    /// </summary>
+    void Initialize()
+    {
+        for (int i = 0; i < Animals.Length; i++)
+        {
+            Animals[i].gameObject.SetActive(false);
+        }
 
+        if (GameManager.Instance != null)
+        {
+            
+            //GameManger의 데이터에 따라 동물들 배치
+            for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
+            {
+                int index = GameManager.Instance.AnimalNumbers[i];
+                Animals[index].gameObject.SetActive(true);
+                Animals[index].transform.position = startPosition[i + 1].position;
+            }
+            StartCoroutine(raceStart());
+        }else
+        {
+            Debug.Log("GameManger가 없습니다. 로비씬부터 시작하세요");
+        }
+    }
+
+    /// <summary>
+    /// 레이스 활성 코룬틴
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator raceStart()
+    {
+        yield return new WaitForSeconds(3.0f);
+        gateDoor.DoorOpen();
+        for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
+        {
+            int index = GameManager.Instance.AnimalNumbers[i];
+            Animals[index].RaceStarted = true;
+        }
+    }
+
+
+    /// <summary>
+    /// 1등 동물에 따라 카메라를 변경하는 스크립트
+    /// </summary>
     void CamraSwap()
     {
         if (animals[0].CurrentWayPoint == 5)
@@ -105,16 +165,6 @@ public class RankManager : MonoBehaviour
         
     }
 
-    IEnumerator sortTime()
-    {
-        while (true)
-        {
-            MergeSort(animals, 0, animals.Length - 1);
-            CamraSwap();
-            yield return new WaitForSeconds(0.1f);
-            
-        }
-    }
 
     /// <summary>
     /// 병합정렬 구현

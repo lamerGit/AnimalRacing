@@ -45,7 +45,7 @@ public class Zebra : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (raceStarted)
+        if (RaceStarted)
         {
             if (!runCheck)
             {

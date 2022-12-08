@@ -51,7 +51,7 @@ public class ArcticFox : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (raceStarted)
+        if (RaceStarted)
         {
             //점프상태가 아닐때만 쿨타임 감소
             if (!rolling)

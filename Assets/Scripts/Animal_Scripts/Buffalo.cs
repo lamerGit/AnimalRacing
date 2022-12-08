@@ -55,7 +55,7 @@ public class Buffalo : AnimalAI
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (raceStarted)
+        if (RaceStarted)
         {
             if (!angerRunCheck) //분노질주 상태가 아니라면 쿨타임감소
             {

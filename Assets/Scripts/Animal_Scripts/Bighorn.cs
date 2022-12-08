@@ -23,7 +23,7 @@ public class Bighorn : AnimalAI
             base.StateAttack = value;
             if (!base.StateAttack)
             {
-                if (raceStarted)
+                if (RaceStarted)
                 {
                     cfx_Explosion.SetActive(true);
                     Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));

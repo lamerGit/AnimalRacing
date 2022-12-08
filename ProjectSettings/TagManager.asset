@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - FxTemporaire
   - StartPoint
+  - AnimalGroup
   layers:
   - Default
   - TransparentFX

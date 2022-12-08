@@ -13,15 +13,16 @@ public class FollowCamera : MonoBehaviour
     public Vector3 offset; // 대상과의 거리
     public float cameraSpeed = 3.0f;
 
-    public bool lookAtMode = false; 
+    public bool lookAtMode = false; //처다보기 모드를 할것인지 확인하는 변수
     
-    public bool finish=false;
+    public bool finish=false; // 경기가 끝났는지 확인하는 변수
 
     private void FixedUpdate()
     {
+        //경기가 끝나지 않았으면
         if (!finish)
         {
-
+            //lookAtMode가 false이면 따라다닌다.
             if (target != null && !lookAtMode)
             {
                 //transform.position = target.position + offset;
@@ -29,6 +30,7 @@ public class FollowCamera : MonoBehaviour
 
             }
 
+            //lookAtMode가 true이면 서서히처다본다.
             if (target != null && lookAtMode)
             {
                 Vector3 lookDir = target.position - transform.position;

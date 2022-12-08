@@ -14,7 +14,7 @@ public class SecondCameraOut : MonoBehaviour
 
     public IEnumerator CameraOut()
     {
-        while(true)
+        while(rect.anchoredPosition.y<1200.0f)
         {
 
             rect.anchoredPosition += Vector2.up*2.0f;

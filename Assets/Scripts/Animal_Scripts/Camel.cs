@@ -24,7 +24,7 @@ public class Camel : AnimalAI
             base.StateAttack = value;
             if (!base.StateAttack)
             {
-                if (raceStarted)
+                if (RaceStarted)
                 {
                     aiSpeed += furyRunSpeed;
                     furyRunCheck = true;
@@ -60,7 +60,7 @@ public class Camel : AnimalAI
     {
         base.FixedUpdate();
 
-        if (raceStarted)
+        if (RaceStarted)
         {
             if (furyRunCheck) //격노질주 상태이면 격노질주 시간감소
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimalAI : MonoBehaviour ,IHit
 {
-    public bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
+    bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
     public float aiSpeed = 60.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
     float resetAISpeed = 60.0f; 
@@ -58,11 +58,30 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     public int animalNumber = 0;
 
+    /// <summary>
+    /// 레이스를 시작했는지 확인하는 프로퍼티 상태에따라 Run애니메이션으로 변경됨
+    /// </summary>
+    public bool RaceStarted
+    {
+        get { return raceStarted; }
+        set
+        {
+            raceStarted = value;
+            animator.SetBool("RacingStart", raceStarted);
+        }
+    }
+
+    /// <summary>
+    /// 다음지점까지 남은 거리를 보여주는 프로퍼티
+    /// </summary>
     public float CurrentWaypointDistance
     {
         get { return currentWaypointDistance; }
         private set { currentWaypointDistance = value; }
     }
+    /// <summary>
+    /// 다음지점 포인트값을 보여주는 프로퍼티
+    /// </summary>
     public int CurrentWayPoint
     {
         get { return currentWaypoint; }
@@ -92,8 +111,8 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     protected virtual void Start()
     {
-        dustTail = transform.Find("DustTail").gameObject;
-        stateEffect = transform.Find("CFX_BadEffect").gameObject;
+        dustTail = transform.Find("DustTail").gameObject; // 먼지파티클 찾기
+        stateEffect = transform.Find("CFX_BadEffect").gameObject; // 상태이상 침묵 파티클 찾기
         stateEffect.SetActive(false);
 
         lastEmit = transform.position; // 발바닥 파티클의 첫위치
@@ -108,13 +127,9 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     protected virtual void FixedUpdate()
     {
-        //테스트용 임시코드 (나중에꼭삭제)ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         
-        animator.SetBool("RacingStart", raceStarted);
-        
-        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-        //aiSpeed = Random.Range(resetAISpeed, maxSpeed); // 스피드는 계속 최소~최대사이로 갱신됨
+        
         if (raceStarted)
         {
             //레이스 시작시 사용되는 함수들

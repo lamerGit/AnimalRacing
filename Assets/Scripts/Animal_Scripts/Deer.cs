@@ -55,7 +55,7 @@ public class Deer : AnimalAI
     {
         base.FixedUpdate();
 
-        if (raceStarted)
+        if (RaceStarted)
         {
 
             if (!attackCheck)

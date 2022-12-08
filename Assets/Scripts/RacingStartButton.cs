@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class RacingStartButton : MonoBehaviour
 {
-    
+    //레이스시작버튼 스크립트
 
     WaringMassege waring;
     private void Awake()
@@ -24,16 +24,14 @@ public class RacingStartButton : MonoBehaviour
     {
         if (GameManager.Instance.ProduceCheck)
         {
-            //Debug.Log($"{GameManager.Instance.ProduceCheck}");
-            //for(int i = 0; i < GameManager.Instance.AnimalCount; i++)
-            //{
-            //    Debug.Log($"{GameManager.Instance.AnimalNumbers[i]}");
-            //}
+            //레이스가 생성되있으면 Race씬으로 넘어간다.
             SceneManager.LoadScene((int)StageEnum.Race);
         }
         else
         {
+            //레이스 생성이 안되있으면 waring창을 띄운다
             waring.gameObject.SetActive(true);
+            waring.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
 
     }
