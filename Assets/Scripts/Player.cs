@@ -1,18 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    int money=0;
+
+    public int Money
     {
-        
+        get { return money; }
+        set { money = value;
+            onChangeMoney?.Invoke();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    public System.Action onChangeMoney { get; set; }
 }

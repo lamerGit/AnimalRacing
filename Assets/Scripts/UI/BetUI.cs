@@ -7,16 +7,27 @@ public class BetUI : MonoBehaviour
 {
     BuyUI buyUI;
     RectTransform rect;
+
+    TicketInfo ticketInfo;
+
+    WaringMassege waringMassege;
+    string error = "더이상 티켓을 구매할수 없습니다.\n";
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         buyUI = GetComponentInChildren<BuyUI>();
+        ticketInfo = GetComponentInChildren<TicketInfo>();
+
+        waringMassege=FindObjectOfType<WaringMassege>();
 
         Button cancel = transform.Find("Cancel_Button").GetComponent<Button>();
         cancel.onClick.AddListener(Close);
 
         Button buyButton = transform.Find("Buy").GetComponent<Button>();
         buyButton.onClick.AddListener(BuyOpen);
+
+        Button confirmButton = transform.Find("Confirm").GetComponent<Button>();
+        confirmButton.onClick.AddListener(TicketInfoOpen);
 
     }
     private void Start()
@@ -37,6 +48,18 @@ public class BetUI : MonoBehaviour
 
     void BuyOpen()
     {
-        buyUI.Open();
+        if (GameManager.Instance.TicketCount < GameManager.MAXTICKETCOUNT)
+        {
+            buyUI.Open();
+        }else
+        {
+            waringMassege.Open();
+            waringMassege.TextChange(error);
+        }
+    }
+
+    void TicketInfoOpen()
+    {
+        ticketInfo.Open();
     }
 }

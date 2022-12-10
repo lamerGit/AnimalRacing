@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyUI : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class BuyUI : MonoBehaviour
         "동물을 선택해주세요";
     string error03 = "존재하지 않는 동물을 선택하였습니다.\n";
     string error04 = "같은 동물은 선택할수 없습니다.\n";
+    string error05 = "돈이 부족합니다\n";
 
     GameObject animalSelect;
 
@@ -28,6 +30,14 @@ public class BuyUI : MonoBehaviour
     int firstAnimal = 0;
     int secondAnimal = 0;
     int thirdAnimal = 0;
+
+    GameObject playerMoney;
+    TextMeshProUGUI moneyUI;
+
+    GameObject playerInputMoney;
+    TMP_InputField inputMoney;
+
+    TicketType ticketType=TicketType.None;
     private void Awake()
     {
         Button cancel = transform.Find("Cancel_Button").GetComponent<Button>();
@@ -35,6 +45,10 @@ public class BuyUI : MonoBehaviour
         waringMassege = FindObjectOfType<WaringMassege>();
         Seungsig();
         AnimalSelectNumbers();
+        playerMoney = transform.Find("PlayerMoney").gameObject;
+        moneyUI = playerMoney.transform.Find("BackGround").transform.GetComponentInChildren<TextMeshProUGUI>();
+        playerInputMoney = transform.Find("PlayerInputMoney").gameObject;
+        inputMoney = playerInputMoney.GetComponentInChildren<TMP_InputField>();
 
         ok.onClick.AddListener(OkButton);
         cancel.onClick.AddListener(Close);
@@ -91,7 +105,17 @@ public class BuyUI : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.GamePlayer.onChangeMoney += ChangeMoney;
+        if (GameManager.Instance.GamePlayer != null)
+        {
+            moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money);
+        }
         gameObject.SetActive(false);
+    }
+
+    void ChangeMoney()
+    {
+        moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money);
     }
 
     /// <summary>
@@ -120,94 +144,129 @@ public class BuyUI : MonoBehaviour
 
     void OkButton()
     {
-        if (seungsigCheck[0])
+        int valueMoney = int.Parse(inputMoney.text);
+
+        if (valueMoney == 0 || GameManager.Instance.GamePlayer.Money < valueMoney)
         {
             waringMassege.Open();
-            waringMassege.TextChange(error01);
+            waringMassege.TextChange(error05);
         }
         else
         {
-            if (seungsigCheck[1] || seungsigCheck[2])
-            {
-                if (firstAnimal == 0)
-                {
-                    waringMassege.Open();
-                    waringMassege.TextChange(error02);
-                }else
-                {
-                    if (firstAnimal > GameManager.Instance.AnimalCount)
-                    {
-                        waringMassege.Open();
-                        waringMassege.TextChange(error03);
-                    }
-                    else
-                    {
 
-                        Closeinitialize();
-                        gameObject.SetActive(false);
-                    }
-                }
+            if (seungsigCheck[0])
+            {
+                waringMassege.Open();
+                waringMassege.TextChange(error01);
             }
-            else if (seungsigCheck[2] || seungsigCheck[3] || seungsigCheck[4])
+            else
             {
-                if (firstAnimal == 0 || secondAnimal == 0)
+                if (seungsigCheck[1] || seungsigCheck[2])
                 {
-                    waringMassege.Open();
-                    waringMassege.TextChange(error02);
-                }
-                else
-                {
-                    if (firstAnimal > GameManager.Instance.AnimalCount || secondAnimal>GameManager.Instance.AnimalCount)
+                    if (firstAnimal == 0)
                     {
                         waringMassege.Open();
-                        waringMassege.TextChange(error03);
+                        waringMassege.TextChange(error02);
                     }
                     else
                     {
-                        if (firstAnimal == secondAnimal)
+                        if (firstAnimal > GameManager.Instance.AnimalCount)
                         {
                             waringMassege.Open();
-                            waringMassege.TextChange(error04);
+                            waringMassege.TextChange(error03);
                         }
                         else
                         {
-
+                            TicketBuy(GameManager.Instance.TicketCount, ticketType, valueMoney, firstAnimal);
+                            GameManager.Instance.TicketCount++;
                             Closeinitialize();
+                            GameManager.Instance.GamePlayer.Money -= valueMoney;
+                            
+
                             gameObject.SetActive(false);
                         }
                     }
                 }
-            }else
-            {
-                if (firstAnimal == 0 || secondAnimal == 0 || thirdAnimal==0)
+                else if (seungsigCheck[2] || seungsigCheck[3] || seungsigCheck[4])
                 {
-                    waringMassege.Open();
-                    waringMassege.TextChange(error02);
-                }
-                else
-                {
-                    if (firstAnimal > GameManager.Instance.AnimalCount || secondAnimal>GameManager.Instance.AnimalCount || thirdAnimal>GameManager.Instance.AnimalCount)
+                    if (firstAnimal == 0 || secondAnimal == 0)
                     {
                         waringMassege.Open();
-                        waringMassege.TextChange(error03);
+                        waringMassege.TextChange(error02);
                     }
                     else
                     {
-                        if (firstAnimal == secondAnimal || secondAnimal==thirdAnimal || firstAnimal==thirdAnimal)
+                        if (firstAnimal > GameManager.Instance.AnimalCount || secondAnimal > GameManager.Instance.AnimalCount)
                         {
                             waringMassege.Open();
-                            waringMassege.TextChange(error04);
+                            waringMassege.TextChange(error03);
                         }
                         else
                         {
+                            if (firstAnimal == secondAnimal)
+                            {
+                                waringMassege.Open();
+                                waringMassege.TextChange(error04);
+                            }
+                            else
+                            {
+                                TicketBuy(GameManager.Instance.TicketCount, ticketType, valueMoney, firstAnimal, secondAnimal);
+                                Closeinitialize();
+                                GameManager.Instance.GamePlayer.Money -= valueMoney;
 
-                            Closeinitialize();
-                            gameObject.SetActive(false);
+                                
+                                GameManager.Instance.TicketCount++;
+
+                                gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (firstAnimal == 0 || secondAnimal == 0 || thirdAnimal == 0)
+                    {
+                        waringMassege.Open();
+                        waringMassege.TextChange(error02);
+                    }
+                    else
+                    {
+                        if (firstAnimal > GameManager.Instance.AnimalCount || secondAnimal > GameManager.Instance.AnimalCount || thirdAnimal > GameManager.Instance.AnimalCount)
+                        {
+                            waringMassege.Open();
+                            waringMassege.TextChange(error03);
+                        }
+                        else
+                        {
+                            if (firstAnimal == secondAnimal || secondAnimal == thirdAnimal || firstAnimal == thirdAnimal)
+                            {
+                                waringMassege.Open();
+                                waringMassege.TextChange(error04);
+                            }
+                            else
+                            {
+                                TicketBuy(GameManager.Instance.TicketCount, ticketType, valueMoney, firstAnimal, secondAnimal, thirdAnimal);
+                                Closeinitialize();
+                                GameManager.Instance.GamePlayer.Money -= valueMoney;
+
+                                
+                                GameManager.Instance.TicketCount++;
+                                gameObject.SetActive(false);
+                            }
                         }
                     }
                 }
             }
         }
+    }
+
+    private void TicketBuy(int idx, TicketType ticketType, int vM, int fA,int sA=0,int tA=0)
+    {
+        GameManager.Instance.TicketDatas[idx].ticketType = ticketType;
+        GameManager.Instance.TicketDatas[idx].first = fA;
+        GameManager.Instance.TicketDatas[idx].second = sA;
+        GameManager.Instance.TicketDatas[idx].third = tA;
+        GameManager.Instance.TicketDatas[idx].moneyAmount = vM;
     }
 
     void Close()
@@ -250,6 +309,8 @@ public class BuyUI : MonoBehaviour
             thirdButton[i].interactable = true;
         }
         thirdAnimal = 0;
+        ticketType = TicketType.None;
+        inputMoney.text = "0";
     }
 
     //승식버튼함수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -263,6 +324,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Danseung;
         seungsigCheck[(int)TicketType.Danseung] = true;
         seungsigButton[(int)TicketType.Danseung-1].interactable = false;
 
@@ -277,6 +339,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Yeonseung;
         seungsigCheck[(int)TicketType.Yeonseung] = true;
         seungsigButton[(int)TicketType.Yeonseung - 1].interactable = false;
 
@@ -291,6 +354,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Bogseung;
         seungsigCheck[(int)TicketType.Bogseung] = true;
         seungsigButton[(int)TicketType.Bogseung - 1].interactable = false;
 
@@ -305,6 +369,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Ssangseung;
         seungsigCheck[(int)TicketType.Ssangseung] = true;
         seungsigButton[(int)TicketType.Ssangseung - 1].interactable = false;
 
@@ -319,6 +384,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Bogyeonseung;
         seungsigCheck[(int)TicketType.Bogyeonseung] = true;
         seungsigButton[(int)TicketType.Bogyeonseung - 1].interactable = false;
 
@@ -333,6 +399,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Sambogseung;
         seungsigCheck[(int)TicketType.Sambogseung] = true;
         seungsigButton[(int)TicketType.Sambogseung - 1].interactable = false;
 
@@ -347,6 +414,7 @@ public class BuyUI : MonoBehaviour
         {
             seungsigCheck[i] = false;
         }
+        ticketType = TicketType.Samssangseung;
         seungsigCheck[(int)TicketType.Samssangseung] = true;
         seungsigButton[(int)TicketType.Samssangseung - 1].interactable = false;
 

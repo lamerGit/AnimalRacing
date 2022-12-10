@@ -8,7 +8,7 @@ public class AnimalInfo : MonoBehaviour
 {
     //정보창을 눌렀을때 레이스가 생성되있으면 나타는 창
 
-    public AnimalData[] animalDatas; // 동물들의 스크립트오브젝트를 받는다.
+   // public AnimalData[] animalDatas; // 동물들의 스크립트오브젝트를 받는다.
 
     Info[] infos; // 동물의 번호 이름 스킬이름 배당률을 보여주는 오브젝트
     RectTransform rect; 
@@ -47,9 +47,9 @@ public class AnimalInfo : MonoBehaviour
         {
             infos[i].gameObject.SetActive(true);
             int number = i+1;
-            string an = animalDatas[GameManager.Instance.AnimalNumbers[i]].name;
-            string sp = animalDatas[GameManager.Instance.AnimalNumbers[i]].special;
-            float al = animalDatas[GameManager.Instance.AnimalNumbers[i]].allocation;
+            string an = GameManager.Instance.animalDatas[GameManager.Instance.AnimalNumbers[i]].name;
+            string sp = GameManager.Instance.animalDatas[GameManager.Instance.AnimalNumbers[i]].special;
+            float al = GameManager.Instance.animalDatas[GameManager.Instance.AnimalNumbers[i]].allocation;
 
             infos[i].InfoChange(number, an, sp, al);
         }
