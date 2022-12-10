@@ -21,3 +21,15 @@ public enum StageEnum
     Lobby=0,
     Race
 }
+
+public enum TicketType
+{
+    None=0,
+    Danseung,
+    Yeonseung,
+    Bogseung,
+    Ssangseung,
+    Bogyeonseung,
+    Sambogseung,
+    Samssangseung
+}
