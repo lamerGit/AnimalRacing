@@ -187,7 +187,7 @@ public class BuyUI : MonoBehaviour
                         }
                     }
                 }
-                else if (seungsigCheck[2] || seungsigCheck[3] || seungsigCheck[4])
+                else if (seungsigCheck[3] || seungsigCheck[4] || seungsigCheck[5])
                 {
                     if (firstAnimal == 0 || secondAnimal == 0)
                     {

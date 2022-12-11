@@ -14,7 +14,7 @@ public class TicketInfo : MonoBehaviour
     {
         
         infoParent = transform.Find("Tickets").gameObject; //부모오브젝트를 먼저 찾고
-        tickets = GetComponentsInChildren<InfoTicket>();
+        tickets = infoParent.GetComponentsInChildren<InfoTicket>();
 
         Button cancel = transform.Find("Cancel_Button").GetComponent<Button>(); // 닫기버튼 찾기
         cancel.onClick.AddListener(Close); // 닫기버튼에 Close함수 할당

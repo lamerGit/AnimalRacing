@@ -56,7 +56,14 @@ public class AnimalAI : MonoBehaviour ,IHit
     bool stateAttack = false; // 상태이상 체크
     GameObject stateEffect; // 상태이상 이펙트
 
-    public int animalNumber = 0;
+    int animalNumber = -1; // 레이스할때 동물의 번호가 몇인지 확인하는 변수
+
+    public int AnimalNumber
+    {
+        get { return animalNumber; }
+        set { animalNumber = value; }
+
+    }
 
     /// <summary>
     /// 레이스를 시작했는지 확인하는 프로퍼티 상태에따라 Run애니메이션으로 변경됨

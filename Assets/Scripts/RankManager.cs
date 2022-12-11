@@ -68,13 +68,17 @@ public class RankManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             
-            //GameManger의 데이터에 따라 동물들 배치
+            //GameManger의 데이터에 따라 동물들 배치, 번호할당
             for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
             {
                 int index = GameManager.Instance.AnimalNumbers[i];
                 Animals[index].gameObject.SetActive(true);
+                Animals[index].AnimalNumber = i+1;
                 Animals[index].transform.position = startPosition[i + 1].position;
             }
+            GameManager.Instance.AnimalRanking = new int[GameManager.Instance.AnimalCount];
+
+
             StartCoroutine(raceStart());
         }else
         {
@@ -138,6 +142,8 @@ public class RankManager : MonoBehaviour
         if (animals[0].CurrentWayPoint == count)
         {
             mainCamera.offset.z += 1;
+            mainCamera.offset.x += 1;
+            mainCamera.offset.y += 1;
             if (count < 59)
             {
                 count++;

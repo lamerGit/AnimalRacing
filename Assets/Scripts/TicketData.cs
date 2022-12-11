@@ -9,6 +9,15 @@ public class TicketData
     public int first;
     public int second;
     public int third;
+    public TicketState ticketState;
 
-    
+    public TicketData()
+    {
+        this.ticketType = TicketType.None;
+        this.moneyAmount = 0;
+        this.first = 0;
+        this.second = 0;
+        this.third = 0;
+        this.ticketState = TicketState.None;
+    }
 }

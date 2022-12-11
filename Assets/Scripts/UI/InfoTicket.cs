@@ -62,6 +62,7 @@ public class InfoTicket : MonoBehaviour
 
         number.text=numbers;
 
-        value.text = money.ToString();
+        value.text = string.Format("{0:#,0}", money);
+
     }
 }

@@ -33,3 +33,11 @@ public enum TicketType
     Sambogseung,
     Samssangseung
 }
+
+public enum TicketState
+{
+    None,
+    failure,
+    success
+
+}

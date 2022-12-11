@@ -18,9 +18,16 @@ public class GameManager : Singleton<GameManager>
 
     int ticketCount = 0;
     TicketData[] ticketDatas=new TicketData[10];
-    bool[] ticketSuccess=new bool[10] {false, false, false, false, false, false, false, false, false, false };
 
     public static int MAXTICKETCOUNT = 10;
+
+    int[] animalRanking; //동물들이 도착한 순서를 기록해줄 변수
+
+    public int[] AnimalRanking
+    {
+        get { return animalRanking; }
+        set { animalRanking = value; }
+    }
 
     public int TicketCount
     {
@@ -34,13 +41,6 @@ public class GameManager : Singleton<GameManager>
         set { ticketDatas = value; }
 
     }
-
-    public bool[] TicketSuccess
-    {
-        get { return ticketSuccess; }
-        set { ticketSuccess = value; }
-    }
-
 
     public Player GamePlayer
     {
@@ -76,22 +76,165 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    protected override void Initialize()
+    protected override void Awake()
     {
-        //Debug.Log($"{ProduceCheck}");
-        //for (int i = 0; i < AnimalCount; i++)
-        //{
-        //    Debug.Log($"{AnimalNumbers[i]}");
-        //}
-
+        base.Awake();
         for (int i = 0; i < MAXTICKETCOUNT; i++)
         {
             TicketDatas[i] = new TicketData();
         }
-      
 
-        gamePlayer = FindObjectOfType<Player>();
+
     }
 
+    protected override void Initialize()
+    {
+        
+        gamePlayer = FindObjectOfType<Player>();
+        
+    }
+
+    public void TicketCheck()
+    {
+        for (int i = 0; i < ticketCount; i++)
+        {
+            if (ticketDatas[i].ticketType==TicketType.Danseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0])
+                {
+                    ticketDatas[i].ticketState = TicketState.success;
+                }else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+            if (ticketDatas[i].ticketType == TicketType.Yeonseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0] || ticketDatas[i].first== animalRanking[1] || ticketDatas[i].first == animalRanking[2] )
+                {
+                    ticketDatas[i].ticketState = TicketState.success;
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+            if (ticketDatas[i].ticketType == TicketType.Bogseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0] || ticketDatas[i].first == animalRanking[1])
+                {
+                    if (ticketDatas[i].second == animalRanking[0] || ticketDatas[i].second == animalRanking[1])
+                    {
+                        ticketDatas[i].ticketState = TicketState.success;
+                    }else
+                    {
+                        ticketDatas[i].ticketState = TicketState.failure;
+                    }
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+
+            if (ticketDatas[i].ticketType == TicketType.Ssangseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0])
+                {
+                    if (ticketDatas[i].second == animalRanking[1])
+                    {
+                        ticketDatas[i].ticketState = TicketState.success;
+                    }else
+                    {
+                        ticketDatas[i].ticketState = TicketState.failure;
+                    }
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+
+            if (ticketDatas[i].ticketType == TicketType.Bogyeonseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0] || ticketDatas[i].first == animalRanking[1] || ticketDatas[i].first == animalRanking[2])
+                {
+                    if (ticketDatas[i].second == animalRanking[0] || ticketDatas[i].second == animalRanking[1] || ticketDatas[i].second == animalRanking[2])
+                    {
+                        ticketDatas[i].ticketState = TicketState.success;
+                    }else
+                    {
+                        ticketDatas[i].ticketState = TicketState.failure;
+                    }
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+
+            if (ticketDatas[i].ticketType == TicketType.Sambogseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0] || ticketDatas[i].first == animalRanking[1] || ticketDatas[i].first == animalRanking[2])
+                {
+                    if (ticketDatas[i].second == animalRanking[0] || ticketDatas[i].second == animalRanking[1] || ticketDatas[i].second == animalRanking[2])
+                    {
+                        if (ticketDatas[i].third == animalRanking[0] || ticketDatas[i].third == animalRanking[1] || ticketDatas[i].third == animalRanking[2])
+                        {
+                            ticketDatas[i].ticketState = TicketState.success;
+                        }else
+                        {
+                            ticketDatas[i].ticketState = TicketState.failure;
+                        }
+
+                    }else
+                    {
+                        ticketDatas[i].ticketState = TicketState.failure;
+                    }
+                    
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+
+            if (ticketDatas[i].ticketType == TicketType.Samssangseung)
+            {
+                if (ticketDatas[i].first == animalRanking[0])
+                {
+                    if (ticketDatas[i].second == animalRanking[1])
+                    {
+                        if (ticketDatas[i].third == animalRanking[2])
+                        {
+                            ticketDatas[i].ticketState = TicketState.success;
+
+                        }else
+                        {
+                            ticketDatas[i].ticketState = TicketState.failure;
+                        }
+                    }else
+                    {
+                        ticketDatas[i].ticketState = TicketState.failure;
+                    }
+
+                    
+                }
+                else
+                {
+                    ticketDatas[i].ticketState = TicketState.failure;
+                }
+            }
+
+
+
+        }
+    }
 
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     int money=0;
-
     public int Money
     {
         get { return money; }
@@ -14,6 +13,7 @@ public class Player : MonoBehaviour
         }
     }
 
+   
 
     public System.Action onChangeMoney { get; set; }
 }
