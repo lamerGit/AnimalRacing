@@ -4,11 +4,13 @@ using TMPro;
 
 public class BuyUI : MonoBehaviour
 {
+    //티켓 구매를 결정하는 스크립트
 
-    bool[] seungsigCheck;
-    GameObject seungsigParent;
-    Button[] seungsigButton;
+    bool[] seungsigCheck; //어떤승식을 체크했는지 확인하는 변수
+    GameObject seungsigParent; //승식버튼을 가지고있는 부모오브젝트
+    Button[] seungsigButton; // 승식버튼 모아둔 변수
 
+    //에러메시지용 변수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     WaringMassege waringMassege;
     string error01 = "승식이 선택되지 않았습니다.\n" +
         "승식을 선택해주세요";
@@ -17,27 +19,28 @@ public class BuyUI : MonoBehaviour
     string error03 = "존재하지 않는 동물을 선택하였습니다.\n";
     string error04 = "같은 동물은 선택할수 없습니다.\n";
     string error05 = "돈이 부족합니다\n";
+    //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-    GameObject animalSelect;
+    GameObject animalSelect; // 동물선택 버튼최상이 부모오브젝트
 
-    GameObject firstParent;
-    GameObject secondParent;
-    GameObject thirdParent;
-    Button[] firstButton;
-    Button[] secondButton;
-    Button[] thirdButton;
+    GameObject firstParent; // 동물선택 첫번째줄 부모오브젝트
+    GameObject secondParent; // 동물선택 두번째줄 부모오브젝트
+    GameObject thirdParent; // 동물선택 세번째줄 부모오브젝트
+    Button[] firstButton; //동물선택 번호를 모아둔 변수
+    Button[] secondButton; //동물선택 번호를 모아둔 변수
+    Button[] thirdButton; //동물선택 번호를 모아둔 변수
 
-    int firstAnimal = 0;
+    int firstAnimal = 0; //선택한 동물확인용 변수
     int secondAnimal = 0;
     int thirdAnimal = 0;
 
-    GameObject playerMoney;
-    TextMeshProUGUI moneyUI;
+    GameObject playerMoney; // 플레이어가 소지한 돈을 확인할 변수의 부모오브젝트
+    TextMeshProUGUI moneyUI; // 플레이어 돈표시용 변수
 
-    GameObject playerInputMoney;
-    TMP_InputField inputMoney;
+    GameObject playerInputMoney; //플레이어가 입력한 돈을 표시할 변수의 부모오브젝트
+    TMP_InputField inputMoney; // 플레이어가 돈을 입력하는 인풋필드
 
-    TicketType ticketType=TicketType.None;
+    TicketType ticketType=TicketType.None; //현재 플레이어가 선택한 승식을 저장할 변수
     private void Awake()
     {
         Button cancel = transform.Find("Cancel_Button").GetComponent<Button>();
@@ -105,14 +108,17 @@ public class BuyUI : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.GamePlayer.onChangeMoney += ChangeMoney;
+        GameManager.Instance.GamePlayer.onChangeMoney += ChangeMoney; //델리게이트로 플레이어 돈이 변화할때마다 변경
         if (GameManager.Instance.GamePlayer != null)
         {
-            moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money);
+            moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money); //999,999이런식으로 단위수마다 ,를 찍히게 한다.
         }
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 현재가지고 있는 돈표시 변경
+    /// </summary>
     void ChangeMoney()
     {
         moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money);
@@ -141,7 +147,9 @@ public class BuyUI : MonoBehaviour
         gameObject.SetActive(true);
         
     }
-
+    /// <summary>
+    /// ok버튼에 할당할 변수 현재 돈,승식,선택한 동물에따라 실패하면 에러가나오면 성공하면 끝이난다.
+    /// </summary>
     void OkButton()
     {
         int valueMoney = int.Parse(inputMoney.text);
@@ -260,6 +268,15 @@ public class BuyUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 구매에 성공했을 경우 GameManager에 데이터를 넘기는 함수
+    /// </summary>
+    /// <param name="idx">TicketDatas의 인덱스 0~9가 되어야한다.</param>
+    /// <param name="ticketType">어떤종료의 티켓인지?</param>
+    /// <param name="vM">얼마를 배팅했는지?</param>
+    /// <param name="fA">첫번째 동물</param>
+    /// <param name="sA">두번째 동물</param>
+    /// <param name="tA">세번째 동물</param>
     private void TicketBuy(int idx, TicketType ticketType, int vM, int fA,int sA=0,int tA=0)
     {
         GameManager.Instance.TicketDatas[idx].ticketType = ticketType;

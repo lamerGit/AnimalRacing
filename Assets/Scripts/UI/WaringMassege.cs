@@ -6,7 +6,7 @@ using TMPro;
 
 public class WaringMassege : MonoBehaviour
 {
-    //레이스가 생성되지 않은 상태에서 시작이나 정보창을 눌렀을때 생기는 오브젝트 스크립트
+    //오류메시지 전달용 스크립트
     TextMeshProUGUI textMeshProUGUI;
     RectTransform rect;
     private void Awake()

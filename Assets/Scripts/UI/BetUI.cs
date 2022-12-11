@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class BetUI : MonoBehaviour
 {
-    BuyUI buyUI;
+    //티켓을 눌르면 열리는 스크립트 구매와 확인버튼이 할당한다.
+
+    BuyUI buyUI; // 구매버튼 변수
     RectTransform rect;
 
-    TicketInfo ticketInfo;
+    TicketInfo ticketInfo; //확인버튼 변수
 
     WaringMassege waringMassege;
     string error = "더이상 티켓을 구매할수 없습니다.\n";
@@ -48,10 +50,10 @@ public class BetUI : MonoBehaviour
 
     void BuyOpen()
     {
-        if (GameManager.Instance.TicketCount < GameManager.MAXTICKETCOUNT)
+        if (GameManager.Instance.TicketCount < GameManager.MAXTICKETCOUNT) //티켓은 10개 까지만 살수있다.
         {
             buyUI.Open();
-        }else
+        }else // 11개를 살려고 하면 에러메시지
         {
             waringMassege.Open();
             waringMassege.TextChange(error);

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TicketInfo : MonoBehaviour
 {
-    
+    //티켓 확인버튼을 눌렀을때 나오는 UI 스크립트
 
     GameObject infoParent; // infoTicket을 전부 가지고 있는 부모오브젝트
     InfoTicket[] tickets;

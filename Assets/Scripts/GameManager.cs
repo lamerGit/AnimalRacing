@@ -16,13 +16,14 @@ public class GameManager : Singleton<GameManager>
 
     public AnimalData[] animalDatas; // 동물들의 스크립트오브젝트를 받는다.
 
-    int ticketCount = 0;
-    TicketData[] ticketDatas=new TicketData[10];
+    int ticketCount = 0; // 현재 가지고 있는 티켓의 수
+    TicketData[] ticketDatas=new TicketData[10]; //티켓변수
 
-    public static int MAXTICKETCOUNT = 10;
+    public static int MAXTICKETCOUNT = 10; // 티켓을 10개로 제한용 변수
 
     int[] animalRanking; //동물들이 도착한 순서를 기록해줄 변수
 
+  
     public int[] AnimalRanking
     {
         get { return animalRanking; }
@@ -94,6 +95,9 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    /// <summary>
+    /// 동물의 랭킹의 따라 티켓의 성공여부를 확인하는 함수
+    /// </summary>
     public void TicketCheck()
     {
         for (int i = 0; i < ticketCount; i++)

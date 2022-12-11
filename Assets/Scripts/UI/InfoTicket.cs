@@ -5,6 +5,8 @@ using TMPro;
 
 public class InfoTicket : MonoBehaviour
 {
+    //티켓-> 확인창을 눌렀을 때 보여주는 정보 스크립트
+
     TextMeshProUGUI seungsig;
     TextMeshProUGUI number;
     TextMeshProUGUI value;

@@ -22,6 +22,9 @@ public enum StageEnum
     Race
 }
 
+/// <summary>
+/// 티켓타입 Enum
+/// </summary>
 public enum TicketType
 {
     None=0,
@@ -34,6 +37,9 @@ public enum TicketType
     Samssangseung
 }
 
+/// <summary>
+/// 티켓 성공여부 확인용 Enum
+/// </summary>
 public enum TicketState
 {
     None,

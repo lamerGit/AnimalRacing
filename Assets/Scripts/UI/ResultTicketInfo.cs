@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 public class ResultTicketInfo : MonoBehaviour
 {
+    //레이스 결과에서 티켓결과를 보여줄 스크립트
+    //InfoTickect과 기능이 같지만 혼란을 피하기위해 따로 만들었다
+
     TextMeshProUGUI seungsig;
     TextMeshProUGUI number;
     TextMeshProUGUI value;

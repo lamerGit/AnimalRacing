@@ -5,6 +5,8 @@ using TMPro;
 
 public class ResultAnimalInfo : MonoBehaviour
 {
+    //레이스결과에서 보여줄 동물정보 스크립트
+
     TextMeshProUGUI number;
     TextMeshProUGUI animalName;
 

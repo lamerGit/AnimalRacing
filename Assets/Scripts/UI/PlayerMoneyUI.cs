@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerMoneyUI : MonoBehaviour
 {
+    //왼쪽위에 플레이어의 돈을 보여주는 스크립트
+
     TextMeshProUGUI moneyUI;
     GameObject backGround;
 
@@ -33,6 +35,9 @@ public class PlayerMoneyUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 플레이어가 0원밖에 없을때 +버튼을 통해 돈을지급받을수 있게 해주는 스크립트
+    /// </summary>
 
     void PlayerMoneyUp()
     {
@@ -49,6 +54,9 @@ public class PlayerMoneyUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 델리게이트용 함수
+    /// </summary>
     void ChangeMoney()
     {
         moneyUI.text = string.Format("{0:#,0}", GameManager.Instance.GamePlayer.Money);
