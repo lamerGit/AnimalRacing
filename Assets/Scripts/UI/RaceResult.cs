@@ -58,6 +58,7 @@ public class RaceResult : MonoBehaviour
 
         }
 
+
         for(int i=0; i<GameManager.Instance.TicketCount; i++)
         {
             resultTicketInfo[i].gameObject.SetActive(true);
@@ -76,6 +77,15 @@ public class RaceResult : MonoBehaviour
             resultTicketInfo[i].infoChange(tp, f, s, t, value);
             
 
+        }
+
+        GameManager.Instance.ProduceCheck = false;
+        GameManager.Instance.AnimalCount = 0;
+        GameManager.Instance.TicketCount = 0;
+
+        for(int i=0; i < GameManager.Instance.TicketDatas.Length; i++)
+        {
+            GameManager.Instance.TicketDatas[i].TicketInicialize();
         }
 
         rect.anchoredPosition = Vector2.zero;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class AnimalAI : MonoBehaviour ,IHit
 {
     bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
@@ -58,10 +58,23 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     int animalNumber = -1; // 레이스할때 동물의 번호가 몇인지 확인하는 변수
 
+    TextMeshPro[] numberView;
+
+
     public int AnimalNumber
     {
         get { return animalNumber; }
-        set { animalNumber = value; }
+        set
+        {
+            animalNumber = value;
+            for (int i = 0; i < numberView.Length; i++)
+            {
+                numberView[i].text = animalNumber.ToString();
+            }
+
+
+
+        }
 
     }
 
@@ -114,6 +127,9 @@ public class AnimalAI : MonoBehaviour ,IHit
     {
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        GameObject numbers = transform.Find("Numbers").gameObject;
+        numberView = numbers.GetComponentsInChildren<TextMeshPro>();
+
     }
 
     protected virtual void Start()
