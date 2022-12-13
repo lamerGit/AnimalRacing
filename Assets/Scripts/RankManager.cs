@@ -52,6 +52,7 @@ public class RankManager : MonoBehaviour
         
 
         mainCamera = cameras[0];
+        
         CamraSwap();
         //StartCoroutine(sortTime());
         Initialize();
@@ -97,12 +98,20 @@ public class RankManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         gateDoor.DoorOpen();
-        for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
-        {
-            audioSource.Play();
+        //for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
+        //{
+        //    audioSource.Play();
             
-            int index = GameManager.Instance.AnimalNumbers[i];
-            Animals[index].RaceStarted = true;
+        //    int index = GameManager.Instance.AnimalNumbers[i];
+        //    Animals[index].RaceStarted = true;
+        //}
+        audioSource.Play();
+        for (int i=0; i<Animals.Length; i++)
+        {
+            if (Animals[i].gameObject.activeSelf)
+            {
+                Animals[i].RaceStarted = true;
+            }
         }
     }
 
@@ -172,7 +181,11 @@ public class RankManager : MonoBehaviour
     private void FixedUpdate()
     {
         MergeSort(animals, 0, animals.Length - 1);
-        CamraSwap();
+
+        if (Animals[0].RaceStarted)
+        {
+            CamraSwap();
+        }
         
     }
 

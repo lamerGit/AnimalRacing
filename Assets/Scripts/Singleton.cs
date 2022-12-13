@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Singleton<T> : MonoBehaviour where T : Component
 {
 
-    private static bool isShutDown = false;
+    //private static bool isShutDown = false;
 
     private static T instance=null;
     public static T Instance
@@ -65,7 +65,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
 
     private void OnApplicationQuit()
     {
-        isShutDown = true;
+       // isShutDown = true;
     }
 
     /// <summary>

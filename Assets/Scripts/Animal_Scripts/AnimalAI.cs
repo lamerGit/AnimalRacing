@@ -9,7 +9,7 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     public float aiSpeed = 60.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
-    float resetAISpeed = 60.0f; 
+    //float resetAISpeed = 60.0f; 
     float resetAITurnSpeed = 1000.0f;
     public GameObject waypointController; // 웨이포인트 그룹을 읽는 게임오브젝트 waypoints에 정보줘야함
     List<Transform> waypoints; //waypointController한테 waypoint정보를 받는다
@@ -34,7 +34,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     private int flag = 0; //회피할지 안할지 결정하는 변수
     protected float avoidSpeed = 200000.0f; // 방해물 피하는 스피드
 
-    float maxSpeed = 70.7f; // 최고 스피드
+    //float maxSpeed = 70.7f; // 최고 스피드
 
     protected Transform frontTarget = null; // 앞에 동물이 있는 지 확인할 변수
 
@@ -503,7 +503,7 @@ public class AnimalAI : MonoBehaviour ,IHit
     /// </summary>
     /// <param name="stateDamage">이 값에 따라 이동속도가 감소</param>
     /// <param name="hitType">이 값에 따라 상태이상 타입이 결정</param>
-    public void TakeHit(float stateDamage,HitType hitType = HitType.None)
+    public virtual void TakeHit(float stateDamage,HitType hitType = HitType.None)
     {
         //스핀 상태이상
         if(hitType==HitType.Spin && !StateAttack)
