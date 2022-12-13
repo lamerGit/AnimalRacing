@@ -85,6 +85,7 @@ public class Zebra : AnimalAI
     void Run()
     {
         skillCoolTime = skillCoolTimeReset;
+        animalAudio.Play();
         runCheck = true;
         cfx_Run.SetActive(runCheck);
         aiSpeed += runSpeed;

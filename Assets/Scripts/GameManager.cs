@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Audio;
 
 public class GameManager : Singleton<GameManager>
 {
     //게임매니저 스크립트 싱글톤을 상속받는다.
 
 
-    int[] animalNumbers=new int[10] {0,1,2,3,4,5,6,7,8,9}; //레이스에 참가하는 동물들
+    int[] animalNumbers = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //레이스에 참가하는 동물들
     bool produceCheck = false; //레이스가 생성됬는지 확인하는 변수
     int animalCount = 6; //레이스에 참가하는 동물의 수
 
@@ -17,13 +18,43 @@ public class GameManager : Singleton<GameManager>
     public AnimalData[] animalDatas; // 동물들의 스크립트오브젝트를 받는다.
 
     int ticketCount = 0; // 현재 가지고 있는 티켓의 수
-    TicketData[] ticketDatas=new TicketData[10]; //티켓변수
+    TicketData[] ticketDatas = new TicketData[10]; //티켓변수
 
     public static int MAXTICKETCOUNT = 10; // 티켓을 10개로 제한용 변수
 
     int[] animalRanking; //동물들이 도착한 순서를 기록해줄 변수
 
-  
+    AudioSource backGroundAudioSource;
+
+
+    PlayerInput inputActions;
+    Option option;
+
+    public AudioMixer audioMixer;
+    float musicVolume=0.5f;
+    float cfxVolume=0.5f;
+
+    public float MusicVolume
+    {
+        get { return musicVolume; }
+        set { musicVolume = value; }
+
+    }
+
+    public float CfxVolume
+    {
+        get { return cfxVolume; }
+        set
+        {
+            cfxVolume = value;
+        }
+    }
+
+    public AudioSource BackGroundAudioSource
+    {
+        get { return backGroundAudioSource; }
+
+    }
     public int[] AnimalRanking
     {
         get { return animalRanking; }
@@ -80,19 +111,48 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        backGroundAudioSource = GetComponent<AudioSource>();
+        
         for (int i = 0; i < MAXTICKETCOUNT; i++)
         {
             TicketDatas[i] = new TicketData();
         }
+        inputActions = new();
 
+    }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        inputActions.UI.Enable();
+        inputActions.UI.Esc.performed += OnEsc;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        //inputActions.UI.Esc.performed -= OnEsc;
+        //inputActions.UI.Disable();
+    }
+
+    private void OnEsc(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (option.isActiveAndEnabled)
+        {
+            option.Close();
+        }
+        else
+        {
+            option.Open();
+        }
     }
 
     protected override void Initialize()
     {
-        
+        option = FindObjectOfType<Option>();
         gamePlayer = FindObjectOfType<Player>();
-        
+       
+
     }
 
     /// <summary>

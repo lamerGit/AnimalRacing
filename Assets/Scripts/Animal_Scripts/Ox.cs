@@ -109,6 +109,7 @@ public class Ox : AnimalAI
     void MadnessSpin()
     {
         skillCoolTime = skillCoolTimeReset;
+        animalAudio.Play();
         madSpin =true;
         aiSpeed += madSpinSpeed;
         cfx_Tornado.SetActive(madSpin);

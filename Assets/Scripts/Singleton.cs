@@ -52,13 +52,13 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         // 씬이 로딩되면 OnSceneLoaded 함수를 실행시켜라.(SceneManager가 가지고 있는 델리게이트에 함수 추가)
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

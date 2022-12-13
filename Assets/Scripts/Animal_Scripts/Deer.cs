@@ -76,6 +76,7 @@ public class Deer : AnimalAI
 
                         animator.SetTrigger("UpAttack");
                         cfx_Hit.SetActive(true);
+                        animalAudio.Play();
                         for (int i = 0; i < cfx_Hit_Child.Length; i++)
                         {
                             cfx_Hit_Child[i].gameObject.SetActive(true);
@@ -118,6 +119,7 @@ public class Deer : AnimalAI
     void UpAttack()
     {
         skillCoolTime = skillCoolTimeReset;
+        
         attackCheck = true;
         aiSpeed += attackSpeed;
     }

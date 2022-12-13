@@ -59,6 +59,7 @@ public class Donkey : AnimalAI
     private void Noise()
     {
         skillCoolTime = skillCoolTimeReset;
+        animalAudio.Play();
         cfx_Heehaw.SetActive(true);
         for(int i=0; i<cfx_Heehaw_child.Length; i++)
         {

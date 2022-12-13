@@ -87,6 +87,7 @@ public class Buffalo : AnimalAI
     private void AngerRun()
     {
         skillCoolTime = skillCoolTimeReset;
+        animalAudio.Play();
         angerRunCheck = true;
         cfx_WaterFire.SetActive(angerRunCheck);
         tempAngerSpeed = angerSpeed * SearchAnimal();

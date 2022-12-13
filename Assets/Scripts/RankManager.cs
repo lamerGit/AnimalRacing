@@ -25,6 +25,7 @@ public class RankManager : MonoBehaviour
 
     GameObject animalGroup;
 
+    AudioSource audioSource;
     /// <summary>
     /// 다른곳에서 동물변수를 사용할수있게 해주는 프로퍼티
     /// </summary>
@@ -38,6 +39,8 @@ public class RankManager : MonoBehaviour
     {
         animalGroup = GameObject.FindGameObjectWithTag("AnimalGroup");//부모오브젝트를 찾고
         animals = animalGroup.GetComponentsInChildren<AnimalAI>(); // 부모오브젝트에 GetComponents를 해야 순서대로 가져온다
+        audioSource = GetComponent<AudioSource>();
+
 
         secondCamera = FindObjectOfType<SecondCameraOut>();
         startPosition = GameObject.FindWithTag("StartPoint").GetComponentsInChildren<Transform>();
@@ -78,7 +81,7 @@ public class RankManager : MonoBehaviour
             }
             GameManager.Instance.AnimalRanking = new int[GameManager.Instance.AnimalCount];
 
-
+            GameManager.Instance.BackGroundAudioSource.mute = true;
             StartCoroutine(raceStart());
         }else
         {
@@ -96,6 +99,8 @@ public class RankManager : MonoBehaviour
         gateDoor.DoorOpen();
         for (int i = 0; i < GameManager.Instance.AnimalCount; i++)
         {
+            audioSource.Play();
+            
             int index = GameManager.Instance.AnimalNumbers[i];
             Animals[index].RaceStarted = true;
         }

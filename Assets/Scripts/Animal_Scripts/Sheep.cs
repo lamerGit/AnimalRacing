@@ -95,6 +95,7 @@ public class Sheep : AnimalAI
     void PanicRun()
     {
         skillCoolTime = skillCoolTimeReset;
+        animalAudio.Play();
         if (AnimalCheck())
         {
             panicCheck = true;

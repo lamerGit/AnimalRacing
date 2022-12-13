@@ -26,24 +26,31 @@ public class Camel : AnimalAI
             {
                 if (RaceStarted)
                 {
-                    aiSpeed += furyRunSpeed;
-                    furyRunCheck = true;
-                    cfx_FuryRun.SetActive(furyRunCheck);
-                    for (int i = 0; i < cfx_FuryRun_Child.Length; i++)
-                    {
-                        cfx_FuryRun_Child[i].gameObject.SetActive(furyRunCheck);
-                    }
+                    FuryRun();
                 }
 
-          
+
                 //StartCoroutine(furyRunReset());
-            }else
+            }
+            else
             {
                 FuryRunReset();
             }
 
 
 
+        }
+    }
+
+    private void FuryRun()
+    {
+        aiSpeed += furyRunSpeed;
+        furyRunCheck = true;
+        animalAudio.Play();
+        cfx_FuryRun.SetActive(furyRunCheck);
+        for (int i = 0; i < cfx_FuryRun_Child.Length; i++)
+        {
+            cfx_FuryRun_Child[i].gameObject.SetActive(furyRunCheck);
         }
     }
 

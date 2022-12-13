@@ -81,6 +81,7 @@ public class Fox : AnimalAI
     void Jump()
     {
         rigid.AddForce(transform.up * jumpPower, ForceMode.VelocityChange);
+        animalAudio.Play();
         jumpCheck = true;
         cfx_Ground_Hit.SetActive(true);
         dustTail.SetActive(!jumpCheck);

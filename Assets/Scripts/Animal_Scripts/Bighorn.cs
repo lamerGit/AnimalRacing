@@ -34,7 +34,7 @@ public class Bighorn : AnimalAI
                             //나를 제외한 동물들을 전부 에어본시키고 감속시킨다.
                             if (colliders[i].gameObject != transform.gameObject)
                             {
-
+                                animalAudio.Play();
                                 colliders[i].gameObject.GetComponent<IHit>().TakeHit(explosionPower, HitType.airborne);
                             }
 

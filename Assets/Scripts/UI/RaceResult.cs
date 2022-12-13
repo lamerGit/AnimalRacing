@@ -89,8 +89,9 @@ public class RaceResult : MonoBehaviour
         GameManager.Instance.ProduceCheck = false;
         GameManager.Instance.AnimalCount = 0;
         GameManager.Instance.TicketCount = 0;
+        GameManager.Instance.BackGroundAudioSource.mute = false;
 
-        for(int i=0; i < GameManager.Instance.TicketDatas.Length; i++)
+        for (int i=0; i < GameManager.Instance.TicketDatas.Length; i++)
         {
             GameManager.Instance.TicketDatas[i].TicketInicialize();
         }

@@ -5,6 +5,8 @@ using TMPro;
 public class AnimalAI : MonoBehaviour ,IHit
 {
     bool raceStarted = false; // 경주가 시작됬는지 확인하는 변수
+   
+
     public float aiSpeed = 60.0f; // 속도
     float aiTurnSpeed = 2.0f; // 방향을 바꿀때의 속도 얼마나 빠르게 코너를 돌 수 있는지 표현
     float resetAISpeed = 60.0f; 
@@ -60,6 +62,8 @@ public class AnimalAI : MonoBehaviour ,IHit
 
     TextMeshPro[] numberView;
 
+    protected AudioSource animalAudio;
+    AudioSource animalFootAudio;
 
     public int AnimalNumber
     {
@@ -88,6 +92,13 @@ public class AnimalAI : MonoBehaviour ,IHit
         {
             raceStarted = value;
             animator.SetBool("RacingStart", raceStarted);
+            if(raceStarted)
+            {
+                animalFootAudio.Play();
+            }else
+            {
+                animalFootAudio.Pause();
+            }
         }
     }
 
@@ -129,12 +140,15 @@ public class AnimalAI : MonoBehaviour ,IHit
         animator = GetComponent<Animator>();
         GameObject numbers = transform.Find("Numbers").gameObject;
         numberView = numbers.GetComponentsInChildren<TextMeshPro>();
+        animalAudio=GetComponent<AudioSource>();
 
     }
 
     protected virtual void Start()
     {
         dustTail = transform.Find("DustTail").gameObject; // 먼지파티클 찾기
+        animalFootAudio = footParticle.gameObject.GetComponent<AudioSource>();
+
         stateEffect = transform.Find("CFX_BadEffect").gameObject; // 상태이상 침묵 파티클 찾기
         stateEffect.SetActive(false);
 
