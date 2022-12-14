@@ -7,7 +7,7 @@ public class Rabbit : AnimalAI
     int level = 0;
     int maxLevel = 7;
 
-    float jumpPower = 20.0f; // 얼마나 높이 점프할지 변수
+    float jumpPower = 15.0f; // 얼마나 높이 점프할지 변수
     bool jumpCheck = false; // 점프상태인지 확인하는 변수
     float levelUpTime = 5.0f; // 쿨타임 초기 시간
     float levelUpTimeReset = 5.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
@@ -36,7 +36,10 @@ public class Rabbit : AnimalAI
                 MaxLevelRabbit();
             }else
             {
-                cfx_levelUp.SetActive(true);
+                if (level < maxLevel)
+                {
+                    cfx_levelUp.SetActive(true);
+                }
             }
 
 

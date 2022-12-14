@@ -95,9 +95,10 @@ public class Sheep : AnimalAI
     void PanicRun()
     {
         skillCoolTime = skillCoolTimeReset;
-        animalAudio.Play();
+        
         if (AnimalCheck())
         {
+            animalAudio.Play();
             panicCheck = true;
             cfx_Panic.SetActive(panicCheck);
             rigid.AddForce(transform.up * 10.0f, ForceMode.VelocityChange);

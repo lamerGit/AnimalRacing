@@ -73,7 +73,7 @@ public class AnimalAI : MonoBehaviour ,IHit
             animalNumber = value;
             for (int i = 0; i < numberView.Length; i++)
             {
-                numberView[i].text = animalNumber.ToString();
+                numberView[i].text = animalNumber.ToString()+ "\n▽";
             }
 
 

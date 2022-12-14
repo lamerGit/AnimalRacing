@@ -26,6 +26,20 @@ public class RankManager : MonoBehaviour
     GameObject animalGroup;
 
     AudioSource audioSource;
+
+    FollowCamera MainCamera
+    {
+        get { return mainCamera; }
+        set
+        {
+            mainCamera = value;
+            swapGate?.Invoke(mainCamera.transform);
+
+
+        }
+    }
+    public System.Action<Transform> swapGate { get; set; }
+
     /// <summary>
     /// 다른곳에서 동물변수를 사용할수있게 해주는 프로퍼티
     /// </summary>
@@ -135,7 +149,7 @@ public class RankManager : MonoBehaviour
         {
             cameras[0].gameObject.SetActive(false);
             cameras[1].gameObject.SetActive(false);
-            mainCamera = cameras[2];
+            MainCamera = cameras[2];
 
             
         }
@@ -144,20 +158,20 @@ public class RankManager : MonoBehaviour
         if (animals[0].CurrentWayPoint == 18)
         {
             cameras[2].gameObject.SetActive(false);
-            mainCamera = cameras[3];
+            MainCamera = cameras[3];
         }
 
         if (animals[0].CurrentWayPoint == 28)
         {
             cameras[3].gameObject.SetActive(false);
-            mainCamera = cameras[4];
+            MainCamera = cameras[4];
         }
 
         if (animals[0].CurrentWayPoint == count)
         {
-            mainCamera.offset.z += 1;
-            mainCamera.offset.x += 1;
-            mainCamera.offset.y += 1;
+            MainCamera.offset.z += 1;
+            MainCamera.offset.x += 1;
+            MainCamera.offset.y += 1;
             if (count < 59)
             {
                 count++;
@@ -168,12 +182,12 @@ public class RankManager : MonoBehaviour
 
         if (animals[0].CurrentWayPoint == 59)
         {
-            mainCamera.lookAtMode=true;
+            MainCamera.lookAtMode=true;
         }
 
         
 
-        mainCamera.target = animals[0].transform;
+        MainCamera.target = animals[0].transform;
         cameras[1].target = animals[0].transform;
 
        
