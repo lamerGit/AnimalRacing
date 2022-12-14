@@ -6,7 +6,7 @@ public class Elephant : AnimalAI
 {
     GameObject cfx_elephant;
     int angleStack = 0;
-    int angleMaxStack = 3;
+    int angleMaxStack = 2;
 
     float angleTimeReset = 6.0f;
     float angleTime = 6.0f;

@@ -253,7 +253,9 @@ public class AnimalAI : MonoBehaviour ,IHit
             
             if (currentWaypoint >= waypoints.Count)
             {
-                CurrentWayPoint = 0;
+                //CurrentWayPoint = 0;
+                RaceStarted = false;
+                return;
             }
             CurrentWaypointDistance = (waypoints[currentWaypoint].position - transform.position).sqrMagnitude;
         }
