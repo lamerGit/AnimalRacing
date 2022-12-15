@@ -38,6 +38,7 @@ public class Rabbit : AnimalAI
             {
                 if (level < maxLevel)
                 {
+                    cfx_levelUp.SetActive(false);
                     cfx_levelUp.SetActive(true);
                 }
             }
@@ -83,9 +84,9 @@ public class Rabbit : AnimalAI
         cfx_MaxLevelLight = transform.Find("CFXR3_MaxLevelLight").gameObject;
         cfx_MaxLevelLight.SetActive(false);
 
-        skillCoolTimeReset = Random.Range(5.0f, 8.0f);
+        skillCoolTimeReset = Random.Range(6.0f, 9.0f);
         skillCoolTime = skillCoolTimeReset;
-        aiSpeed = Random.Range(57.0f, 59.0f);
+        aiSpeed = Random.Range(56.5f, 58.5f);
     }
 
     protected override void FixedUpdate()

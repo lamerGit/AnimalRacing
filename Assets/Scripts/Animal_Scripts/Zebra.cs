@@ -36,7 +36,7 @@ public class Zebra : AnimalAI
         base.Start();
         cfx_Run = transform.Find("CFXR3_Run").gameObject;
         cfx_Run.SetActive(false);
-        skillCoolTimeReset = Random.Range(13.0f, 23.0f);
+        skillCoolTimeReset = Random.Range(13.0f, 20.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(57.0f, 58.0f);
         //aiSpeed = 58.0f;

@@ -67,9 +67,38 @@ public class TestRace : MonoBehaviour
 
         mainCamera = cameras[0];
         CamraSwap();
-        StartCoroutine(raceStart());
+
         //StartCoroutine(sortTime());
         //Initialize();
+
+        for (int i = 0; i < Animals.Length; i++)
+        {
+            Animals[i].gameObject.SetActive(false);
+        }
+
+        int[] animalNumbers = new int[Animals.Length];
+
+        for (int i = 0; i < Animals.Length; i++)
+        {
+            animalNumbers[i] = i;
+        }
+
+        for (int i = animalNumbers.Length - 1; i > -1; i--)
+        {
+            int randIndex = Random.Range(0, i);
+            (animalNumbers[randIndex], animalNumbers[i]) = (animalNumbers[i], animalNumbers[randIndex]);
+
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            Animals[animalNumbers[i]].gameObject.SetActive(true);
+            Animals[animalNumbers[i]].AnimalNumber = i + 1;
+            Animals[animalNumbers[i]].transform.position = startPosition[i + 1].position;
+        }
+
+        StartCoroutine(raceStart());
+
 
     }
 
@@ -115,9 +144,10 @@ public class TestRace : MonoBehaviour
         gateDoor.DoorOpen();
         for (int i = 0; i < Animals.Length; i++)
         {
-            //audioSource.Play();
-
-            Animals[i].RaceStarted = true;
+            if (Animals[i].gameObject.activeSelf)
+            {
+                Animals[i].RaceStarted = true;
+            }
         }
     }
 

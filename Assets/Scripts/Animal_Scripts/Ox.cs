@@ -40,7 +40,7 @@ public class Ox : AnimalAI
         cfx_Tornado = transform.Find("CFX_Tornado").gameObject;
         cfx_Tornado.SetActive(false);
 
-        skillCoolTimeReset = Random.Range(3.0f, 13.0f);
+        skillCoolTimeReset = Random.Range(6.0f, 13.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(58.5f, 60.5f);
         //aiSpeed = 59.0f;
