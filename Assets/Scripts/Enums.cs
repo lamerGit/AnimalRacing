@@ -18,7 +18,8 @@ public enum HitType
 /// </summary>
 public enum StageEnum
 {
-    Lobby=0,
+    Title=0,
+    Lobby,
     Race
 }
 

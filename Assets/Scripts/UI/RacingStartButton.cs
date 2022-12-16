@@ -23,6 +23,7 @@ public class RacingStartButton : MonoBehaviour
 
     void RacingStart()
     {
+        ClickSound.Instance.ClickPlay();
         if (GameManager.Instance.ProduceCheck)
         {
             //레이스가 생성되있으면 Race씬으로 넘어간다.

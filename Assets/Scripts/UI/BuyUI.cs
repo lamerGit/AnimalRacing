@@ -144,6 +144,7 @@ public class BuyUI : MonoBehaviour
 
     public void Open()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(true);
         
     }
@@ -152,6 +153,7 @@ public class BuyUI : MonoBehaviour
     /// </summary>
     void OkButton()
     {
+        ClickSound.Instance.ClickPlay();
         int valueMoney = int.Parse(inputMoney.text);
 
         if (valueMoney == 0 || GameManager.Instance.GamePlayer.Money < valueMoney)
@@ -288,6 +290,7 @@ public class BuyUI : MonoBehaviour
 
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         Closeinitialize();
 
         gameObject.SetActive(false);
@@ -333,7 +336,8 @@ public class BuyUI : MonoBehaviour
     //승식버튼함수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     void DanseungOnClick()
     {
-        for(int i = 0; i < seungsigButton.Length; i++)
+        ClickSound.Instance.ClickPlay();
+        for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
         }
@@ -348,6 +352,7 @@ public class BuyUI : MonoBehaviour
     }
     void YeonseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -363,6 +368,7 @@ public class BuyUI : MonoBehaviour
     }
     void BogseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -378,6 +384,7 @@ public class BuyUI : MonoBehaviour
     }
     void SsangseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -393,6 +400,7 @@ public class BuyUI : MonoBehaviour
     }
     void BogyeonseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -408,6 +416,7 @@ public class BuyUI : MonoBehaviour
     }
     void SambogseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -423,6 +432,7 @@ public class BuyUI : MonoBehaviour
     }
     void SamssangseungOnClick()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < seungsigButton.Length; i++)
         {
             seungsigButton[i].interactable = true;
@@ -443,6 +453,7 @@ public class BuyUI : MonoBehaviour
     //첫번째 라인 버튼에 할당하는 함수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     void First1Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -453,6 +464,7 @@ public class BuyUI : MonoBehaviour
     }
     void First2Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -463,6 +475,7 @@ public class BuyUI : MonoBehaviour
     }
     void First3Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -473,6 +486,7 @@ public class BuyUI : MonoBehaviour
     }
     void First4Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -483,6 +497,7 @@ public class BuyUI : MonoBehaviour
     }
     void First5Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -493,6 +508,7 @@ public class BuyUI : MonoBehaviour
     }
     void First6Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -503,6 +519,7 @@ public class BuyUI : MonoBehaviour
     }
     void First7Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -513,6 +530,7 @@ public class BuyUI : MonoBehaviour
     }
     void First8Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -523,6 +541,7 @@ public class BuyUI : MonoBehaviour
     }
     void First9Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -533,6 +552,7 @@ public class BuyUI : MonoBehaviour
     }
     void First10Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < firstButton.Length; i++)
         {
             firstButton[i].interactable = true;
@@ -546,6 +566,7 @@ public class BuyUI : MonoBehaviour
     //두번째 라인 버튼할당 함수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     void Second1Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -556,6 +577,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second2Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -566,6 +588,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second3Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -576,6 +599,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second4Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -586,6 +610,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second5Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -596,6 +621,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second6Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -606,6 +632,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second7Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -616,6 +643,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second8Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -626,6 +654,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second9Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -636,6 +665,7 @@ public class BuyUI : MonoBehaviour
     }
     void Second10Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < secondButton.Length; i++)
         {
             secondButton[i].interactable = true;
@@ -649,6 +679,7 @@ public class BuyUI : MonoBehaviour
     //세번째 번호라인 할당함수ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     void Third1Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -659,6 +690,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third2Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -669,6 +701,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third3Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -679,6 +712,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third4Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -689,6 +723,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third5Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -699,6 +734,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third6Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -709,6 +745,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third7Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -719,6 +756,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third8Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -729,6 +767,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third9Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;
@@ -739,6 +778,7 @@ public class BuyUI : MonoBehaviour
     }
     void Third10Button()
     {
+        ClickSound.Instance.ClickPlay();
         for (int i = 0; i < thirdButton.Length; i++)
         {
             thirdButton[i].interactable = true;

@@ -102,7 +102,8 @@ public class Sheep : AnimalAI
             panicCheck = true;
             cfx_Panic.SetActive(panicCheck);
             rigid.AddForce(transform.up * 10.0f, ForceMode.VelocityChange);
-            aiSpeed += panicSpeed;
+            aiSpeed += panicSpeed+1.0f;
+            
         }
     }
 
@@ -147,4 +148,5 @@ public class Sheep : AnimalAI
 
         return result;
     }
+
 }

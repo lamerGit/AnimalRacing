@@ -25,6 +25,7 @@ public class Bighorn : AnimalAI
             {
                 if (RaceStarted)
                 {
+                    aiSpeed += 1.0f;
                     cfx_Explosion.SetActive(true);
                     Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, LayerMask.GetMask("Animal"));
                     if (colliders.Length > 0)

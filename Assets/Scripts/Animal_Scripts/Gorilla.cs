@@ -5,22 +5,38 @@ using UnityEngine;
 public class Gorilla : AnimalAI
 {
 
-    bool madSpin = false; //미친회전이 발동중인지 확인하는 변수
+    bool madSpin = false; //고릴라댄스이 발동중인지 확인하는 변수
     float skillCoolTime = 8.0f; //쿨타임 초기 시간
     float skillCoolTimeReset = 8.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
-    float madSpinSpeed = 10.0f; //미친회전 상태일때 상승하는 스피드
-    float madSpinTime = 1.5f; // 미친회전 시전되는 시간
-    float madSpinTimeReset = 1.5f; // 미친회전이 발동되고 시간을 초기화해줄 변수
+    float madSpinSpeed = 10.0f; //고릴라댄스 상태일때 상승하는 스피드
+    float madSpinTime = 1.5f; // 고릴라댄스 시전되는 시간
+    float madSpinTimeReset = 1.5f; // 고릴라댄스이 발동되고 시간을 초기화해줄 변수
 
-    float madPower = 20.0f; // 미친회전에 당한 동물들이 감소될 스피드
+    float madPower = 20.0f; // 고릴라댄스에 당한 동물들이 감소될 스피드
+
+    protected override bool StateAttack
+    {
+        get => base.StateAttack;
+        set
+        {
+            base.StateAttack = value;
+            if (base.StateAttack)
+            {
+                MadnessSpinReset();
+            }
+
+
+        }
+    }
+
 
     protected override void Start()
     {
         base.Start();
        
 
-        skillCoolTimeReset = Random.Range(5.0f, 10.0f);
+        skillCoolTimeReset = Random.Range(7.0f, 12.0f);
         skillCoolTime = skillCoolTimeReset;
         aiSpeed = Random.Range(58.5f, 60.5f);
     }
@@ -29,14 +45,14 @@ public class Gorilla : AnimalAI
         base.FixedUpdate();
         if (RaceStarted)
         {
-            //미친회전 상태가 아닐때만 쿨타임감수
+            //고릴라댄스 상태가 아닐때만 쿨타임감수
             if (!madSpin)
             {
                 skillCoolTime -= Time.fixedDeltaTime;
             }
             else
             {
-                //미친회전 상태일때는 시전시간 감소
+                //고릴라댄스 상태일때는 시전시간 감소
                 madSpinTime -= Time.fixedDeltaTime;
             }
 

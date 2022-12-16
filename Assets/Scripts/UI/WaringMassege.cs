@@ -30,6 +30,7 @@ public class WaringMassege : MonoBehaviour
     }
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 

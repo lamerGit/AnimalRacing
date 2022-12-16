@@ -25,7 +25,7 @@ public class TestRace : MonoBehaviour
     GameObject animalGroup;
 
     AudioSource audioSource;
-
+    public int[] animalNumbers;
 
     FollowCamera MainCamera
     {
@@ -76,7 +76,7 @@ public class TestRace : MonoBehaviour
             Animals[i].gameObject.SetActive(false);
         }
 
-        int[] animalNumbers = new int[Animals.Length];
+        animalNumbers = new int[Animals.Length];
 
         for (int i = 0; i < Animals.Length; i++)
         {

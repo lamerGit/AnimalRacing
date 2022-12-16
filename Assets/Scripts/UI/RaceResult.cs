@@ -161,6 +161,7 @@ public class RaceResult : MonoBehaviour
 
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 }

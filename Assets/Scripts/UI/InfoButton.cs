@@ -25,7 +25,7 @@ public class InfoButton : MonoBehaviour
     /// </summary>
     void InfoOpen()
     {
-        
+        ClickSound.Instance.ClickPlay();
         if (GameManager.Instance.ProduceCheck)
         {
             animalInfo.Open();

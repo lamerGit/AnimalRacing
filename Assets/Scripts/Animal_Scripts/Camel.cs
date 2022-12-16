@@ -44,7 +44,7 @@ public class Camel : AnimalAI
 
     private void FuryRun()
     {
-        aiSpeed += furyRunSpeed;
+        aiSpeed += furyRunSpeed+0.5f;
         furyRunCheck = true;
         animalAudio.Play();
         cfx_FuryRun.SetActive(furyRunCheck);
@@ -60,7 +60,7 @@ public class Camel : AnimalAI
         cfx_FuryRun = transform.Find("CFX_FuryRun").gameObject;
         cfx_FuryRun_Child=cfx_FuryRun.GetComponentsInChildren<Transform>();
         cfx_FuryRun.SetActive(false);
-        aiSpeed = Random.Range(58.0f, 60.0f);
+        aiSpeed = Random.Range(58.5f, 60.5f);
     }
 
     protected override void FixedUpdate()
@@ -104,5 +104,4 @@ public class Camel : AnimalAI
     //    aiSpeed -= furyRunSpeed;
     //}
 
-    
 }

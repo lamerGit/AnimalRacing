@@ -36026,6 +36026,7 @@ MonoBehaviour:
   - {fileID: 298160967}
   - {fileID: 1960089365}
   - {fileID: 121816534}
+  animalNumbers: 
 --- !u!4 &1641827445
 Transform:
   m_ObjectHideFlags: 0
@@ -43187,7 +43188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdd22c3b4562da4e8d0d9cf4cde0eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera5: {fileID: 0}
+  camera5: {fileID: 121816534}
+  animalWinerCount: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &1946251330
 GameObject:
   m_ObjectHideFlags: 0

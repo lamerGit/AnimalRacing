@@ -45,7 +45,7 @@ public class FinishLine : MonoBehaviour
         {
             camera5.finish = true;
             GameManager.Instance.AnimalRanking[Ranking] = other.GetComponent<AnimalAI>().AnimalNumber;
-            Debug.Log($"{ranking}등 {other.name}");
+            //Debug.Log($"{ranking}등 {other.name}");
             Ranking++;
         }
     }

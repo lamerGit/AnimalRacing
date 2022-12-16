@@ -33,6 +33,7 @@ public class AnimalInfo : MonoBehaviour
     /// </summary>
     public void Open()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(true);
         rect.anchoredPosition = Vector2.zero; // 화면중앙으로 이동
 
@@ -58,6 +59,7 @@ public class AnimalInfo : MonoBehaviour
     }
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 }

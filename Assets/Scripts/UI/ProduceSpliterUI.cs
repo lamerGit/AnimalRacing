@@ -65,6 +65,7 @@ public class ProduceSpliterUI : MonoBehaviour
     /// </summary>
     void OnIncrease()
     {
+        ClickSound.Instance.ClickPlay();
         AnimalCount++;
         inputField.text = AnimalCount.ToString();
     }
@@ -73,6 +74,7 @@ public class ProduceSpliterUI : MonoBehaviour
     /// </summary>
     void OnDecrease()
     {
+        ClickSound.Instance.ClickPlay();
         AnimalCount--;
         inputField.text = AnimalCount.ToString();
 
@@ -80,6 +82,7 @@ public class ProduceSpliterUI : MonoBehaviour
 
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 
@@ -91,13 +94,27 @@ public class ProduceSpliterUI : MonoBehaviour
     void AnimalProduce()
     {
 
-
+        ClickSound.Instance.ClickPlay();
         for (int i = GameManager.Instance.AnimalNumbers.Length - 1; i > -1; i--)
         {
             int randIndex = Random.Range(0, i);
             (GameManager.Instance.AnimalNumbers[randIndex], GameManager.Instance.AnimalNumbers[i]) = (GameManager.Instance.AnimalNumbers[i], GameManager.Instance.AnimalNumbers[randIndex]);
 
         }
+
+        if(GameManager.Instance.TicketCount>0)
+        {
+            for(int i=0; i<GameManager.Instance.TicketCount; i++)
+            {
+                GameManager.Instance.GamePlayer.Money += GameManager.Instance.TicketDatas[i].moneyAmount;
+                GameManager.Instance.TicketDatas[i].TicketInicialize();
+                
+            }
+
+            GameManager.Instance.TicketCount = 0;
+        }
+
+
 
         GameManager.Instance.ProduceCheck = true;
         GameManager.Instance.AnimalCount = AnimalCount;

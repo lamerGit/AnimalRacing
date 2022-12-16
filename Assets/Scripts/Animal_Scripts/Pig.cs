@@ -8,7 +8,7 @@ public class Pig : AnimalAI
     float coinTime = 5.0f;
     float coinTimeReset = 5.0f;
 
-    float coinSpeed = 1.0f;
+    float coinSpeed = 0.7f;
 
     GameObject cfxcoin;
     int Coin

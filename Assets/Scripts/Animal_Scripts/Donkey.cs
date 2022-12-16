@@ -75,7 +75,7 @@ public class Donkey : AnimalAI
                 //나를 제외한 동물들을 전부 침묵시키고 감속시킨다.
                 if (colliders[i].gameObject != transform.gameObject)
                 {
-
+                    aiSpeed += 0.2f;
                     colliders[i].gameObject.GetComponent<IHit>().TakeHit(noisePower, HitType.silence);
                 }
 

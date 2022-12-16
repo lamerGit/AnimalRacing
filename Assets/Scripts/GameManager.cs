@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -26,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     AudioSource backGroundAudioSource;
 
+    public AudioClip[] audioClips;
 
     PlayerInput inputActions;
     Option option;
@@ -126,7 +130,10 @@ public class GameManager : Singleton<GameManager>
         base.OnEnable();
         inputActions.UI.Enable();
         inputActions.UI.Esc.performed += OnEsc;
+        inputActions.UI.Enter.performed += OnEnter;
     }
+
+    
 
     protected override void OnDisable()
     {
@@ -134,8 +141,15 @@ public class GameManager : Singleton<GameManager>
         //inputActions.UI.Esc.performed -= OnEsc;
         //inputActions.UI.Disable();
     }
+    private void OnEnter(InputAction.CallbackContext obj)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == (int)StageEnum.Title)
+        {
+            SceneManager.LoadScene((int)StageEnum.Lobby);
+        }
 
-    private void OnEsc(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    }
+    private void OnEsc(InputAction.CallbackContext obj)
     {
         if (option.isActiveAndEnabled)
         {
@@ -147,11 +161,23 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    
+
     protected override void Initialize()
     {
         option = FindObjectOfType<Option>();
         gamePlayer = FindObjectOfType<Player>();
-       
+        if(SceneManager.GetActiveScene().buildIndex==(int)StageEnum.Title)
+        {
+            backGroundAudioSource.clip = audioClips[(int)StageEnum.Title];
+            backGroundAudioSource.Play();
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == (int)StageEnum.Lobby)
+        {
+            backGroundAudioSource.clip = audioClips[(int)StageEnum.Lobby];
+            backGroundAudioSource.Play();
+        }
 
     }
 

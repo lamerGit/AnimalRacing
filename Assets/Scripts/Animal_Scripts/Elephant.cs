@@ -25,7 +25,7 @@ public class Elephant : AnimalAI
             {
                 angleStack = 0;
                 angle = true;
-                aiSpeed += angleSpeed;
+                aiSpeed += angleSpeed+1.0f;
                 animalAudio.Play();
                 cfx_elephant.SetActive(true);
 

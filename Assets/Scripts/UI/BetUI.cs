@@ -39,17 +39,20 @@ public class BetUI : MonoBehaviour
 
     public void Open()
     {
+        ClickSound.Instance.ClickPlay();
         rect.anchoredPosition = Vector2.zero;
         gameObject.SetActive(true);
     }
 
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 
     void BuyOpen()
     {
+        ClickSound.Instance.ClickPlay();
         if (GameManager.Instance.TicketCount < GameManager.MAXTICKETCOUNT) //티켓은 10개 까지만 살수있다.
         {
             buyUI.Open();

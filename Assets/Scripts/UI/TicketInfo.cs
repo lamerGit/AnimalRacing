@@ -29,6 +29,7 @@ public class TicketInfo : MonoBehaviour
 
     public void Open()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(true);
         for (int i = 0; i < tickets.Length; i++)
         {
@@ -53,6 +54,7 @@ public class TicketInfo : MonoBehaviour
 
     void Close()
     {
+        ClickSound.Instance.ClickPlay();
         gameObject.SetActive(false);
     }
 }

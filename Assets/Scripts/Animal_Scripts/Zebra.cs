@@ -10,8 +10,8 @@ public class Zebra : AnimalAI
     float skillCoolTimeReset = 18.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
     float runSpeed = 20.0f; // 전력질주 시전중에 추가스피드
-    float runTime = 6.0f;  // 전력질주 시전 시간
-    float runTimeReset = 6.0f; // 전력질주가 발동되고 시간을 초기화해줄 변수
+    float runTime = 5.0f;  // 전력질주 시전 시간
+    float runTimeReset = 5.0f; // 전력질주가 발동되고 시간을 초기화해줄 변수
 
     bool runCheck = false; // 전력질주중인지 확인할 변수
 

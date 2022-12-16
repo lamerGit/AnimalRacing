@@ -82,6 +82,7 @@ public class ArcticFox : AnimalAI
         rigid.AddForce(transform.up * jumpPower, ForceMode.VelocityChange);
         animalAudio.Play();
         rolling = true;
+        aiSpeed += 0.3f;
         cfx_Ground_Hit.SetActive(true);
         dustTail.SetActive(!rolling);
         animator.SetBool("Rolling", rolling);

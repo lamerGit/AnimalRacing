@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalName: "\uC5EC\uC6B0"
   special: "\uB864\uB9C1\uC55E\uC810\uD504"
-  allocation: 16
+  allocation: 30

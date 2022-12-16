@@ -9,10 +9,10 @@ public class Cat : AnimalAI
     float skillCoolTime = 4.0f; // 쿨타임 초기 시간
     float skillCoolTimeReset = 4.0f; // 스킬이 발동되고 시간을 초기화해줄 변수
 
-    float jumpTime = 8.0f;
-    float jumpTimeReset = 8.0f;
+    float jumpTime = 7.0f;
+    float jumpTimeReset = 7.0f;
 
-    float extraSpeed = 5.0f;
+    float extraSpeed = 3.0f;
 
     GameObject cfx_RainbowTail;
 
@@ -119,7 +119,7 @@ public class Cat : AnimalAI
         }
 
         jumpCheck = false;
-     
+        rigid.useGravity = true;
         animalAudio.Stop();
         animator.SetBool("CatFly", jumpCheck);
         dustTail.SetActive(!jumpCheck);
@@ -152,8 +152,10 @@ public class Cat : AnimalAI
                 JumpReset();
 
             }
-
         }
+
+
+
 
     }
 }

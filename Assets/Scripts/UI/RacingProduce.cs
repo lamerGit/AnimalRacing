@@ -19,7 +19,7 @@ public class RacingProduce : MonoBehaviour
 
     void OpenSpliter()
     {
-
+        ClickSound.Instance.ClickPlay();
         produceSpliterUI.Open();
 
 
