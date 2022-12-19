@@ -44,6 +44,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6f07eb8-d342-4148-9105-1f1f09781c5d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3355c333-bdee-42c7-bef9-d2ce7041df45"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touch"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -139,6 +159,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
         m_UI_Enter = m_UI.FindAction("Enter", throwIfNotFound: true);
+        m_UI_Touch = m_UI.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -200,12 +221,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Esc;
     private readonly InputAction m_UI_Enter;
+    private readonly InputAction m_UI_Touch;
     public struct UIActions
     {
         private @PlayerInput m_Wrapper;
         public UIActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Esc => m_Wrapper.m_UI_Esc;
         public InputAction @Enter => m_Wrapper.m_UI_Enter;
+        public InputAction @Touch => m_Wrapper.m_UI_Touch;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -221,6 +244,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Enter.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
                 @Enter.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
                 @Enter.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                @Touch.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTouch;
+                @Touch.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTouch;
+                @Touch.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTouch;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -231,6 +257,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Enter.started += instance.OnEnter;
                 @Enter.performed += instance.OnEnter;
                 @Enter.canceled += instance.OnEnter;
+                @Touch.started += instance.OnTouch;
+                @Touch.performed += instance.OnTouch;
+                @Touch.canceled += instance.OnTouch;
             }
         }
     }
@@ -284,5 +313,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnEsc(InputAction.CallbackContext context);
         void OnEnter(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

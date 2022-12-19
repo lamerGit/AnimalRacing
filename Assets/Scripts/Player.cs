@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Stove.PCSDK.NET;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -19,8 +21,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         LoadPlayerGameData();
+      
     }
 
+   
 
     void SavePlayerData()
     {

@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Race.unity
     guid: 7c150f33f52ccc54bbbd2a4ce64461ac
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: aef078988fb5de0419ab4b727e9bdd9c, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: ab3a5a9633b95eb4a934789b0f77e323, type: 2}

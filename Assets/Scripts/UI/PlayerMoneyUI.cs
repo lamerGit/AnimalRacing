@@ -13,7 +13,7 @@ public class PlayerMoneyUI : MonoBehaviour
 
     WaringMassege waring;
 
-    string error = "0원일때만 돈을 받을 수 있습니다\n";
+    string error = "소지금이 0원이고 소지한 티켓이 없어야 돈을 받을 수 있습니다\n";
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class PlayerMoneyUI : MonoBehaviour
     {
         if(GameManager.Instance.GamePlayer!=null)
         {
-            if(GameManager.Instance.GamePlayer.Money==0)
+            if(GameManager.Instance.GamePlayer.Money==0 && GameManager.Instance.TicketCount==0)
             {
                 GameManager.Instance.GamePlayer.Money+=1000;
             }else

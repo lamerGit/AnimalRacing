@@ -131,6 +131,7 @@ public class GameManager : Singleton<GameManager>
         inputActions.UI.Enable();
         inputActions.UI.Esc.performed += OnEsc;
         inputActions.UI.Enter.performed += OnEnter;
+        inputActions.UI.Touch.performed += OnTouch;
     }
 
     
@@ -140,6 +141,14 @@ public class GameManager : Singleton<GameManager>
         base.OnDisable();
         //inputActions.UI.Esc.performed -= OnEsc;
         //inputActions.UI.Disable();
+    }
+    private void OnTouch(InputAction.CallbackContext obj)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == (int)StageEnum.Title)
+        {
+            SceneManager.LoadScene((int)StageEnum.Lobby);
+        }
+
     }
     private void OnEnter(InputAction.CallbackContext obj)
     {

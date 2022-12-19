@@ -1,0 +1,704 @@
+﻿2022-12-17 16:29:25.769 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 16:29:25.778 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 16:29:25.778 INFO  [20476] ---------------------------------------------
+2022-12-17 16:29:25.778 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 16:29:25.778 INFO  [20476] ---------------------------------------------
+2022-12-17 16:29:25.778 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 16:29:25.778 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -projectpath
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -useHub
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -hubIPC
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : production
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : -accessToken
+2022-12-17 16:29:25.778 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 16:29:25.778 DEBUG [20476]     init tasks
+2022-12-17 16:29:25.778 DEBUG [20476]     transactionId : 8875a46f-ddc3-4a9a-981e-f0d159277966
+2022-12-17 16:29:25.778 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 16:29:25.779 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 16:29:25.779 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 16:29:25.779 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 16:29:25.779 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 16:29:25.779 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 16:29:25.798 INFO  [20476] protocol data from ipc
+2022-12-17 16:29:25.798 INFO  [20476]     Init sgup success
+2022-12-17 16:29:25.798 DEBUG [20476] --> Elapsed times(until main return): 29ms
+2022-12-17 16:29:25.798 DEBUG [15548]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 16:29:26.101 INFO  [1684]     Get constants has succeed.
+2022-12-17 16:29:26.102 INFO  [15548]     Log SetEnable is true
+2022-12-17 16:29:26.102 DEBUG [15548]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 16:29:26","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:29:26.102 DEBUG [15548]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:29:26.102 INFO  [15548] --> SGUPAPI_GetAuthToken
+2022-12-17 16:29:26.102 INFO  [15548]      current process id: 4872
+2022-12-17 16:29:26.102 DEBUG [15548]      game id : HELLO_IND_DEMO_IND
+2022-12-17 16:29:26.129 DEBUG [51264]     -StoveLog rest: response is 200
+2022-12-17 16:29:26.129 DEBUG [51264]      -  Send remote log success.
+2022-12-17 16:29:27.339 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 16:29:27.340 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: false
+2022-12-17 16:29:27.340 INFO  [20476]     received origin token from launcher
+2022-12-17 16:29:27.340 DEBUG [20476]     <Dlc's>
+2022-12-17 16:29:27.340 ERROR [15548]     Get Initial Token Error 
+2022-12-17 16:29:27.340 DEBUG [15548]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 16:29:27","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:29:27.340 DEBUG [15548]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:29:27.360 DEBUG [1684]     -StoveLog rest: response is 200
+2022-12-17 16:29:27.360 DEBUG [1684]      -  Send remote log success.
+2022-12-17 16:29:46.284 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 16:29:46.284 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 16:29:46","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:29:46.284 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:29:46.304 DEBUG [1684]     -StoveLog rest: response is 200
+2022-12-17 16:29:46.304 DEBUG [1684]      -  Send remote log success.
+2022-12-17 16:41:41.080 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 16:41:41.080 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 16:41:41.080 INFO  [20476] ---------------------------------------------
+2022-12-17 16:41:41.080 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 16:41:41.080 INFO  [20476] ---------------------------------------------
+2022-12-17 16:41:41.080 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 16:41:41.080 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -projectpath
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -useHub
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -hubIPC
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : production
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : -accessToken
+2022-12-17 16:41:41.080 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 16:41:41.080 DEBUG [20476]     init tasks
+2022-12-17 16:41:41.080 DEBUG [20476]     transactionId : e3e26db4-ff0c-469f-a4c1-79d04f9709ad
+2022-12-17 16:41:41.081 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 16:41:41.081 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 16:41:41.081 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 16:41:41.081 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 16:41:41.081 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 16:41:41.081 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 16:41:41.081 INFO  [20476] protocol data from ipc
+2022-12-17 16:41:41.081 INFO  [20476]     Init sgup success
+2022-12-17 16:41:41.081 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 16:41:41.081 DEBUG [30236]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 16:41:41.262 INFO  [2480]     Get constants has succeed.
+2022-12-17 16:41:41.262 INFO  [30236]     Log SetEnable is true
+2022-12-17 16:41:41.262 DEBUG [30236]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 16:41:41","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:41:41.262 DEBUG [30236]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:41:41.263 INFO  [30236] --> SGUPAPI_GetAuthToken
+2022-12-17 16:41:41.263 INFO  [30236]      current process id: 4872
+2022-12-17 16:41:41.263 DEBUG [30236]      game id : HELLO_IND_DEMO_IND
+2022-12-17 16:41:41.286 DEBUG [44232]     -StoveLog rest: response is 200
+2022-12-17 16:41:41.286 DEBUG [44232]      -  Send remote log success.
+2022-12-17 16:41:42.615 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 16:41:42.615 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 16:41:42.615 INFO  [20476]     received origin token from launcher
+2022-12-17 16:41:42.615 DEBUG [20476]     <Dlc's>
+2022-12-17 16:41:42.615 ERROR [30236]     Get Initial Token Error 
+2022-12-17 16:41:42.615 DEBUG [30236]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 16:41:42","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:41:42.615 DEBUG [30236]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:41:42.639 DEBUG [2480]     -StoveLog rest: response is 200
+2022-12-17 16:41:42.639 DEBUG [2480]      -  Send remote log success.
+2022-12-17 16:41:56.727 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 16:41:56.727 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 16:41:56","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:41:56.727 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:41:56.748 DEBUG [2480]     -StoveLog rest: response is 200
+2022-12-17 16:41:56.748 DEBUG [2480]      -  Send remote log success.
+2022-12-17 16:45:10.836 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 16:45:10.836 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 16:45:10.836 INFO  [20476] ---------------------------------------------
+2022-12-17 16:45:10.836 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 16:45:10.836 INFO  [20476] ---------------------------------------------
+2022-12-17 16:45:10.836 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 16:45:10.836 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -projectpath
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -useHub
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -hubIPC
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : production
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : -accessToken
+2022-12-17 16:45:10.836 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 16:45:10.836 DEBUG [20476]     init tasks
+2022-12-17 16:45:10.836 DEBUG [20476]     transactionId : 89b1a56a-70ef-4eff-bdf9-9852531adfbe
+2022-12-17 16:45:10.836 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 16:45:10.836 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 16:45:10.836 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 16:45:10.836 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 16:45:10.836 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 16:45:10.836 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 16:45:10.836 INFO  [20476] protocol data from ipc
+2022-12-17 16:45:10.836 INFO  [20476]     Init sgup success
+2022-12-17 16:45:10.837 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 16:45:10.837 DEBUG [8304]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 16:45:11.006 INFO  [17564]     Get constants has succeed.
+2022-12-17 16:45:11.007 INFO  [8304]     Log SetEnable is true
+2022-12-17 16:45:11.007 DEBUG [8304]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 16:45:11","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:45:11.007 DEBUG [8304]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:45:11.007 INFO  [8304] --> SGUPAPI_GetAuthToken
+2022-12-17 16:45:11.007 INFO  [8304]      current process id: 4872
+2022-12-17 16:45:11.007 DEBUG [8304]      game id : HELLO_IND_DEMO_IND
+2022-12-17 16:45:11.031 DEBUG [48520]     -StoveLog rest: response is 200
+2022-12-17 16:45:11.031 DEBUG [48520]      -  Send remote log success.
+2022-12-17 16:45:11.766 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 16:45:11.766 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 16:45:11.766 INFO  [20476]     received origin token from launcher
+2022-12-17 16:45:11.766 DEBUG [20476]     <Dlc's>
+2022-12-17 16:45:11.766 ERROR [8304]     Get Initial Token Error 
+2022-12-17 16:45:11.766 DEBUG [8304]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 16:45:11","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:45:11.766 DEBUG [8304]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:45:11.790 DEBUG [17564]     -StoveLog rest: response is 200
+2022-12-17 16:45:11.790 DEBUG [17564]      -  Send remote log success.
+2022-12-17 16:45:28.084 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 16:45:28.084 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 16:45:28","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:45:28.084 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:45:28.180 DEBUG [48520]     -StoveLog rest: response is 200
+2022-12-17 16:45:28.180 DEBUG [48520]      -  Send remote log success.
+2022-12-17 16:47:13.986 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 16:47:13.986 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 16:47:13.986 INFO  [20476] ---------------------------------------------
+2022-12-17 16:47:13.986 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 16:47:13.986 INFO  [20476] ---------------------------------------------
+2022-12-17 16:47:13.986 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 16:47:13.986 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -projectpath
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -useHub
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -hubIPC
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : production
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : -accessToken
+2022-12-17 16:47:13.987 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 16:47:13.987 DEBUG [20476]     init tasks
+2022-12-17 16:47:13.987 DEBUG [20476]     transactionId : cec9a70a-a0ff-4403-a521-03a50dcd68a2
+2022-12-17 16:47:13.987 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 16:47:13.987 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 16:47:13.987 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 16:47:13.987 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 16:47:13.987 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 16:47:13.987 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 16:47:13.987 INFO  [20476] protocol data from ipc
+2022-12-17 16:47:13.987 INFO  [20476]     Init sgup success
+2022-12-17 16:47:13.987 DEBUG [5924]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 16:47:13.987 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 16:47:14.163 INFO  [26412]     Get constants has succeed.
+2022-12-17 16:47:14.163 INFO  [5924]     Log SetEnable is true
+2022-12-17 16:47:14.164 DEBUG [5924]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 16:47:14","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:47:14.164 DEBUG [5924]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:47:14.164 INFO  [5924] --> SGUPAPI_GetAuthToken
+2022-12-17 16:47:14.164 INFO  [5924]      current process id: 4872
+2022-12-17 16:47:14.164 DEBUG [5924]      game id : HELLO_IND_DEMO_IND
+2022-12-17 16:47:14.196 DEBUG [17564]     -StoveLog rest: response is 200
+2022-12-17 16:47:14.196 DEBUG [17564]      -  Send remote log success.
+2022-12-17 16:47:14.981 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 16:47:14.981 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 16:47:14.981 INFO  [20476]     received origin token from launcher
+2022-12-17 16:47:14.981 DEBUG [20476]     <Dlc's>
+2022-12-17 16:47:14.981 ERROR [5924]     Get Initial Token Error 
+2022-12-17 16:47:14.981 DEBUG [5924]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 16:47:14","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:47:14.981 DEBUG [5924]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:47:15.003 DEBUG [26412]     -StoveLog rest: response is 200
+2022-12-17 16:47:15.003 DEBUG [26412]      -  Send remote log success.
+2022-12-17 16:47:20.921 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 16:47:20.922 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 16:47:20","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:47:20.922 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:47:20.942 DEBUG [17564]     -StoveLog rest: response is 200
+2022-12-17 16:47:20.942 DEBUG [17564]      -  Send remote log success.
+2022-12-17 16:56:57.518 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 16:56:57.518 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 16:56:57.518 INFO  [20476] ---------------------------------------------
+2022-12-17 16:56:57.518 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 16:56:57.518 INFO  [20476] ---------------------------------------------
+2022-12-17 16:56:57.518 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 16:56:57.518 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -projectpath
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -useHub
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -hubIPC
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : production
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : -accessToken
+2022-12-17 16:56:57.518 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 16:56:57.518 DEBUG [20476]     init tasks
+2022-12-17 16:56:57.518 DEBUG [20476]     transactionId : 52fc2641-ba4b-4c23-9b8e-b27bb2f2e588
+2022-12-17 16:56:57.518 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 16:56:57.518 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 16:56:57.518 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 16:56:57.518 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 16:56:57.518 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 16:56:57.518 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 16:56:57.518 INFO  [20476] protocol data from ipc
+2022-12-17 16:56:57.518 INFO  [20476]     Init sgup success
+2022-12-17 16:56:57.519 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 16:56:57.519 DEBUG [58536]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 16:56:57.707 INFO  [35836]     Get constants has succeed.
+2022-12-17 16:56:57.708 INFO  [58536]     Log SetEnable is true
+2022-12-17 16:56:57.708 DEBUG [58536]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 16:56:57","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:56:57.708 DEBUG [58536]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:56:57.708 INFO  [58536] --> SGUPAPI_GetAuthToken
+2022-12-17 16:56:57.708 INFO  [58536]      current process id: 4872
+2022-12-17 16:56:57.708 DEBUG [58536]      game id : HELLO_IND_DEMO_IND
+2022-12-17 16:56:57.725 DEBUG [30552]     -StoveLog rest: response is 200
+2022-12-17 16:56:57.725 DEBUG [30552]      -  Send remote log success.
+2022-12-17 16:56:58.449 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 16:56:58.449 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 16:56:58.449 INFO  [20476]     received origin token from launcher
+2022-12-17 16:56:58.449 DEBUG [20476]     <Dlc's>
+2022-12-17 16:56:58.449 ERROR [58536]     Get Initial Token Error 
+2022-12-17 16:56:58.449 DEBUG [58536]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 16:56:58","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:56:58.449 DEBUG [58536]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:56:58.470 DEBUG [46404]     -StoveLog rest: response is 200
+2022-12-17 16:56:58.470 DEBUG [46404]      -  Send remote log success.
+2022-12-17 16:57:12.091 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 16:57:12.091 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 16:57:12","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 16:57:12.091 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 16:57:12.113 DEBUG [48180]     -StoveLog rest: response is 200
+2022-12-17 16:57:12.113 DEBUG [48180]      -  Send remote log success.
+2022-12-17 17:00:55.157 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 17:00:55.157 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 17:00:55.157 INFO  [20476] ---------------------------------------------
+2022-12-17 17:00:55.157 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 17:00:55.157 INFO  [20476] ---------------------------------------------
+2022-12-17 17:00:55.157 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 17:00:55.157 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -projectpath
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -useHub
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -hubIPC
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : production
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : -accessToken
+2022-12-17 17:00:55.158 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 17:00:55.158 DEBUG [20476]     init tasks
+2022-12-17 17:00:55.158 DEBUG [20476]     transactionId : 7d081e60-2c0f-4364-8792-de6c7a532fc1
+2022-12-17 17:00:55.158 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 17:00:55.158 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 17:00:55.158 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 17:00:55.158 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 17:00:55.158 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 17:00:55.158 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 17:00:55.158 INFO  [20476] protocol data from ipc
+2022-12-17 17:00:55.158 INFO  [20476]     Init sgup success
+2022-12-17 17:00:55.158 DEBUG [49768]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 17:00:55.158 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 17:00:55.335 INFO  [1148]     Get constants has succeed.
+2022-12-17 17:00:55.336 INFO  [49768]     Log SetEnable is true
+2022-12-17 17:00:55.336 DEBUG [49768]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 17:00:55","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:00:55.336 DEBUG [49768]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:00:55.336 INFO  [49768] --> SGUPAPI_GetAuthToken
+2022-12-17 17:00:55.336 INFO  [49768]      current process id: 4872
+2022-12-17 17:00:55.336 DEBUG [49768]      game id : HELLO_IND_DEMO_IND
+2022-12-17 17:00:55.366 DEBUG [7512]     -StoveLog rest: response is 200
+2022-12-17 17:00:55.367 DEBUG [7512]      -  Send remote log success.
+2022-12-17 17:00:56.090 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 17:00:56.090 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 17:00:56.090 INFO  [20476]     received origin token from launcher
+2022-12-17 17:00:56.090 DEBUG [20476]     <Dlc's>
+2022-12-17 17:00:56.090 ERROR [49768]     Get Initial Token Error 
+2022-12-17 17:00:56.090 DEBUG [49768]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 17:00:56","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:00:56.090 DEBUG [49768]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:00:56.112 DEBUG [1148]     -StoveLog rest: response is 200
+2022-12-17 17:00:56.112 DEBUG [1148]      -  Send remote log success.
+2022-12-17 17:00:57.874 ERROR [20476]     sdk not initialize
+2022-12-17 17:01:02.211 ERROR [20476]     sdk not initialize
+2022-12-17 17:01:06.058 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 17:01:06.058 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 17:01:06","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:01:06.058 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:01:06.082 DEBUG [1148]     -StoveLog rest: response is 200
+2022-12-17 17:01:06.082 DEBUG [1148]      -  Send remote log success.
+2022-12-17 17:01:11.873 INFO  [20476] file Appender.(level: DEBUG)
+2022-12-17 17:01:11.873 INFO  [20476] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 17:01:11.873 INFO  [20476] ---------------------------------------------
+2022-12-17 17:01:11.873 INFO  [20476] StovePCSDK(ver:2.5.0)
+2022-12-17 17:01:11.873 INFO  [20476] ---------------------------------------------
+2022-12-17 17:01:11.873 DEBUG [20476]     osPlatform : 64bit
+2022-12-17 17:01:11.873 DEBUG [20476]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -projectpath
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -useHub
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -hubIPC
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -cloudEnvironment
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : production
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -licensingIpc
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : LicenseClient-Lee
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -hubSessionId
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : 0b2105a0-7dcb-11ed-8f57-890753c12592
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : -accessToken
+2022-12-17 17:01:11.873 DEBUG [20476] commandline : piANrZFZPR9fpvIwX9gpetInZU39JXtNRoi-MbnWMGE00df
+2022-12-17 17:01:11.873 DEBUG [20476]     init tasks
+2022-12-17 17:01:11.873 DEBUG [20476]     transactionId : 18b3d468-bb09-40f0-add5-154acfc110d1
+2022-12-17 17:01:11.873 DEBUG [20476]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 17:01:11.873 DEBUG [20476]     subkey : SOFTWARE\SGUP
+2022-12-17 17:01:11.873 DEBUG [20476]     RegOpenKeyEx : 0
+2022-12-17 17:01:11.873 DEBUG [20476]     RegQueryValueEx : 0, size : 82
+2022-12-17 17:01:11.873 DEBUG [20476]     RegQueryValueEx : 0
+2022-12-17 17:01:11.873 DEBUG [20476]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 17:01:11.873 INFO  [20476] protocol data from ipc
+2022-12-17 17:01:11.873 INFO  [20476]     Init sgup success
+2022-12-17 17:01:11.874 DEBUG [52380]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 17:01:11.874 DEBUG [20476] --> Elapsed times(until main return): 1ms
+2022-12-17 17:01:11.922 INFO  [7512]     Get constants has succeed.
+2022-12-17 17:01:11.923 INFO  [52380]     Log SetEnable is true
+2022-12-17 17:01:11.923 DEBUG [52380]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 17:01:11","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:01:11.923 DEBUG [52380]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:01:11.923 INFO  [52380] --> SGUPAPI_GetAuthToken
+2022-12-17 17:01:11.923 INFO  [52380]      current process id: 4872
+2022-12-17 17:01:11.923 DEBUG [52380]      game id : HELLO_IND_DEMO_IND
+2022-12-17 17:01:11.942 DEBUG [1148]     -StoveLog rest: response is 200
+2022-12-17 17:01:11.942 DEBUG [1148]      -  Send remote log success.
+2022-12-17 17:01:12.795 INFO  [20476] <-- OnGetAccessToken
+2022-12-17 17:01:12.796 DEBUG [20476]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 17:01:12.796 INFO  [20476]     received origin token from launcher
+2022-12-17 17:01:12.796 DEBUG [20476]     <Dlc's>
+2022-12-17 17:01:12.796 ERROR [52380]     Get Initial Token Error 
+2022-12-17 17:01:12.796 DEBUG [52380]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 17:01:12","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:01:12.796 DEBUG [52380]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:01:12.815 DEBUG [7512]     -StoveLog rest: response is 200
+2022-12-17 17:01:12.815 DEBUG [7512]      -  Send remote log success.
+2022-12-17 17:01:13.338 ERROR [20476]     sdk not initialize
+2022-12-17 17:01:15.496 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 17:01:15.497 DEBUG [20476]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 17:01:15","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 17:01:15.497 DEBUG [20476]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 17:01:15.516 DEBUG [1148]     -StoveLog rest: response is 200
+2022-12-17 17:01:15.516 DEBUG [1148]      -  Send remote log success.
+2022-12-17 17:01:28.572 ERROR [43908]     Get Initial Token Error 
+2022-12-17 17:01:30.108 ERROR [20476]     sdk not initialize
+2022-12-17 17:01:32.354 ERROR [20476]     sdk not initialize
+2022-12-17 17:01:33.691 ERROR [20476]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:25:20.753 ERROR [13172]     Get Initial Token Error 
+2022-12-17 18:25:21.472 ERROR [44040]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:27:15.300 ERROR [56568]     Get Initial Token Error 
+2022-12-17 18:28:53.494 ERROR [8448]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:32:15.224 INFO  [8448] file Appender.(level: DEBUG)
+2022-12-17 18:32:15.224 INFO  [8448] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 18:32:15.224 INFO  [8448] ---------------------------------------------
+2022-12-17 18:32:15.224 INFO  [8448] StovePCSDK(ver:2.5.0)
+2022-12-17 18:32:15.224 INFO  [8448] ---------------------------------------------
+2022-12-17 18:32:15.224 DEBUG [8448]     osPlatform : 64bit
+2022-12-17 18:32:15.224 DEBUG [8448]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -projectpath
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -useHub
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -hubIPC
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -cloudEnvironment
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : production
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -licensingIpc
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : LicenseClient-Lee
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : -hubSessionId
+2022-12-17 18:32:15.224 DEBUG [8448] commandline : b7a66cb0-7dea-11ed-a448-cd9ba7eec4d5
+2022-12-17 18:32:15.225 DEBUG [8448] commandline : -accessToken
+2022-12-17 18:32:15.225 DEBUG [8448] commandline : mRkZBJwue4UrMNcGfogr9GwYedTeOPWOxPi4OvItxOU00df
+2022-12-17 18:32:15.225 DEBUG [8448]     init tasks
+2022-12-17 18:32:15.225 DEBUG [8448]     transactionId : df57dfcb-23ee-47b1-9683-52b670c5cac3
+2022-12-17 18:32:15.225 DEBUG [8448]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 18:32:15.225 DEBUG [8448]     subkey : SOFTWARE\SGUP
+2022-12-17 18:32:15.225 DEBUG [8448]     RegOpenKeyEx : 0
+2022-12-17 18:32:15.225 DEBUG [8448]     RegQueryValueEx : 0, size : 82
+2022-12-17 18:32:15.225 DEBUG [8448]     RegQueryValueEx : 0
+2022-12-17 18:32:15.225 DEBUG [8448]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 18:32:15.225 INFO  [8448] protocol data from ipc
+2022-12-17 18:32:15.225 INFO  [8448]     Init sgup success
+2022-12-17 18:32:15.225 DEBUG [44020]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 18:32:15.225 DEBUG [8448] --> Elapsed times(until main return): 1ms
+2022-12-17 18:32:15.398 INFO  [13656]     Get constants has succeed.
+2022-12-17 18:32:15.398 INFO  [44020]     Log SetEnable is true
+2022-12-17 18:32:15.398 DEBUG [44020]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 18:32:15","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:32:15.398 DEBUG [44020]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:32:15.398 INFO  [44020] --> SGUPAPI_GetAuthToken
+2022-12-17 18:32:15.399 INFO  [44020]      current process id: 37444
+2022-12-17 18:32:15.399 DEBUG [44020]      game id : HELLO_IND_DEMO_IND
+2022-12-17 18:32:15.423 DEBUG [16564]     -StoveLog rest: response is 200
+2022-12-17 18:32:15.423 DEBUG [16564]      -  Send remote log success.
+2022-12-17 18:32:16.177 INFO  [8448] <-- OnGetAccessToken
+2022-12-17 18:32:16.177 DEBUG [8448]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 18:32:16.177 INFO  [8448]     received origin token from launcher
+2022-12-17 18:32:16.177 DEBUG [8448]     <Dlc's>
+2022-12-17 18:32:16.177 ERROR [44020]     Get Initial Token Error 
+2022-12-17 18:32:16.177 DEBUG [44020]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 18:32:16","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:32:16.177 DEBUG [44020]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:32:16.199 DEBUG [14256]     -StoveLog rest: response is 200
+2022-12-17 18:32:16.199 DEBUG [14256]      -  Send remote log success.
+2022-12-17 18:32:23.264 ERROR [8448]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:32:23.264 DEBUG [8448]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 18:32:23","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:32:23.264 DEBUG [8448]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:32:23.302 DEBUG [13656]     -StoveLog rest: response is 200
+2022-12-17 18:32:23.302 DEBUG [13656]      -  Send remote log success.
+2022-12-17 18:36:32.919 INFO  [8448] file Appender.(level: DEBUG)
+2022-12-17 18:36:32.919 INFO  [8448] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 18:36:32.919 INFO  [8448] ---------------------------------------------
+2022-12-17 18:36:32.919 INFO  [8448] StovePCSDK(ver:2.5.0)
+2022-12-17 18:36:32.919 INFO  [8448] ---------------------------------------------
+2022-12-17 18:36:32.919 DEBUG [8448]     osPlatform : 64bit
+2022-12-17 18:36:32.919 DEBUG [8448]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 18:36:32.919 DEBUG [8448] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 18:36:32.919 DEBUG [8448] commandline : -projectpath
+2022-12-17 18:36:32.919 DEBUG [8448] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -useHub
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -hubIPC
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -cloudEnvironment
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : production
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -licensingIpc
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : LicenseClient-Lee
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -hubSessionId
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : b7a66cb0-7dea-11ed-a448-cd9ba7eec4d5
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : -accessToken
+2022-12-17 18:36:32.920 DEBUG [8448] commandline : mRkZBJwue4UrMNcGfogr9GwYedTeOPWOxPi4OvItxOU00df
+2022-12-17 18:36:32.920 DEBUG [8448]     init tasks
+2022-12-17 18:36:32.920 DEBUG [8448]     transactionId : a300bcbb-1db2-48d4-9e8b-f2677e8660e4
+2022-12-17 18:36:32.920 DEBUG [8448]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 18:36:32.920 DEBUG [8448]     subkey : SOFTWARE\SGUP
+2022-12-17 18:36:32.920 DEBUG [8448]     RegOpenKeyEx : 0
+2022-12-17 18:36:32.920 DEBUG [8448]     RegQueryValueEx : 0, size : 82
+2022-12-17 18:36:32.920 DEBUG [8448]     RegQueryValueEx : 0
+2022-12-17 18:36:32.920 DEBUG [8448]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 18:36:32.920 INFO  [8448] protocol data from ipc
+2022-12-17 18:36:32.920 INFO  [8448]     Init sgup success
+2022-12-17 18:36:32.920 DEBUG [51388]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 18:36:32.920 DEBUG [8448] --> Elapsed times(until main return): 1ms
+2022-12-17 18:36:33.095 INFO  [49568]     Get constants has succeed.
+2022-12-17 18:36:33.096 INFO  [51388]     Log SetEnable is true
+2022-12-17 18:36:33.096 DEBUG [51388]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 18:36:33","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:36:33.096 DEBUG [51388]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:36:33.096 INFO  [51388] --> SGUPAPI_GetAuthToken
+2022-12-17 18:36:33.096 INFO  [51388]      current process id: 37444
+2022-12-17 18:36:33.096 DEBUG [51388]      game id : HELLO_IND_DEMO_IND
+2022-12-17 18:36:33.158 DEBUG [28436]     -StoveLog rest: response is 200
+2022-12-17 18:36:33.158 DEBUG [28436]      -  Send remote log success.
+2022-12-17 18:36:34.347 INFO  [8448] <-- OnGetAccessToken
+2022-12-17 18:36:34.347 DEBUG [8448]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 18:36:34.347 INFO  [8448]     received origin token from launcher
+2022-12-17 18:36:34.347 DEBUG [8448]     <Dlc's>
+2022-12-17 18:36:34.347 ERROR [51388]     Get Initial Token Error 
+2022-12-17 18:36:34.348 DEBUG [51388]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 18:36:34","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:36:34.348 DEBUG [51388]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:36:34.368 DEBUG [49568]     -StoveLog rest: response is 200
+2022-12-17 18:36:34.368 DEBUG [49568]      -  Send remote log success.
+2022-12-17 18:36:43.241 ERROR [8448]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:36:43.241 DEBUG [8448]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 18:36:43","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:36:43.241 DEBUG [8448]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:36:43.261 DEBUG [49568]     -StoveLog rest: response is 200
+2022-12-17 18:36:43.261 DEBUG [49568]      -  Send remote log success.
+2022-12-17 18:42:51.458 INFO  [8448] file Appender.(level: DEBUG)
+2022-12-17 18:42:51.458 INFO  [8448] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 18:42:51.458 INFO  [8448] ---------------------------------------------
+2022-12-17 18:42:51.458 INFO  [8448] StovePCSDK(ver:2.5.0)
+2022-12-17 18:42:51.458 INFO  [8448] ---------------------------------------------
+2022-12-17 18:42:51.458 DEBUG [8448]     osPlatform : 64bit
+2022-12-17 18:42:51.458 DEBUG [8448]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : -projectpath
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : -useHub
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : -hubIPC
+2022-12-17 18:42:51.458 DEBUG [8448] commandline : -cloudEnvironment
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : production
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : -licensingIpc
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : LicenseClient-Lee
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : -hubSessionId
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : b7a66cb0-7dea-11ed-a448-cd9ba7eec4d5
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : -accessToken
+2022-12-17 18:42:51.459 DEBUG [8448] commandline : mRkZBJwue4UrMNcGfogr9GwYedTeOPWOxPi4OvItxOU00df
+2022-12-17 18:42:51.459 DEBUG [8448]     init tasks
+2022-12-17 18:42:51.459 DEBUG [8448]     transactionId : bc8a5af5-4559-4655-b857-97f1b96a1458
+2022-12-17 18:42:51.459 DEBUG [8448]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 18:42:51.459 DEBUG [8448]     subkey : SOFTWARE\SGUP
+2022-12-17 18:42:51.459 DEBUG [8448]     RegOpenKeyEx : 0
+2022-12-17 18:42:51.459 DEBUG [8448]     RegQueryValueEx : 0, size : 82
+2022-12-17 18:42:51.459 DEBUG [8448]     RegQueryValueEx : 0
+2022-12-17 18:42:51.459 DEBUG [8448]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 18:42:51.459 INFO  [8448] protocol data from ipc
+2022-12-17 18:42:51.459 INFO  [8448]     Init sgup success
+2022-12-17 18:42:51.459 DEBUG [53984]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 18:42:51.459 DEBUG [8448] --> Elapsed times(until main return): 1ms
+2022-12-17 18:42:51.646 INFO  [36248]     Get constants has succeed.
+2022-12-17 18:42:51.646 INFO  [53984]     Log SetEnable is true
+2022-12-17 18:42:51.646 DEBUG [53984]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 18:42:51","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:42:51.646 DEBUG [53984]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:42:51.646 INFO  [53984] --> SGUPAPI_GetAuthToken
+2022-12-17 18:42:51.646 INFO  [53984]      current process id: 37444
+2022-12-17 18:42:51.646 DEBUG [53984]      game id : HELLO_IND_DEMO_IND
+2022-12-17 18:42:51.672 DEBUG [11164]     -StoveLog rest: response is 200
+2022-12-17 18:42:51.672 DEBUG [11164]      -  Send remote log success.
+2022-12-17 18:42:52.384 INFO  [8448] <-- OnGetAccessToken
+2022-12-17 18:42:52.384 DEBUG [8448]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 18:42:52.384 INFO  [8448]     received origin token from launcher
+2022-12-17 18:42:52.384 DEBUG [8448]     <Dlc's>
+2022-12-17 18:42:52.384 ERROR [53984]     Get Initial Token Error 
+2022-12-17 18:42:52.384 DEBUG [53984]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 18:42:52","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:42:52.384 DEBUG [53984]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:42:52.403 DEBUG [20872]     -StoveLog rest: response is 200
+2022-12-17 18:42:52.403 DEBUG [20872]      -  Send remote log success.
+2022-12-17 18:46:35.305 ERROR [8448]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:46:35.305 DEBUG [8448]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 18:46:35","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:46:35.305 DEBUG [8448]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:46:35.347 DEBUG [7316]     -StoveLog rest: response is 200
+2022-12-17 18:46:35.347 DEBUG [7316]      -  Send remote log success.
+2022-12-17 18:56:19.279 INFO  [8448] file Appender.(level: DEBUG)
+2022-12-17 18:56:19.279 INFO  [8448] Log file path: C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing\StovePCSDK.log
+2022-12-17 18:56:19.279 INFO  [8448] ---------------------------------------------
+2022-12-17 18:56:19.279 INFO  [8448] StovePCSDK(ver:2.5.0)
+2022-12-17 18:56:19.279 INFO  [8448] ---------------------------------------------
+2022-12-17 18:56:19.279 DEBUG [8448]     osPlatform : 64bit
+2022-12-17 18:56:19.279 DEBUG [8448]     osVersion : Windows 10(10.0), 10.0.19045, 64bit
+2022-12-17 18:56:19.279 DEBUG [8448] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe
+2022-12-17 18:56:19.279 DEBUG [8448] commandline : -projectpath
+2022-12-17 18:56:19.279 DEBUG [8448] commandline : C:\Users\Lee\OneDrive\문서\GitHub\AnimalRacing
+2022-12-17 18:56:19.279 DEBUG [8448] commandline : -useHub
+2022-12-17 18:56:19.279 DEBUG [8448] commandline : -hubIPC
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : -cloudEnvironment
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : production
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : -licensingIpc
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : LicenseClient-Lee
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : -hubSessionId
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : b7a66cb0-7dea-11ed-a448-cd9ba7eec4d5
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : -accessToken
+2022-12-17 18:56:19.280 DEBUG [8448] commandline : mRkZBJwue4UrMNcGfogr9GwYedTeOPWOxPi4OvItxOU00df
+2022-12-17 18:56:19.280 DEBUG [8448]     init tasks
+2022-12-17 18:56:19.280 DEBUG [8448]     transactionId : e980bb1b-d778-4381-b509-49db5af872be
+2022-12-17 18:56:19.280 DEBUG [8448]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2022-12-17 18:56:19.280 DEBUG [8448]     subkey : SOFTWARE\SGUP
+2022-12-17 18:56:19.280 DEBUG [8448]     RegOpenKeyEx : 0
+2022-12-17 18:56:19.280 DEBUG [8448]     RegQueryValueEx : 0, size : 82
+2022-12-17 18:56:19.280 DEBUG [8448]     RegQueryValueEx : 0
+2022-12-17 18:56:19.280 DEBUG [8448]     callerDetail : b1067622f90342384548639d30be200016fa7330
+2022-12-17 18:56:19.280 INFO  [8448] protocol data from ipc
+2022-12-17 18:56:19.280 INFO  [8448]     Init sgup success
+2022-12-17 18:56:19.280 DEBUG [35212]     Get Server Config(url: https://api.onstove.com/ssg/default/clients/pcsdk/2.0.0/PCSDKConfig/)
+2022-12-17 18:56:19.280 DEBUG [8448] --> Elapsed times(until main return): 1ms
+2022-12-17 18:56:19.464 INFO  [11164]     Get constants has succeed.
+2022-12-17 18:56:19.464 INFO  [35212]     Log SetEnable is true
+2022-12-17 18:56:19.464 DEBUG [35212]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.init.try_async"},"client_time":"2022-12-17 18:56:19","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:56:19.464 DEBUG [35212]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:56:19.464 INFO  [35212] --> SGUPAPI_GetAuthToken
+2022-12-17 18:56:19.464 INFO  [35212]      current process id: 37444
+2022-12-17 18:56:19.464 DEBUG [35212]      game id : HELLO_IND_DEMO_IND
+2022-12-17 18:56:19.489 DEBUG [47912]     -StoveLog rest: response is 200
+2022-12-17 18:56:19.489 DEBUG [47912]      -  Send remote log success.
+2022-12-17 18:56:20.182 INFO  [8448] <-- OnGetAccessToken
+2022-12-17 18:56:20.182 DEBUG [8448]     <TokenInfo>
+errorCode: 806
+access : 
+refresh: 
+expire: 0
+canSkipOwnership: true
+2022-12-17 18:56:20.182 INFO  [8448]     received origin token from launcher
+2022-12-17 18:56:20.182 DEBUG [8448]     <Dlc's>
+2022-12-17 18:56:20.182 ERROR [35212]     Get Initial Token Error 
+2022-12-17 18:56:20.182 DEBUG [35212]     log data:
+ {"action_info":{"action_param":{"error_external":"806","error_func":"STOVE_PC_INIT","error_msg":"Fail to get token","error_type":"155"},"action_type":"pcsdk.onerror"},"client_time":"2022-12-17 18:56:20","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:56:20.182 DEBUG [35212]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:56:20.200 DEBUG [41880]     -StoveLog rest: response is 200
+2022-12-17 18:56:20.200 DEBUG [41880]      -  Send remote log success.
+2022-12-17 18:56:26.562 ERROR [8448]     StovePC_UnInit: sdk not initialize
+2022-12-17 18:56:26.563 DEBUG [8448]     log data:
+ {"action_info":{"action_param":{},"action_type":"pcsdk.uninit.fail"},"client_time":"2022-12-17 18:56:26","custom_action_info":null,"device_os":"Windows 10(10.0), 10.0.19045, 64bit","environment":"live","game_id":"HELLO_IND_DEMO_IND","guid":"","log_source_type":"pc_sdk","member_no":"","protocol_type":"ipc","sdk_version":"2.5.0"}
+2022-12-17 18:56:26.563 DEBUG [8448]     RemoteLog url: http://logs.81plug.com/std_stove
+2022-12-17 18:56:26.584 DEBUG [41880]     -StoveLog rest: response is 200
+2022-12-17 18:56:26.584 DEBUG [41880]      -  Send remote log success.
